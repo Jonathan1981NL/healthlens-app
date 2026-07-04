@@ -1,37 +1,24 @@
-# HealthLens Stage 1B Prototype
+# HealthLens — Stage 1C
 
-HealthLens is a privacy-first interactive health atlas prototype. This Stage 1B build is designed for GitHub Pages and can be opened directly through `index.html`.
+HealthLens is a privacy-first interactive health app prototype that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test their health knowledge through an intuitive visual experience.
 
-## Files
+## Stage 1C highlights
 
-- `index.html` — app shell and screens
-- `styles.css` — modern responsive UI
-- `app.js` — interactions, body atlas, symptom logic, privacy simulation, quiz
-- `PROJECT_SPEC.md` — project baseline and requirements
-- `CHANGELOG.md` — version history
-- `site.webmanifest` — basic PWA metadata
-- `favicon.svg` — app icon
-- `.nojekyll` — tells GitHub Pages not to run Jekyll processing
+- Premium mobile-first interface
+- PWA-ready web structure
+- Interactive body atlas prototype
+- Symptom orientation flow
+- Prevention and life-context module
+- First-aid learning cards
+- Quiz with XP concept
+- Privacy Shield module
+- Minor-safety rules documented and reflected in UI
+- Flat GitHub Pages-ready structure
 
 ## GitHub Pages
 
-For GitHub Pages, keep all files in the root of the repository. `index.html` must be directly inside the repository root, not inside an extra folder.
+Publish from `main` and `/root`. `index.html` must be in the repository root.
 
-Expected structure:
+## Medical disclaimer
 
-```text
-healthlens-app/
-  index.html
-  styles.css
-  app.js
-  PROJECT_SPEC.md
-  README.md
-  CHANGELOG.md
-  site.webmanifest
-  favicon.svg
-  .nojekyll
-```
-
-## Current status
-
-This is an educational and indicative prototype only. It is not a medical device, does not provide definitive diagnosis and is not clinically validated.
+This prototype is educational and indicative only. It does not provide a medical diagnosis and does not replace professional medical care. In emergencies, contact local emergency services.

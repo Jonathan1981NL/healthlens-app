@@ -1,283 +1,238 @@
-# HealthLens Project Specification — Stage 1B Baseline
-
-Version: Stage 1B  
-Date: 2026-07-04  
-Status: working prototype baseline, flat GitHub Pages build
+# HealthLens Project Specification — Stage 1C Baseline
 
 ## 1. Product vision
 
-HealthLens is a privacy-first, internationally scalable, interactive health atlas. It aims to combine anatomy education, symptom orientation, prevention, first-aid guidance, puberty and sexual health education, perimenopause awareness, hereditary disease context, skin/wound observation, AR body layers, quizzes and international competitions.
+HealthLens is a privacy-first interactive health app that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test their health knowledge through an intuitive visual experience.
 
-The product promise is:
+The app is designed as a global, mobile-first product that can start as a web/PWA prototype and later grow into native iOS and Android applications.
 
-> Learn your body. Understand symptoms. Act faster when it matters.
+## 2. Public positioning
 
-The Dutch positioning is:
+The public app description should remain broad and professional. It should not list every sensitive or specialist module in the short description.
 
-> Je lichaam, laag voor laag begrepen.
+Recommended public description:
 
-HealthLens is not positioned as a doctor replacement. The product provides educational and indicative guidance, triage thinking, prevention information and clear emergency warnings.
+> HealthLens is a privacy-first interactive health app that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test their health knowledge through an intuitive visual experience.
 
-## 2. Core pillars
+## 3. Core product pillars
 
-1. Body Atlas: layered anatomy across skin, muscles, skeleton, organs, blood vessels, nerves, lymph, hormones and other body systems.
-2. Symptom Orientation: users can click or select body areas, describe symptoms and receive possible explanations, urgency warnings and next-step suggestions.
-3. Privacy Shield: sensitive medical and body data are protected by design, local-first where possible and never used for social or advertising purposes.
-4. Life Stages: puberty, sexual health, SOA/STI, menstruation, pregnancy/postpartum, perimenopause, menopause, men’s hormones, thyroid and aging.
-5. Prevention: organ-specific advice for nutrition, movement, sleep, stress, screening and risk awareness.
-6. First Aid: offline-first emergency cards and later AR-assisted lifesaving training.
-7. Quiz and Engagement: daily challenges, XP, badges, family/school leagues and international rankings.
-8. Internationalization: top 20 languages plus Dutch, with local medical terminology and local care pathways.
+1. Interactive body atlas
+2. Symptom orientation and triage-style education
+3. Prevention and life-context education
+4. First-aid learning and emergency preparation
+5. Quiz, XP and global learning engagement
+6. Privacy, safety and security as a primary product differentiator
+7. International terminology and language support
+8. Future AR body overlay and 3D anatomical model support
 
-## 3. Medical boundary
+## 4. Medical safety baseline
 
-The app must never present its output as a definitive diagnosis. It may say:
+HealthLens must not claim definitive diagnosis in this phase. It provides indicative educational information, possible directions, alarmsignals and recommended next steps.
 
-- this can fit with;
-- possible explanations include;
-- these are alarmsigns;
-- consider contacting a doctor;
-- seek urgent help if.
+Every medical output should follow a safe structure:
 
-It must not say:
+1. Summary
+2. Possible direction
+3. Alarmsignals
+4. Action advice
+5. Prevention or monitoring
+6. Disclaimer
 
-- you have disease X;
-- you do not have disease X;
-- this is definitely safe;
-- this replaces a physician or emergency service.
-
-All medical flows must include uncertainty, urgency escalation and clear disclaimers.
-
-## 4. Privacy and security baseline
-
-Privacy and security are a product differentiator and must be designed from the start.
-
-Default principles:
-
-- local-first processing where technically possible;
-- no automatic cloud storage of photos, scans or sensitive symptoms;
-- explicit consent per sensitive action;
-- no medical data for ads, remarketing, rankings or social sharing;
-- metadata/EXIF stripping;
-- face/background masking where possible;
-- one-tap delete;
-- private temporary session mode;
-- no push notifications containing sensitive details;
-- no public sharing of medical images.
-
-## 5. Minor intimate content zero-tolerance rule
+## 5. Minor safety baseline
 
 For users or scanned persons under 16:
 
-- no nude images;
-- no intimate images;
-- no images of genitals, breasts, buttocks or comparable sensitive zones;
-- no intimate AR scan;
-- no upload, storage or analysis of such images;
-- no workaround through blur.
+- No nude images
+- No intimate images
+- No images/scans of genitals, breasts, buttocks or comparable intimate zones
+- No analysis, storage or upload of such images
+- No blur-and-continue exception
+- If detected, the app blocks the image/scan and deletes it locally
 
-If detected, the app must:
+However, minors must still be able to describe symptoms safely using:
 
-1. block immediately;
-2. not save;
-3. not upload;
-4. not analyze;
-5. delete temporary data where possible;
-6. show a warning;
-7. redirect to safe text-based symptom flow.
+- text
+- multiple choice questions
+- neutral body maps
+- age-appropriate explanations
+- safe help routes
 
-Important nuance: under-16 users must still be able to describe symptoms safely. They can use text, multiple choice, neutral illustrations and non-explicit body maps for puberty questions, SOA/STI concerns, pain, itching, burning urination, discharge, wounds, menstruation questions or worries about body development.
+This includes concerns about puberty, body development, sexual health, possible STI/STD symptoms, pain, itching, discharge, burning urination, unsafe contact or coercion. The rule is: no intimate image processing, but safe symptom support remains available.
 
-## 6. 16–17 user group
+## 6. Privacy and security baseline
 
-Users aged 16–17 require a stricter sensitive-data flow than adults. Sexual health information and symptom orientation are allowed, but sensitive images should be avoided wherever possible. If any sensitive processing is later supported, it requires explicit consent, local-first handling, masking, no default cloud storage and clear safeguards.
+Privacy is a core selling point, not a compliance afterthought.
 
-## 7. Adult sensitive medical content
+Stage principles:
 
-For adults, sensitive regions may be medically relevant. The app may later support adult sensitive image review only under strict conditions:
+- Local-first processing where possible
+- No automatic cloud storage of photos or scans
+- Explicit consent per sensitive function
+- Automatic metadata stripping for future image features
+- SafeScan blur engine concept
+- Private mode with no account, no cloud and no history
+- Data minimisation
+- No advertising profiles based on medical data
+- No public use of medical images in quiz, ranking or social features
 
-- age gate;
-- explicit consent;
-- local-first processing;
-- no default cloud storage;
-- automatic blur/masking;
-- manual extra blur;
-- preview before save/share;
-- no recognizable face/background;
-- clear medical disclaimer;
-- delete-after-session option.
+## 7. Body Atlas baseline
 
-## 8. Puberty and sexual health module
+Current Stage 1C includes a schematic interactive body map with layers:
 
-The app must include a module for puberty, body uncertainty and sexual health.
+- Skin
+- Organs
+- Skeleton
+- Muscles
+- Blood vessels
+- Nerves
+- Hormones
 
-Topics:
+Clickable regions:
 
-- what is normal;
-- breast growth;
-- hair growth;
-- menstruation;
-- discharge;
-- penis and testicles;
-- acne;
-- body odor;
-- height and growth;
-- erections and wet dreams;
-- emotions and body image;
-- consent and boundaries;
-- SOA/STI;
-- pregnancy concerns;
-- when to seek help.
+- Head
+- Chest
+- Abdomen
+- Pelvis
+- Arms
+- Legs
 
-The tone must normalize healthy variation while not ignoring red flags.
+Future stages will replace the schematic map with real 3D models and AR body tracking.
 
-## 9. SOA/STI module
+## 8. Prevention and life context
 
-SOA/STI concerns must be a separate module and must work without images.
+The app should include general prevention and life-context education without narrowing the public app description.
 
-The module can ask about:
+Context layers include:
 
-- burning urination;
-- itching;
-- discharge;
-- blisters;
-- sores;
-- bleeding;
-- pelvic pain;
-- testicular pain;
-- fever;
-- unprotected sex;
-- concerns after sexual contact;
-- coercion or unsafe situation.
+- age
+- sex at birth where medically relevant
+- pregnancy where relevant
+- skin tone/hair and dermatological presentation
+- hormonal life stage
+- family history
+- geography/local care pathways
+- known conditions and medications
 
-The module must explain that symptoms alone cannot reliably rule out SOA/STI and that testing is necessary when risk, symptoms or uncertainty exist.
+These context layers must not overstate certainty and must not reduce the user to a crude category.
 
-## 10. Safety and abuse layer
+## 9. Sexual health and puberty baseline
 
-If a user indicates coercion, fear, abuse, unsafe home situation, much older partner, injury after sexual contact or direct danger, the app must prioritize safety. It must suggest trusted adult, doctor, youth doctor, school doctor, local hotline or emergency number depending on urgency and country.
+HealthLens should include safe, age-appropriate educational support around:
 
-## 11. Perimenopause module
+- normal body variation
+- puberty timing
+- menstruation
+- hair growth
+- breast development
+- penis/testicle development
+- sexual health
+- STI/STD symptoms and testing advice
+- consent, boundaries and unsafe situations
 
-Perimenopause must be explicit because symptoms are often vague and missed.
+For under-16 users, this must be text/choice based, not image based.
 
-Symptoms/context:
+## 10. First aid baseline
 
-- irregular cycle;
-- hot flashes;
-- night sweats;
-- insomnia;
-- brain fog;
-- memory or concentration issues;
-- mood changes;
-- anxiety;
-- irritability;
-- palpitations;
-- joint pain;
-- muscle pain;
-- headaches/migraine;
-- urinary symptoms;
-- vaginal dryness;
-- libido changes;
-- fatigue;
-- weight/body composition changes.
+Stage 1C contains educational first-aid cards. Later stages should add more interactive flows and offline-first emergency guidance.
 
-The app must not use perimenopause as a catch-all. Alarmsigns override hormone-context explanations.
+Priority topics:
 
-## 12. Hereditary disease module
+- CPR
+- stroke recognition
+- choking
+- severe bleeding
+- burns
+- falls/fractures
+- severe breathing problems
+- allergic reactions
 
-The app must include hereditary and family-history awareness.
+## 11. Quiz and engagement baseline
 
-Topics:
+The app should become a repeat-use learning platform through:
 
-- what genetics means;
-- family history;
-- hereditary cancer;
-- early heart disease;
-- cholesterol disorders;
-- clotting disorders;
-- autoimmune disease;
-- rare disease;
-- ancestry/geography where medically relevant and ethically handled;
-- when to discuss genetic counseling.
+- XP
+- levels
+- daily challenges
+- country rankings
+- school/family leagues
+- first-aid challenges
+- anatomy challenges
+- prevention campaigns
 
-The app should not diagnose hereditary diseases, but should help structure family history for a physician.
+Medical images from users must never be part of public ranking, quiz or social features.
 
-## 13. Inclusive health layer
+## 12. Internationalisation baseline
 
-The app must not default to the white male body as the only standard. It must account for:
+HealthLens should support Dutch plus the world's major languages over time. Medical content must be localised, not merely translated.
 
-- age;
-- sex at birth where medically relevant;
-- pregnancy/postpartum status;
-- menopause/perimenopause status;
-- skin tone and dermatological presentation;
-- ancestry/geography where evidence-based;
-- children and older adults presenting differently;
-- evidence gaps and medical bias.
+Each term should support:
 
-The app should show when evidence may be less representative.
+- common lay term
+- formal medical term
+- synonyms
+- local emergency route
+- child-friendly explanation
+- clinician-level wording
 
-## 14. International language and terminology plan
+## 13. App-store direction
 
-Target languages: largest global languages plus Dutch. Current prototype includes placeholders for Dutch, English, Chinese, Hindi, Spanish, Arabic, French, Bengali, Portuguese, Russian, Urdu, Indonesian, German, Japanese, Swahili, Marathi, Telugu, Turkish, Tamil, Vietnamese, Italian and Polish.
+Stage 1C is web/PWA-first but structured for later native deployment.
 
-The full product must include local medical terms, lay terms, synonyms and local care paths. Example: Dutch users search for galblaas, not gallbladder.
+Future paths:
 
-## 15. Stage 1B prototype scope
+- PWA now
+- Capacitor or React Native wrapper later
+- iOS App Store
+- Google Play Store
+- Offline content packages
+- Native camera/AR permissions
+- App-store privacy nutrition labels
+- Medical/regulatory review before regulated claims
 
-Built in this version:
+## 14. 20 Stage 1C product steps
 
-- modernized home screen;
-- module cards;
-- interactive layered SVG body atlas;
-- region information and prevention cards;
-- profile contexts;
-- symptom checker with alarmsigns, SOA/STI, puberty, perimenopause and heredity context;
-- Life stages module;
-- Privacy Shield simulator;
-- First Aid cards;
-- quiz with XP;
-- mobile responsive layout;
-- flat GitHub Pages package;
-- README, changelog, manifest, favicon and .nojekyll.
+1. Premium mobile-first home with clear modules and app feel.
+2. PWA basis: manifest, favicon, service worker and install-ready structure.
+3. General public description without listing every sensitive module.
+4. Body Atlas expanded with skin, organs, skeleton, muscles, vessels, nerves and hormones.
+5. Clickable body map with region information, symptom context, prevention and alarmsignals.
+6. Symptom flow with profile, area, free text, red flags and safe output.
+7. Under-16 intimate image blocking, while allowing symptom description via text.
+8. Safe youth education and reassurance about normal body variation as a product principle.
+9. Sexual health support as safe text-based guidance for minors.
+10. Life-stage and hormonal context as an underlying smart layer.
+11. Family history and hereditary risk as preventive context, not diagnosis.
+12. Privacy Shield with local-first, no-cloud, consent and blur-engine concept.
+13. Adult sensitive-zone flow with explicit consent and minimal processing.
+14. First-aid module with educational emergency cards.
+15. Quiz with XP, levels and international ranking concepts.
+16. Language strategy covering Dutch and global languages with local terminology.
+17. Results structured as possible direction, alarmsignals, action advice and disclaimer.
+18. Mobile navigation via bottom tabs and drawer for future iOS/Android wrapper.
+19. Documentation and changelog updated to preserve baseline.
+20. Stage-gate workflow retained: fast build, but lock working baselines.
 
-Not yet built:
+## 15. Current files
 
-- real 3D engine;
-- real AR camera;
-- real image upload or analysis;
-- real medical database;
-- accounts/rankings backend;
-- regulated clinical decision support;
-- real multilingual content translation;
-- real emergency number localization;
-- clinical validation.
+- `index.html`
+- `styles.css`
+- `app.js`
+- `site.webmanifest`
+- `service-worker.js`
+- `favicon.svg`
+- `.nojekyll`
+- `README.md`
+- `PROJECT_SPEC.md`
+- `CHANGELOG.md`
 
-## 16. Stage-gate roadmap
+## 16. Stage 1D candidate scope
 
-Stage 0: Product, safety, privacy and name baseline.  
-Stage 1A: First static prototype.  
-Stage 1B: Modern UI, modules, privacy, life-stage content and flat GitHub Pages build.  
-Stage 1C: Expanded content database and stronger mobile UI.  
-Stage 2: Symptom engine and structured questionnaires.  
-Stage 3: Prevention engine.  
-Stage 4: AR overlay prototype.  
-Stage 5: Skin/wound/mole photo flow after privacy foundation.  
-Stage 6: EHBO interactive training.  
-Stage 7: Quiz accounts, XP, leagues and international ranking.  
-Stage 8: Medical review, bias review, privacy audit and regulatory analysis.
-
-## 17. Stage 1B lock notes
-
-This baseline should be treated as the current working reference. Future stages must preserve:
-
-- minor intimate content zero-tolerance under 16;
-- symptom description allowed for minors;
-- SOA/STI as a separate module;
-- puberty reassurance and red-flag guidance;
-- perimenopause module;
-- hereditary module;
-- privacy-first default;
-- no definitive diagnosis;
-- new-age intuitive UI direction;
-- fast iterative GitHub Pages deployment.
+- Replace schematic body with richer SVG/3D-like model
+- Add real content database file
+- Add Dutch/English language toggle
+- Add more symptoms and organ cards
+- Add install prompt and onboarding
+- Add local session report export
+- Add safe profile setup
+- Add more quiz categories
+- Improve accessibility and keyboard navigation

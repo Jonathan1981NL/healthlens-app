@@ -1,20 +1,15 @@
 # Changelog
 
-## Stage 1B — 2026-07-04
+## Stage 1C — Premium Mobile/PWA Upgrade
 
-- Added new-age premium UI direction.
-- Added flat GitHub Pages build structure.
-- Added module dashboard: Atlas, Symptoms, Life Stages, Privacy, First Aid, Quiz.
-- Expanded body atlas with hormones layer and prevention cards.
-- Added life-stage module for puberty, SOA/STI, perimenopause, heredity, prevention and inclusive health.
-- Added stricter under-16 intimate content blocking rule.
-- Added safe symptom-description path for minors.
-- Added Privacy Shield simulator.
-- Added First Aid cards.
-- Added XP quiz.
-- Added favicon, manifest and `.nojekyll`.
-
-## Stage 1A
-
-- Initial HealthLens prototype.
-- Basic atlas, symptom checker, privacy concept and quiz.
+- Rebuilt app UI around a premium mobile-first consumer experience.
+- Added bottom navigation and drawer navigation.
+- Added PWA manifest, service worker, favicon and GitHub Pages `.nojekyll`.
+- Added 20-step roadmap screen.
+- Expanded Body Atlas with layer toggles and region cards.
+- Added symptom orientation form with urgency, minor-safety and context-aware responses.
+- Added Life & prevention content cards.
+- Added first-aid learning cards.
+- Added Quiz with XP and leaderboard concept.
+- Added Privacy Shield screen and image-safety simulator.
+- Kept public app description broad and general.
