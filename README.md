@@ -1,24 +1,23 @@
-# HealthLens — Stage 1C
+# HealthLens Stage 1D
 
-HealthLens is a privacy-first interactive health app prototype that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test their health knowledge through an intuitive visual experience.
+HealthLens is een privacy-first interactieve gezondheidsapp waarmee mensen het lichaam kunnen ontdekken, klachten beter kunnen begrijpen, preventie kunnen leren, eerste hulp kunnen oefenen en hun gezondheidskennis kunnen testen.
 
-## Stage 1C highlights
+## Stage 1D
 
-- Premium mobile-first interface
-- PWA-ready web structure
-- Interactive body atlas prototype
-- Symptom orientation flow
-- Prevention and life-context module
-- First-aid learning cards
-- Quiz with XP concept
-- Privacy Shield module
-- Minor-safety rules documented and reflected in UI
-- Flat GitHub Pages-ready structure
+Deze release maakt een grote stap richting een mobiele, internetvriendelijke app:
+
+- premium mobile-first UI;
+- PWA-ready structuur;
+- interactieve Body Atlas met klikbare zones;
+- laagwissels voor huid, organen, skelet, spieren, bloedvaten, zenuwen en hormonen;
+- AR-camera prototype met overlay en confidence feedback;
+- symptoomflow met profiel, regio, ernst, duur en alarmsignalen;
+- privacy-first foto/huidflow;
+- EHBO-kaarten;
+- quiz met XP-concept;
+- 20-stappen roadmap;
+- hard safety rule: geen intieme beelden van personen onder 16.
 
 ## GitHub Pages
 
-Publish from `main` and `/root`. `index.html` must be in the repository root.
-
-## Medical disclaimer
-
-This prototype is educational and indicative only. It does not provide a medical diagnosis and does not replace professional medical care. In emergencies, contact local emergency services.
+Publiceer vanuit `main` en `/root`. De app start via `index.html`.

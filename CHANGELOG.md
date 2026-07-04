@@ -1,15 +1,15 @@
 # Changelog
 
-## Stage 1C — Premium Mobile/PWA Upgrade
+## Stage 1D — Realistic mobile AR prototype upgrade
 
-- Rebuilt app UI around a premium mobile-first consumer experience.
-- Added bottom navigation and drawer navigation.
-- Added PWA manifest, service worker, favicon and GitHub Pages `.nojekyll`.
-- Added 20-step roadmap screen.
-- Expanded Body Atlas with layer toggles and region cards.
-- Added symptom orientation form with urgency, minor-safety and context-aware responses.
-- Added Life & prevention content cards.
-- Added first-aid learning cards.
-- Added Quiz with XP and leaderboard concept.
-- Added Privacy Shield screen and image-safety simulator.
-- Kept public app description broad and general.
+- Added build marker: Stage 1D.
+- Added mobile-first premium UI.
+- Added interactive SVG body avatar with clickable zones.
+- Added layer controls for organs, skeleton, muscles, vessels, nerves and hormones.
+- Added camera-based AR prototype using `getUserMedia`.
+- Added AR overlay layer selection and pose confidence messages.
+- Added expanded symptom guide with urgency logic.
+- Added minor protection rules in photo and symptom flows.
+- Added life/prevention cards, privacy cards and first-aid cards.
+- Added quiz engine and roadmap.
+- Added PWA manifest and service-worker cache version bump to reduce old-version caching.
