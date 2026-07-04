@@ -1,16 +1,7 @@
-# HealthLens Stage 1E
+# HealthLens Stage 1F
 
-Privacy-first interactive health atlas prototype.
+Development build with no-cache/PWA reset, persistent local profile, interactive zoom atlas, richer knowledge cards and mobile-first layout.
 
-Public description:
-HealthLens is a privacy-first interactive health app that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test their health knowledge through an intuitive visual experience.
+Public description: HealthLens is a privacy-first interactive health app that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test health knowledge through an intuitive visual experience.
 
-## Stage 1E highlights
-- Persistent local user profile
-- Interactive zooming body atlas
-- Multi-layer anatomical viewer
-- Richer content database
-- Safer youth flow and privacy-first logic
-- Mobile-first PWA structure
-
-Deploy through GitHub Pages from `main / root`.
+Upload workflow: extract flat ZIP into the active GitHub Desktop repository folder, replace files, commit, push.

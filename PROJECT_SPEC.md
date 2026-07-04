@@ -1,22 +1,27 @@
-# HealthLens Project Specification — Stage 1E Baseline
+# HealthLens Project Specification — Stage 1F Baseline
 
-## Product direction
-HealthLens is a privacy-first, mobile-first interactive health atlas combining anatomy, symptom education, prevention, first aid, youth-safe health education, privacy controls, quiz mechanics and future AR/body-scan capabilities.
+HealthLens is a privacy-first interactive health app combining body exploration, symptom orientation, prevention education, first-aid guidance and quiz-based learning.
 
-## Stage 1E baseline additions
-1. Persistent local profile: age, sex/gender choice, background/ancestry and language.
-2. Explanation for background/ancestry: used only to better contextualise symptoms, skin presentation, risk patterns and known bias; users may skip.
-3. Interactive body viewer: tap/click regions and organs to zoom rather than merely move to another page.
-4. Layered anatomy: skin, organs, skeleton, muscles, vessels, nerves, hormones.
-5. Deeper content: structures, common contexts, warning signs, prevention and next action.
-6. Symptom flow: one-screen complaint capture with profile context and alerts.
-7. Youth safety: under 16 can describe symptoms in text; no intimate images processed.
-8. Privacy by design: local-first, no default cloud, delete/reset capability roadmap.
-9. Knowledge database: initial cards for anatomy, skin, puberty, sexual health, hormones, heredity, first aid and privacy.
-10. PWA/mobile-first: manifest, service worker and responsive navigation.
+## Locked principles
+- No definitive diagnosis claims.
+- Privacy-first and local-first by default.
+- Under 16: no intimate photos/scans, no nude/intimate image processing. Text-based symptom description remains available.
+- Adults: sensitive assessment only with explicit consent and privacy-first flow.
+- Profile context may include age, sex/gender selection and optional background/ancestry with explanation; users may skip and erase data.
+- Public app description remains broad and does not list specific sensitive modules.
 
-## Medical safety
-The app provides educational and indicative guidance only. It does not diagnose or replace professional medical care. Urgent or worsening symptoms require professional medical help.
+## Stage 1F scope
+- No-cache development build to prevent stale mobile PWA versions.
+- Automatic old service worker unregister and cache clearing.
+- Mobile-first interface.
+- Interactive zoom body atlas with layered systems.
+- Persistent local profile.
+- Initial knowledge database cards.
+- Symptom guide with red flags and profile-aware context notes.
 
-## Next technical target
-Stage 1F should move the body viewer toward WebGL/Three.js with higher-quality anatomical assets, more realistic organ/layer geometry, touch gestures, search-driven navigation, content taxonomy and eventually pose-based AR.
+## Future direction
+- Real 3D/WebGL anatomical model.
+- Pose estimation AR overlay.
+- Expanded multilingual medical terminology database.
+- Evidence-indexed knowledge base.
+- Native app packaging for App Store and Google Play.
