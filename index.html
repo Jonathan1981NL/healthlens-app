@@ -2,247 +2,189 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#07111f" />
-  <meta name="description" content="HealthLens is een privacy-first interactieve gezondheidsapp waarmee mensen het lichaam kunnen ontdekken, klachten beter kunnen begrijpen, preventie kunnen leren, eerste hulp kunnen oefenen en hun gezondheidskennis kunnen testen." />
-  <title>HealthLens — Stage 1D</title>
-  <link rel="manifest" href="site.webmanifest?v=1d" />
-  <link rel="icon" href="favicon.svg?v=1d" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=1d" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#07131f" />
+  <title>HealthLens — Stage 1E</title>
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css?v=1e3" />
 </head>
 <body>
-  <div id="appShell">
+  <div class="app-shell">
     <header class="topbar">
-      <button class="iconButton" id="menuBtn" aria-label="Open menu">☰</button>
-      <div class="brand">
-        <div class="logo">HL</div>
-        <div>
-          <strong>HealthLens</strong>
-          <span>Stage 1D · mobile AR prototype</span>
-        </div>
-      </div>
-      <button class="pillButton emergency" data-view="emergency">SOS</button>
+      <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <div class="brand" data-nav="home"><span class="brand-mark">HL</span><div><strong>HealthLens</strong><small>Stage 1E · interactive atlas</small></div></div>
+      <button class="profile-pill" id="profileQuick"><span id="profileMini">Profiel</span></button>
     </header>
 
     <aside class="drawer" id="drawer" aria-hidden="true">
-      <div class="drawerHead">
-        <div class="logo">HL</div>
-        <div><strong>HealthLens</strong><span>Privacy-first health atlas</span></div>
-      </div>
-      <button data-view="home">Home</button>
-      <button data-view="atlas">Body Atlas</button>
-      <button data-view="ar">AR Scan</button>
-      <button data-view="symptoms">Klachten</button>
-      <button data-view="life">Life & Preventie</button>
-      <button data-view="skin">Huid & Foto</button>
-      <button data-view="emergency">EHBO</button>
-      <button data-view="quiz">Quiz</button>
-      <button data-view="roadmap">20 stappen</button>
-      <button data-view="privacy">Privacy Shield</button>
+      <button class="close" id="closeDrawer">×</button>
+      <h2>HealthLens</h2>
+      <p>Privacy-first interactieve gezondheidsatlas. Indicatief, educatief en ondersteunend.</p>
+      <nav>
+        <button data-nav="home">Home</button>
+        <button data-nav="atlas">Body Atlas</button>
+        <button data-nav="guide">Klachten</button>
+        <button data-nav="knowledge">Kennisbank</button>
+        <button data-nav="privacy">Privacy Shield</button>
+        <button data-nav="quiz">Quiz</button>
+        <button data-nav="roadmap">Roadmap</button>
+      </nav>
     </aside>
 
     <main>
-      <section class="view active" id="home">
-        <div class="hero card glass">
-          <div class="heroText">
-            <span class="versionBadge">Stage 1D · build 2026.07.04.1D</span>
-            <h1>Je lichaam, laag voor laag begrepen.</h1>
-            <p>Een privacy-first interactieve gezondheidsapp voor anatomie, klachtenoriëntatie, preventie, EHBO en kennisopbouw — ontworpen als mobiele webapp en later app-store ready.</p>
-            <div class="heroActions">
-              <button class="primary" data-view="atlas">Open Body Atlas</button>
-              <button class="secondary" data-view="ar">Start AR prototype</button>
+      <section class="screen active" id="home">
+        <div class="hero-card">
+          <div class="hero-text">
+            <p class="eyebrow">Privacy-first · mobile-ready · PWA</p>
+            <h1>Ontdek het lichaam laag voor laag.</h1>
+            <p>Zoom in op regio’s, wissel anatomische lagen, koppel klachten aan structuren en krijg context, preventie en alarmsignalen in één vloeiende flow.</p>
+            <div class="hero-actions">
+              <button class="primary" data-nav="atlas">Open Body Atlas</button>
+              <button class="secondary" data-nav="guide">Klachten invoeren</button>
             </div>
           </div>
-          <div class="heroDevice">
-            <div class="phoneMock">
-              <div class="phoneTop"></div>
-              <div class="miniBodyPreview">
-                <div class="pulseDot heart"></div>
-                <div class="pulseDot brain"></div>
-                <div class="pulseDot abdomen"></div>
-              </div>
-              <span>Layered body intelligence</span>
-            </div>
+          <div class="mini-preview" data-nav="atlas">
+            <div class="pulse-ring"></div>
+            <div class="mini-human"></div>
           </div>
         </div>
 
-        <div class="statusGrid">
-          <div class="stat"><strong>7</strong><span>body layers</span></div>
-          <div class="stat"><strong>9</strong><span>health modules</span></div>
-          <div class="stat"><strong>20</strong><span>product steps</span></div>
-          <div class="stat"><strong>0</strong><span>minor intimate images</span></div>
+        <div id="onboardingCard" class="setup-card hidden">
+          <h2>Profiel instellen</h2>
+          <p>Deze gegevens worden lokaal op je apparaat onthouden en helpen de app om uitleg en indicatieve guidance beter af te stemmen.</p>
+          <div class="form-grid">
+            <label>Leeftijd <input id="ageInput" type="number" min="0" max="120" placeholder="bijv. 42" /></label>
+            <label>Geslacht
+              <select id="sexInput"><option value="">Kies...</option><option>Man</option><option>Vrouw</option><option>Anders</option><option>Zeg ik liever niet</option></select>
+            </label>
+            <label>Achtergrond / afkomst
+              <select id="backgroundInput">
+                <option value="">Kies of sla over...</option><option>Europees / wit</option><option>Afrikaans / Afro-Caribisch / zwart</option><option>Midden-Oosters / Noord-Afrikaans</option><option>Zuid-Aziatisch</option><option>Oost-Aziatisch</option><option>Zuidoost-Aziatisch</option><option>Latijns-Amerikaans / gemengd</option><option>Anders / gemengd</option><option>Zeg ik liever niet</option>
+              </select>
+            </label>
+            <label>Taal
+              <select id="langInput"><option>Nederlands</option><option>English</option><option>Deutsch</option><option>Español</option><option>Français</option></select>
+            </label>
+          </div>
+          <p class="explain"><strong>Waarom vragen we achtergrond?</strong> Sommige klachten, huidbeelden en gezondheidsrisico’s kunnen per leeftijd, geslacht en achtergrond anders voorkomen of anders herkend worden. Je mag dit altijd overslaan.</p>
+          <div class="row-actions"><button class="primary" id="saveProfile">Opslaan</button><button class="secondary" id="skipProfile">Sla over</button></div>
         </div>
 
-        <div class="moduleGrid">
-          <article class="module card" data-view="atlas"><b>Body Atlas</b><p>Interactief mannetje met organen, skelet, spieren, zenuwen, vaten, huid en hormonen.</p></article>
-          <article class="module card" data-view="ar"><b>AR Scan</b><p>Camera-overlay prototype met body layers, positieprofiel en betrouwbaarheidsindicator.</p></article>
-          <article class="module card" data-view="symptoms"><b>Klachten</b><p>Klik waar je last hebt, omschrijf symptomen en krijg indicatieve uitleg en alarmsignalen.</p></article>
-          <article class="module card" data-view="life"><b>Life & Preventie</b><p>Levensfasebewuste informatie, preventie, puberteit, hormonen en familiecontext.</p></article>
-          <article class="module card" data-view="skin"><b>Huid & Foto</b><p>Safe photo flow met lokale privacychecks, blurregels en duidelijke blokkades.</p></article>
-          <article class="module card" data-view="emergency"><b>EHBO</b><p>Snelle hulpkaarten voor reanimatie, beroerte, bloeding, brandwond en verstikking.</p></article>
-          <article class="module card" data-view="quiz"><b>Quiz</b><p>Levels, XP, internationale ranglijsten en kennisopbouw voor kinderen en volwassenen.</p></article>
-          <article class="module card" data-view="privacy"><b>Privacy Shield</b><p>Local-first, geen intieme beelden onder 16, metadata strippen en veilige sessies.</p></article>
+        <div class="module-grid">
+          <article data-nav="atlas"><span>🧬</span><h3>Body Atlas</h3><p>Interactief lichaam met zoom, lagen en regio-info.</p></article>
+          <article data-nav="guide"><span>🩺</span><h3>Klachten</h3><p>Minder klikken: locatie, klacht en urgentie in één flow.</p></article>
+          <article data-nav="knowledge"><span>📚</span><h3>Kennisbank</h3><p>Organen, systemen, preventie, puberteit, huid, erfelijkheid en EHBO.</p></article>
+          <article data-nav="privacy"><span>🔒</span><h3>Privacy Shield</h3><p>Onder-16 blokkade, lokale opslag en beeldveiligheid.</p></article>
         </div>
       </section>
 
-      <section class="view" id="atlas">
-        <div class="sectionHead"><h2>Body Atlas</h2><p>Kies lagen, klik lichaamszones en bekijk info, klachten, preventie en leerpunten.</p></div>
-        <div class="atlasLayout">
-          <div class="card bodyCard">
-            <div class="layerControls" id="layerControls"></div>
-            <div class="bodyStage">
-              <svg class="bodySvg" viewBox="0 0 260 620" role="img" aria-label="Interactief menselijk lichaam">
+      <section class="screen" id="atlas">
+        <div class="screen-head">
+          <div><p class="eyebrow">Interactive anatomy</p><h2>Body Atlas</h2><p>Klik direct op een regio. De atlas zoomt in en toont relevante structuren, klachten, preventie en alarmsignalen zonder apart zoekwerk.</p></div>
+          <button class="secondary" id="resetView">Reset view</button>
+        </div>
+        <div class="atlas-layout">
+          <section class="body-stage">
+            <div class="layer-tabs" id="layerTabs"></div>
+            <div class="viewport" id="viewport">
+              <svg id="bodySvg" viewBox="0 0 360 780" role="img" aria-label="Interactieve anatomische body viewer">
                 <defs>
-                  <linearGradient id="skinG" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffd6c7"/><stop offset="1" stop-color="#c9877c"/></linearGradient>
-                  <linearGradient id="organG" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff6b89"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+                  <radialGradient id="skinGrad" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#f2c8ad"/><stop offset=".55" stop-color="#c98e72"/><stop offset="1" stop-color="#734f52"/></radialGradient>
+                  <linearGradient id="organGrad" x1="0" x2="1"><stop offset="0" stop-color="#ff6b89"/><stop offset="1" stop-color="#7c2cff"/></linearGradient>
+                  <linearGradient id="boneGrad" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fffdf5"/><stop offset="1" stop-color="#ccd3da"/></linearGradient>
+                  <filter id="glow"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
                 </defs>
-                <g id="bodyBase">
-                  <circle cx="130" cy="58" r="38" fill="url(#skinG)" class="zone" data-zone="head"/>
-                  <path d="M100 98 C92 138 82 178 84 230 C86 300 94 350 104 385 L156 385 C166 350 174 300 176 230 C178 178 168 138 160 98 Z" fill="url(#skinG)" class="zone" data-zone="chest"/>
-                  <path d="M95 198 C80 250 76 317 104 390 L156 390 C184 317 180 250 165 198 Z" fill="#e8a095" opacity=".75" class="zone" data-zone="abdomen"/>
-                  <path d="M102 386 L158 386 L172 450 L88 450 Z" fill="#c8847a" class="zone" data-zone="pelvis"/>
-                  <path d="M100 112 C64 155 47 230 41 315" stroke="url(#skinG)" stroke-width="30" stroke-linecap="round" fill="none" class="zone" data-zone="arms"/>
-                  <path d="M160 112 C196 155 213 230 219 315" stroke="url(#skinG)" stroke-width="30" stroke-linecap="round" fill="none" class="zone" data-zone="arms"/>
-                  <path d="M105 440 C96 500 91 555 87 604" stroke="url(#skinG)" stroke-width="34" stroke-linecap="round" fill="none" class="zone" data-zone="legs"/>
-                  <path d="M155 440 C164 500 169 555 173 604" stroke="url(#skinG)" stroke-width="34" stroke-linecap="round" fill="none" class="zone" data-zone="legs"/>
+                <g id="humanBase">
+                  <path class="silhouette" d="M180 36c37 0 61 25 61 61 0 29-17 49-38 58 11 10 19 25 24 45l28 112c16 14 30 38 36 67l19 91c4 19-8 37-27 41-16 3-31-5-37-19l-26-77-18 122 39 164c4 19-7 37-25 42-18 5-36-5-43-22l-55-143-55 143c-7 17-25 27-43 22-18-5-29-23-25-42l39-164-18-122-26 77c-6 14-21 22-37 19-19-4-31-22-27-41l19-91c6-29 20-53 36-67l28-112c5-20 13-35 24-45-21-9-38-29-38-58 0-36 24-61 61-61z"/>
                 </g>
-                <g class="layer layer-skeleton">
-                  <circle cx="130" cy="58" r="26" fill="none" stroke="#dbeafe" stroke-width="5"/>
-                  <line x1="130" y1="95" x2="130" y2="382" stroke="#dbeafe" stroke-width="8"/>
-                  <path d="M91 135 C110 122 150 122 169 135" fill="none" stroke="#dbeafe" stroke-width="8"/>
-                  <path d="M101 164 C118 154 142 154 159 164" fill="none" stroke="#dbeafe" stroke-width="5"/>
-                  <line x1="100" y1="440" x2="85" y2="598" stroke="#dbeafe" stroke-width="7"/>
-                  <line x1="160" y1="440" x2="175" y2="598" stroke="#dbeafe" stroke-width="7"/>
+                <g id="layerSkin" class="anatomy-layer active-layer">
+                  <ellipse cx="180" cy="96" rx="45" ry="53" fill="url(#skinGrad)" opacity=".96"/>
+                  <path d="M135 162c28 18 62 18 90 0 17 22 23 63 21 116l-9 204c-3 49-33 82-57 82s-54-33-57-82l-9-204c-2-53 4-94 21-116z" fill="url(#skinGrad)" opacity=".9"/>
                 </g>
-                <g class="layer layer-organs">
-                  <ellipse cx="113" cy="158" rx="26" ry="43" fill="#8b5cf6" opacity=".8"/><ellipse cx="147" cy="158" rx="26" ry="43" fill="#8b5cf6" opacity=".8"/>
-                  <path d="M130 182 C107 170 103 205 130 220 C157 205 153 170 130 182Z" fill="#ef4444"/>
-                  <path d="M102 242 C128 222 158 232 166 260 C139 275 116 270 100 258Z" fill="#f59e0b"/>
-                  <ellipse cx="132" cy="286" rx="37" ry="28" fill="#22c55e" opacity=".75"/>
-                  <ellipse cx="111" cy="330" rx="18" ry="31" fill="#38bdf8" opacity=".85"/><ellipse cx="151" cy="330" rx="18" ry="31" fill="#38bdf8" opacity=".85"/>
+                <g id="layerOrgans" class="anatomy-layer">
+                  <ellipse class="organ heart clickable" data-zone="heart" cx="174" cy="245" rx="25" ry="32"/>
+                  <ellipse class="organ lung clickable" data-zone="chest" cx="135" cy="245" rx="31" ry="64"/><ellipse class="organ lung clickable" data-zone="chest" cx="225" cy="245" rx="31" ry="64"/>
+                  <path class="organ clickable" data-zone="liver" d="M122 319c64-25 116-3 127 24-31 27-83 32-132 10-9-4-8-27 5-34z"/>
+                  <ellipse class="organ clickable" data-zone="stomach" cx="206" cy="354" rx="25" ry="38"/>
+                  <path class="organ clickable" data-zone="gut" d="M132 388c39-18 102-18 102 32 0 53-95 61-111 19-6-16-2-39 9-51z"/>
+                  <ellipse class="organ clickable" data-zone="kidney" cx="133" cy="385" rx="16" ry="31"/><ellipse class="organ clickable" data-zone="kidney" cx="227" cy="385" rx="16" ry="31"/>
                 </g>
-                <g class="layer layer-muscles">
-                  <path d="M105 112 C82 165 83 224 103 280" stroke="#fb7185" stroke-width="10" fill="none" opacity=".7"/>
-                  <path d="M155 112 C178 165 177 224 157 280" stroke="#fb7185" stroke-width="10" fill="none" opacity=".7"/>
-                  <path d="M104 210 C120 230 140 230 156 210" stroke="#fb7185" stroke-width="7" fill="none" opacity=".7"/>
-                  <path d="M105 455 C105 510 100 560 93 600" stroke="#fb7185" stroke-width="9" fill="none" opacity=".7"/>
-                  <path d="M155 455 C155 510 160 560 167 600" stroke="#fb7185" stroke-width="9" fill="none" opacity=".7"/>
+                <g id="layerSkeleton" class="anatomy-layer">
+                  <ellipse class="bone clickable" data-zone="head" cx="180" cy="96" rx="33" ry="42"/><path class="bone" d="M180 138v385"/><path class="bone" d="M119 207h122M132 238h96M144 270h72"/><path class="bone clickable" data-zone="arm" d="M115 206 64 448M245 206l51 242"/><path class="bone clickable" data-zone="leg" d="M160 518 118 718M200 518l42 200"/>
                 </g>
-                <g class="layer layer-vessels">
-                  <path d="M130 188 C130 260 130 335 130 430" stroke="#ef4444" stroke-width="7" fill="none"/>
-                  <path d="M130 220 C103 250 89 280 72 330" stroke="#ef4444" stroke-width="4" fill="none"/>
-                  <path d="M130 220 C157 250 171 280 188 330" stroke="#3b82f6" stroke-width="4" fill="none"/>
-                  <path d="M130 430 C111 492 101 545 92 604" stroke="#ef4444" stroke-width="4" fill="none"/>
-                  <path d="M130 430 C149 492 159 545 168 604" stroke="#3b82f6" stroke-width="4" fill="none"/>
+                <g id="layerMuscles" class="anatomy-layer">
+                  <path class="muscle clickable" data-zone="chest" d="M126 198c28 12 79 12 108 0l-18 112H144z"/><path class="muscle clickable" data-zone="abdomen" d="M145 319h70l-8 143h-54z"/><path class="muscle clickable" data-zone="arm" d="M83 265c20 40 14 125-11 165M277 265c-20 40-14 125 11 165"/><path class="muscle clickable" data-zone="leg" d="M139 515c36 51 19 128-15 203M221 515c-36 51-19 128 15 203"/>
                 </g>
-                <g class="layer layer-nerves">
-                  <path d="M130 90 C129 160 128 260 130 408" stroke="#fde047" stroke-width="5" fill="none"/>
-                  <path d="M130 132 C102 190 74 245 43 314" stroke="#fde047" stroke-width="3" fill="none"/>
-                  <path d="M130 132 C158 190 186 245 217 314" stroke="#fde047" stroke-width="3" fill="none"/>
-                  <path d="M130 405 C107 470 95 540 87 604" stroke="#fde047" stroke-width="3" fill="none"/>
-                  <path d="M130 405 C153 470 165 540 173 604" stroke="#fde047" stroke-width="3" fill="none"/>
+                <g id="layerVessels" class="anatomy-layer">
+                  <path class="vessel clickable" data-zone="heart" d="M180 212c0 130 0 250 0 414"/><path class="vessel" d="M180 258c-50 28-85 82-105 168M180 258c50 28 85 82 105 168"/><path class="vessel" d="M180 489c-45 65-47 143-68 227M180 489c45 65 47 143 68 227"/>
                 </g>
-                <g class="layer layer-hormones">
-                  <circle cx="130" cy="52" r="9" fill="#a78bfa"/><circle cx="130" cy="110" r="9" fill="#a78bfa"/><circle cx="130" cy="292" r="8" fill="#a78bfa"/><circle cx="130" cy="420" r="11" fill="#a78bfa"/>
-                  <text x="148" y="56" fill="#e9d5ff" font-size="12">pituitary</text><text x="146" y="114" fill="#e9d5ff" font-size="12">thyroid</text>
+                <g id="layerNerves" class="anatomy-layer">
+                  <path class="nerve clickable" data-zone="head" d="M180 80c-20 22-20 43 0 65 20-22 20-43 0-65z"/><path class="nerve clickable" data-zone="spine" d="M180 145c-7 97-6 203 0 321"/><path class="nerve" d="M180 236c-46 55-73 115-111 185M180 236c46 55 73 115 111 185M180 466c-33 74-53 147-62 252M180 466c33 74 53 147 62 252"/>
+                </g>
+                <g id="layerHormones" class="anatomy-layer">
+                  <circle class="hormone clickable" data-zone="head" cx="180" cy="117" r="8"/><circle class="hormone clickable" data-zone="thyroid" cx="180" cy="170" r="12"/><circle class="hormone clickable" data-zone="pancreas" cx="180" cy="356" r="11"/><circle class="hormone clickable" data-zone="pelvis" cx="158" cy="486" r="12"/><circle class="hormone clickable" data-zone="pelvis" cx="202" cy="486" r="12"/>
+                </g>
+                <g id="hotspots">
+                  <rect class="hotspot" data-zone="head" x="120" y="40" width="120" height="130" rx="60"/>
+                  <rect class="hotspot" data-zone="chest" x="100" y="175" width="160" height="130" rx="40"/>
+                  <rect class="hotspot" data-zone="abdomen" x="105" y="305" width="150" height="145" rx="38"/>
+                  <rect class="hotspot" data-zone="pelvis" x="115" y="450" width="130" height="95" rx="38"/>
+                  <rect class="hotspot" data-zone="arm" x="35" y="200" width="70" height="275" rx="35"/><rect class="hotspot" data-zone="arm" x="255" y="200" width="70" height="275" rx="35"/>
+                  <rect class="hotspot" data-zone="leg" x="95" y="540" width="170" height="210" rx="55"/>
                 </g>
               </svg>
             </div>
-          </div>
-          <div class="card infoPanel" id="atlasInfo"></div>
+          </section>
+          <aside class="deep-panel" id="deepPanel">
+            <p class="eyebrow">Geselecteerd</p>
+            <h3 id="zoneTitle">Tik op een lichaamsgebied</h3>
+            <p id="zoneIntro">Je krijgt direct zoom, structuren, klachten, preventie en alarmsignalen.</p>
+            <div class="chip-row" id="structureChips"></div>
+            <div class="content-stack" id="zoneContent"></div>
+          </aside>
         </div>
       </section>
 
-      <section class="view" id="ar">
-        <div class="sectionHead"><h2>AR Scan prototype</h2><p>Camera-overlay met laagkeuze en houdingprofiel. Dit is een functioneel prototype, geen klinisch gevalideerde anatomische positionering.</p></div>
-        <div class="arGrid">
-          <div class="card arCard">
-            <video id="camera" autoplay playsinline muted></video>
-            <div class="arFallback" id="arFallback">Camera staat uit. Start AR om de overlay te testen.</div>
-            <svg class="arOverlay" viewBox="0 0 320 560" preserveAspectRatio="xMidYMid meet">
-              <path class="arSilhouette" d="M160 36 C190 36 214 60 214 90 C214 112 201 131 182 140 C217 162 238 207 235 276 C231 353 216 394 207 432 C199 468 202 511 207 548 L178 548 C169 498 164 450 160 408 C156 450 151 498 142 548 L113 548 C118 511 121 468 113 432 C104 394 89 353 85 276 C82 207 103 162 138 140 C119 131 106 112 106 90 C106 60 130 36 160 36Z"/>
-              <g id="arLayerOrgans"><circle cx="160" cy="160" r="18"/><ellipse cx="134" cy="150" rx="22" ry="36"/><ellipse cx="186" cy="150" rx="22" ry="36"/><ellipse cx="160" cy="250" rx="48" ry="35"/></g>
-              <g id="arLayerSkeleton"><line x1="160" y1="126" x2="160" y2="410"/><path d="M108 151 C138 132 182 132 212 151"/><path d="M115 420 L100 548"/><path d="M205 420 L220 548"/></g>
-              <g id="arLayerNerves"><path d="M160 118 L160 405"/><path d="M160 170 L90 340"/><path d="M160 170 L230 340"/><path d="M160 405 L110 548"/><path d="M160 405 L210 548"/></g>
-            </svg>
-            <div class="arConfidence" id="arConfidence">Confidence: simulation mode</div>
+      <section class="screen" id="guide">
+        <div class="screen-head"><div><p class="eyebrow">Smart symptom flow</p><h2>Klachten in één scherm</h2><p>Profiel + locatie + klacht + alarmsignalen. Geen harde diagnose, wel duidelijke triage en context.</p></div></div>
+        <div class="guide-grid">
+          <div class="card form-card">
+            <h3>Snelle klachtbeschrijving</h3>
+            <label>Waar zit het?
+              <select id="symptomZone"><option value="chest">Borst</option><option value="abdomen">Buik</option><option value="head">Hoofd/nek</option><option value="pelvis">Bekken/gevoelige regio</option><option value="skin">Huid/wond</option><option value="leg">Been/gewricht</option></select>
+            </label>
+            <label>Omschrijf je klacht
+              <textarea id="symptomText" placeholder="bijv. stekende pijn, jeuk, druk, zwelling, benauwdheid, branderig plassen..."></textarea>
+            </label>
+            <div class="toggle-list">
+              <label><input type="checkbox" value="sudden"/> Plots of snel erger</label>
+              <label><input type="checkbox" value="breath"/> Benauwdheid / blauw / flauwvallen</label>
+              <label><input type="checkbox" value="neuro"/> Uitval, scheve mond, krachtsverlies</label>
+              <label><input type="checkbox" value="fever"/> Koorts of ernstig ziek gevoel</label>
+              <label><input type="checkbox" value="unsafe"/> Onveilig gevoel / dwang / letsel door ander</label>
+            </div>
+            <button class="primary" id="analyseBtn">Analyseer indicatief</button>
           </div>
-          <div class="card arControls">
-            <button class="primary" id="startCamera">Start camera</button>
-            <button class="secondary" id="stopCamera">Stop camera</button>
-            <label>Houding</label>
-            <select id="poseMode"><option>staand/zittend</option><option>liggend op rug</option><option>zijligging</option><option>gevallen / gedeeltelijk zichtbaar</option></select>
-            <label>Laag</label>
-            <select id="arLayer"><option value="organs">Organen</option><option value="skeleton">Skelet</option><option value="nerves">Zenuwen</option></select>
-            <div class="safetyBox"><b>Safety</b><p>AR is indicatief. Bij kinderen onder 16 worden intieme of naakte beelden geblokkeerd. Voor EHBO altijd noodhulp inschakelen bij alarmsignalen.</p></div>
-          </div>
+          <div class="card result-card" id="symptomResult"><h3>Resultaat</h3><p>Vul een klacht in en klik op analyseer.</p></div>
         </div>
       </section>
 
-      <section class="view" id="symptoms">
-        <div class="sectionHead"><h2>Klachten begrijpen</h2><p>Beschrijf waar je last van hebt. De app geeft indicatieve uitleg, urgentie en vervolgstappen.</p></div>
-        <div class="card formCard">
-          <div class="formGrid">
-            <label>Profiel<select id="profile"><option>Volwassene</option><option>Kind onder 16</option><option>Jongere 16-17</option><option>Vrouw 38-55</option><option>Oudere</option></select></label>
-            <label>Gebied<select id="region"><option>Borst</option><option>Buik</option><option>Hoofd</option><option>Huid</option><option>Gewrichten/spieren</option><option>Gevoelige regio</option></select></label>
-            <label>Ernst<select id="severity"><option>Mild</option><option>Matig</option><option>Ernstig</option><option>Plots/heftig</option></select></label>
-            <label>Duur<select id="duration"><option>Vandaag</option><option>Enkele dagen</option><option>Weken</option><option>Maanden</option></select></label>
-          </div>
-          <label>Omschrijf je klacht<textarea id="complaint" placeholder="Bijvoorbeeld: stekende pijn rechts onderin buik, koorts, misselijk... "></textarea></label>
-          <div class="checkGrid">
-            <label><input type="checkbox" value="chest" class="alarm"> Druk op borst/benauwd/uitstraling</label>
-            <label><input type="checkbox" value="stroke" class="alarm"> Scheve mond, verward, krachtsverlies</label>
-            <label><input type="checkbox" value="fever" class="alarm"> Hoge koorts of snel zieker</label>
-            <label><input type="checkbox" value="unsafe" class="alarm"> Dwang, letsel of onveilige situatie</label>
-            <label><input type="checkbox" value="pregnancy" class="alarm"> Zwangerschap mogelijk / hevig bloedverlies</label>
-            <label><input type="checkbox" value="testicle" class="alarm"> Hevige testikelpijn</label>
-          </div>
-          <button class="primary" id="analyseSymptoms">Analyseer indicatief</button>
-        </div>
-        <div class="card resultCard" id="symptomResult"></div>
+      <section class="screen" id="knowledge">
+        <div class="screen-head"><div><p class="eyebrow">Health knowledge base</p><h2>Kennisbank</h2><p>Uitgebreidere relevante informatie, gekoppeld aan anatomie, symptomen, preventie en eerste hulp.</p></div></div>
+        <div class="knowledge-search"><input id="searchBox" placeholder="Zoek: hart, lever, huid, puberteit, SOA, beroerte, wond..."/><button class="secondary" id="clearSearch">Wis</button></div>
+        <div class="knowledge-grid" id="knowledgeGrid"></div>
       </section>
 
-      <section class="view" id="life">
-        <div class="sectionHead"><h2>Life & Preventie</h2><p>Gezondheid verschilt per leeftijd, lichaam, levensfase, familiegeschiedenis en context.</p></div>
-        <div class="contentGrid" id="lifeCards"></div>
-      </section>
-
-      <section class="view" id="skin">
-        <div class="sectionHead"><h2>Huid & Foto</h2><p>Privacy-first fotoflow: lokaal, veilig, waarschuwingen vóór beeldanalyse.</p></div>
-        <div class="card formCard">
-          <label>Leeftijd van persoon op foto<select id="photoAge"><option>18+</option><option>16-17</option><option>onder 16</option></select></label>
-          <label>Beeldtype<select id="photoType"><option>Niet-intieme huid/wond</option><option>Gezicht zichtbaar</option><option>Intieme of naakte zone</option><option>Kind + gevoelige zone</option></select></label>
-          <input type="file" id="photoInput" accept="image/*" />
-          <button class="primary" id="photoCheck">Start privacycheck</button>
-          <div id="photoResult" class="safetyBox"></div>
-        </div>
-      </section>
-
-      <section class="view" id="emergency">
-        <div class="sectionHead"><h2>EHBO / Nood</h2><p>Snelle, duidelijke instructies. Bij direct gevaar: bel het lokale alarmnummer.</p></div>
-        <div class="contentGrid" id="emergencyCards"></div>
-      </section>
-
-      <section class="view" id="quiz">
-        <div class="sectionHead"><h2>Quiz & Challenges</h2><p>Leer anatomie, preventie en eerste hulp met levels, XP en toekomstige wereldranglijsten.</p></div>
-        <div class="card quizCard"><div id="quizBox"></div><button class="primary" id="nextQuiz">Nieuwe vraag</button></div>
-      </section>
-
-      <section class="view" id="roadmap">
-        <div class="sectionHead"><h2>20 grote stappen</h2><p>De productlijn richting leidende mobiele gezondheidsapp.</p></div>
-        <div class="timeline" id="roadmapList"></div>
-      </section>
-
-      <section class="view" id="privacy">
-        <div class="sectionHead"><h2>Privacy Shield</h2><p>Privacy en security zijn kernfunctionaliteit, geen bijlage.</p></div>
-        <div class="contentGrid" id="privacyCards"></div>
-      </section>
+      <section class="screen" id="privacy"><div class="screen-head"><div><p class="eyebrow">Privacy by design</p><h2>Privacy Shield</h2><p>Beeldveiligheid, lokale opslag, onder-16 blokkades en controle over gevoelige gegevens.</p></div></div><div class="privacy-grid" id="privacyGrid"></div></section>
+      <section class="screen" id="quiz"><div class="screen-head"><div><p class="eyebrow">Learn by playing</p><h2>Quiz</h2><p>Snelle anatomie-, preventie- en EHBO-vragen met XP.</p></div></div><div class="quiz-card" id="quizCard"></div></section>
+      <section class="screen" id="roadmap"><div class="screen-head"><div><p class="eyebrow">Build plan</p><h2>20 grote productstappen</h2><p>De app groeit richting native mobile, AR, kennisdatabase, privacy en medische validatie.</p></div></div><div class="roadmap-grid" id="roadmapGrid"></div></section>
     </main>
 
-    <nav class="bottomNav">
-      <button data-view="home" class="active">Home</button><button data-view="atlas">Atlas</button><button data-view="ar">AR</button><button data-view="symptoms">Klachten</button><button data-view="emergency">EHBO</button>
+    <nav class="bottom-nav">
+      <button class="active" data-nav="home">⌂<span>Home</span></button><button data-nav="atlas">◉<span>Atlas</span></button><button data-nav="guide">＋<span>Klacht</span></button><button data-nav="knowledge">≡<span>Kennis</span></button><button data-nav="privacy">◈<span>Privacy</span></button>
     </nav>
   </div>
-  <script src="app.js?v=1d"></script>
+  <script src="app.js?v=1e3"></script>
 </body>
 </html>

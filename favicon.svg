@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="32" fill="#07111f"/>
-  <circle cx="64" cy="64" r="48" fill="url(#g)"/>
-  <path d="M39 72c14-34 36-34 50 0M44 54h40M64 34v60" stroke="#07111f" stroke-width="10" stroke-linecap="round" fill="none"/>
-  <defs><linearGradient id="g" x1="18" y1="10" x2="110" y2="118"><stop stop-color="#51e1ff"/><stop offset="1" stop-color="#9b7cff"/></linearGradient></defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#57f5d4"/><stop offset="1" stop-color="#9b7cff"/></linearGradient></defs><rect width="128" height="128" rx="30" fill="#06111f"/><circle cx="64" cy="64" r="44" fill="url(#g)"/><text x="64" y="76" font-size="38" font-family="Arial" font-weight="900" text-anchor="middle" fill="#06111f">HL</text></svg>

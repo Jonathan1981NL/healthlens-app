@@ -1,14 +1,1 @@
-{
-  "name": "HealthLens",
-  "short_name": "HealthLens",
-  "description": "Privacy-first interactive health atlas and symptom education app.",
-  "start_url": "./index.html?v=1d",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#07111f",
-  "theme_color": "#07111f",
-  "orientation": "portrait-primary",
-  "icons": [
-    {"src":"favicon.svg?v=1d","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
-  ]
-}
+{"name":"HealthLens","short_name":"HealthLens","start_url":"./?v=1e","display":"standalone","background_color":"#06111f","theme_color":"#06111f","icons":[{"src":"favicon.svg","sizes":"any","type":"image/svg+xml"}]}
