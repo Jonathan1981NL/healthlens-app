@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101827" />
+  <title>HealthLens — privacy-first gezondheidsatlas</title>
+  <meta name="description" content="HealthLens is een privacy-first interactieve gezondheidsatlas voor anatomie, klachtenoriëntatie, puberteit, perimenopauze, preventie, EHBO en quizzen." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="ambient ambient-c"></div>
+
+  <header class="app-shell glass-lite">
+    <a class="brand" href="#home" data-screen="home" aria-label="HealthLens home">
+      <span class="logo-mark">HL</span>
+      <span><strong>HealthLens</strong><small>Je lichaam, laag voor laag begrepen</small></span>
+    </a>
+    <button id="menuBtn" class="icon-btn" aria-label="Menu">☰</button>
+    <nav id="topNav" class="top-nav" aria-label="Hoofdnavigatie">
+      <button data-screen="home" class="active">Home</button>
+      <button data-screen="atlas">Atlas</button>
+      <button data-screen="symptoms">Klachten</button>
+      <button data-screen="life">Life</button>
+      <button data-screen="privacy">Privacy</button>
+      <button data-screen="firstaid">EHBO</button>
+      <button data-screen="quiz">Quiz</button>
+    </nav>
+    <select id="languageSelect" aria-label="Taal kiezen"></select>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="hero">
+        <div class="hero-copy glass">
+          <div class="eyebrow">Stage 1B · new-age UI · privacy-first · educatief/indicatief</div>
+          <h1>De wereldwijde gezondheidsatlas die leren, klachten begrijpen en sneller handelen combineert.</h1>
+          <p>HealthLens brengt anatomie, preventie, puberteit, perimenopauze, erfelijkheid, EHBO en quizzen samen in één intuïtieve app. Diagnose blijft indicatief; veiligheid, privacy en duidelijke alarmsignalen staan altijd bovenaan.</p>
+          <div class="hero-actions">
+            <button class="primary" data-screen="atlas">Open Body Atlas</button>
+            <button class="secondary" data-screen="symptoms">Start klachtencheck</button>
+          </div>
+          <div class="trust-row">
+            <span>🔒 Local-first</span><span>🧒 Kindveilig</span><span>🌍 20+ talen</span><span>⚕️ Geen harde diagnose</span>
+          </div>
+        </div>
+        <div class="phone glass" aria-label="HealthLens app preview">
+          <div class="phone-status"><span></span><span></span><span></span></div>
+          <div class="phone-card live"><small>SafeScan</small><strong>Privacy shield actief</strong><em>geen cloud zonder toestemming</em></div>
+          <div class="body-mini"><span></span></div>
+          <div class="phone-modules"><button>Atlas</button><button>Life</button><button>EHBO</button><button>Quiz</button></div>
+        </div>
+      </div>
+
+      <div class="module-grid">
+        <article class="module glass" data-screen="atlas"><span>🧬</span><h3>Body Atlas</h3><p>Lagen voor huid, skelet, spieren, organen, bloedvaten, zenuwen en hormonen.</p></article>
+        <article class="module glass" data-screen="symptoms"><span>📍</span><h3>Waar heb je last?</h3><p>Klik, beschrijf en krijg indicatieve uitleg met alarmsignalen.</p></article>
+        <article class="module glass" data-screen="life"><span>🌗</span><h3>Life stages</h3><p>Puberteit, SOA/STI, perimenopauze, menopauze, erfelijkheid en preventie.</p></article>
+        <article class="module glass" data-screen="privacy"><span>🛡️</span><h3>Privacy Shield</h3><p>Onder 16 geen intieme beelden. Volwassen gevoelige flow alleen local-first.</p></article>
+        <article class="module glass" data-screen="firstaid"><span>🚑</span><h3>EHBO / Nood</h3><p>Offline-first noodkaarten voor beroerte, reanimatie, bloeding, val en brandwond.</p></article>
+        <article class="module glass" data-screen="quiz"><span>🏆</span><h3>Quiz & leagues</h3><p>Daily challenges, XP, levels en internationale ranglijsten.</p></article>
+      </div>
+    </section>
+
+    <section id="atlas" class="screen">
+      <div class="section-head">
+        <div><div class="eyebrow">Interactive body atlas</div><h2>Body Atlas</h2><p>Klik op het lichaam, wissel lagen en bekijk informatie per regio. AR is in deze versie gesimuleerd.</p></div>
+        <button id="startArBtn" class="secondary">Simuleer AR SafeScan</button>
+      </div>
+      <div class="workspace">
+        <aside class="panel glass">
+          <h3>Lagen</h3>
+          <label><input type="checkbox" class="layerToggle" value="skin" checked> Huid</label>
+          <label><input type="checkbox" class="layerToggle" value="skeleton" checked> Skelet</label>
+          <label><input type="checkbox" class="layerToggle" value="organs" checked> Organen</label>
+          <label><input type="checkbox" class="layerToggle" value="muscle"> Spieren</label>
+          <label><input type="checkbox" class="layerToggle" value="blood"> Bloedvaten</label>
+          <label><input type="checkbox" class="layerToggle" value="nerves"> Zenuwen</label>
+          <label><input type="checkbox" class="layerToggle" value="hormones"> Hormonen</label>
+          <hr />
+          <h3>Profiel</h3>
+          <select id="profileSelect">
+            <option value="adult">Volwassene</option>
+            <option value="child">Kind &lt;16</option>
+            <option value="teen">Jongere 16–17</option>
+            <option value="femaleLife">Vrouw 38–55 / hormonale context</option>
+            <option value="senior">Oudere</option>
+          </select>
+          <p class="tiny">Onder 16: geen intieme beelden. Wel veilige symptoomvragen, puberteitsuitleg en SOA/STI-hulp.</p>
+        </aside>
+
+        <div class="body-stage glass">
+          <svg id="bodySvg" viewBox="0 0 320 650" role="img" aria-label="Interactief lichaam">
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c8fbff"/><stop offset="1" stop-color="#f6d4ff"/></linearGradient>
+              <radialGradient id="hotGrad"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#39e7ff"/></radialGradient>
+              <filter id="softGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <g class="layer skin visible"><path class="body-shape" d="M160 18c31 0 56 25 56 56 0 26-18 48-42 54v33c39 8 70 42 72 84l6 104 44 102c8 18 0 39-18 47-18 8-39 0-47-18l-35-81-4 70 24 114c4 19-8 38-27 42-19 4-38-8-42-27l-18-86-18 86c-4 19-23 31-42 27-19-4-31-23-27-42l24-114-4-70-35 81c-8 18-29 26-47 18-18-8-26-29-18-47l44-102 6-104c2-42 33-76 72-84v-33c-24-6-42-28-42-54 0-31 25-56 56-56z"/></g>
+            <g class="layer skeleton visible"><circle cx="160" cy="74" r="36" class="bone-fill"/><line x1="160" y1="130" x2="160" y2="470" class="bone"/><path d="M105 210 Q160 170 215 210" class="bone"/><path d="M100 255 Q160 215 220 255" class="bone"/><line x1="105" y1="235" x2="52" y2="438" class="bone"/><line x1="215" y1="235" x2="268" y2="438" class="bone"/><line x1="134" y1="470" x2="98" y2="628" class="bone"/><line x1="186" y1="470" x2="222" y2="628" class="bone"/></g>
+            <g class="layer organs visible" filter="url(#softGlow)"><ellipse data-region="chest" cx="142" cy="216" rx="30" ry="44" class="organ lung"/><ellipse data-region="chest" cx="178" cy="216" rx="30" ry="44" class="organ lung"/><path data-region="chest" d="M160 238 C130 215 145 185 160 198 C176 182 198 210 160 238z" class="organ heart"/><ellipse data-region="abdomen" cx="137" cy="306" rx="42" ry="25" class="organ liver"/><ellipse data-region="abdomen" cx="184" cy="332" rx="29" ry="47" class="organ stomach"/><ellipse data-region="pelvis" cx="160" cy="421" rx="48" ry="34" class="organ pelvis"/></g>
+            <g class="layer muscle"><path d="M100 163 C80 245 83 330 112 420" class="muscle"/><path d="M220 163 C240 245 237 330 208 420" class="muscle"/><path d="M128 158 C118 250 125 380 145 470" class="muscle"/><path d="M192 158 C202 250 195 380 175 470" class="muscle"/></g>
+            <g class="layer blood"><path d="M160 198 C138 250 170 315 150 385 C138 430 121 500 104 628" class="vessel"/><path d="M160 198 C182 250 150 315 170 385 C182 430 199 500 216 628" class="vessel"/></g>
+            <g class="layer nerves"><path d="M160 122 C138 190 92 268 64 352" class="nerve"/><path d="M160 122 C182 190 228 268 256 352" class="nerve"/><path d="M160 122 C160 270 150 435 122 628" class="nerve"/><path d="M160 122 C160 270 170 435 198 628" class="nerve"/></g>
+            <g class="layer hormones"><circle data-region="head" cx="160" cy="98" r="8" class="hormone"/><circle data-region="chest" cx="160" cy="170" r="8" class="hormone"/><circle data-region="abdomen" cx="160" cy="292" r="8" class="hormone"/><circle data-region="pelvis" cx="160" cy="424" r="8" class="hormone"/></g>
+            <g class="hotspots"><circle data-region="head" cx="160" cy="76" r="48"/><circle data-region="chest" cx="160" cy="220" r="70"/><circle data-region="abdomen" cx="160" cy="325" r="72"/><circle data-region="pelvis" cx="160" cy="420" r="50"/><circle data-region="leg" cx="112" cy="545" r="52"/><circle data-region="leg" cx="208" cy="545" r="52"/></g>
+          </svg>
+        </div>
+
+        <aside class="panel glass info-panel">
+          <h3 id="regionTitle">Klik op het lichaam</h3>
+          <p id="regionText">Selecteer een gebied om te zien wat eronder ligt, welke klachten vaak voorkomen, welke preventie hoort en welke alarmsignalen belangrijk zijn.</p>
+          <div id="regionTags" class="tag-row"></div>
+          <div id="regionPrevention" class="prevention-card hidden"></div>
+          <button id="useRegionBtn" class="primary">Gebruik gebied in klachtencheck</button>
+        </aside>
+      </div>
+    </section>
+
+    <section id="symptoms" class="screen">
+      <div class="section-head"><div><div class="eyebrow">Indicatieve triage</div><h2>Waar heb je last?</h2><p>Een vaste, veilige flow voor klachten, alarmsignalen, puberteit, SOA/STI en perimenopauze.</p></div></div>
+      <div class="symptom-layout">
+        <div class="symptom-card glass">
+          <div class="form-grid">
+            <label>Leeftijdsgroep<select id="ageGroup"><option value="adult">18+</option><option value="teen16">16–17</option><option value="under16">Onder 16</option><option value="senior">65+</option></select></label>
+            <label>Gebied<select id="bodyArea"><option>borst</option><option>buik</option><option>hoofd</option><option>huid</option><option>gevoelige plek</option><option>gewrichten/spieren</option></select></label>
+            <label>Hoofdklacht<select id="complaint"><option>pijn</option><option>jeuk/branderig</option><option>uitslag/wond</option><option>benauwdheid</option><option>hartkloppingen</option><option>vermoeid/brain fog</option><option>onzeker over puberteit</option><option>mogelijke SOA/STI</option><option>familie/erfelijke ziekte</option></select></label>
+            <label>Ernst<select id="severity"><option value="mild">mild</option><option value="medium">matig</option><option value="severe">ernstig / plots</option></select></label>
+          </div>
+          <label class="wide">Omschrijf je klachten<textarea id="symptomText" placeholder="Bijvoorbeeld: sinds 2 dagen branderig bij plassen, geen foto nodig..."></textarea></label>
+          <div class="checkboxes">
+            <label><input type="checkbox" id="alarmChest"> pijn op borst / benauwd / flauwvallen</label>
+            <label><input type="checkbox" id="alarmNeuro"> scheve mond / krachtsverlies / verward</label>
+            <label><input type="checkbox" id="alarmUnsafe"> onveilig gevoel / dwang / misbruik</label>
+            <label><input type="checkbox" id="hormoneContext"> 38–55 jaar + cyclus/slaap/opvliegers/brain fog</label>
+            <label><input type="checkbox" id="familyContext"> ziekte komt vaker voor in familie</label>
+          </div>
+          <button id="analyzeBtn" class="primary">Toon indicatieve uitleg</button>
+          <div id="triageResult" class="result hidden"></div>
+        </div>
+        <aside class="glass safety-card">
+          <h3>Altijd leidend</h3>
+          <ul>
+            <li>Bij spoed of snelle verslechtering: lokale spoedhulp.</li>
+            <li>Onder 16: geen intieme foto’s of scans, wel veilige tekstflow.</li>
+            <li>AI geeft geen definitieve diagnose.</li>
+            <li>Bij onveiligheid of dwang: hulp zoeken gaat vóór privacycomfort.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="life" class="screen">
+      <div class="section-head"><div><div class="eyebrow">Life stages & prevention</div><h2>Puberteit, hormonen, erfelijkheid en preventie</h2><p>Gezondheid is niet één standaardlichaam. Deze module neemt leeftijd, levensfase, huidtype, geslacht en context mee.</p></div></div>
+      <div class="life-grid">
+        <article class="life-card glass"><h3>Is dit normaal?</h3><p>Geruststellende uitleg over borstgroei, haargroei, lengte, menstruatie, penis/testikels, acne, lichaamsgeur en emoties. Verschil is meestal normaal.</p><button class="chip" data-life="normal">Bekijk voorbeelden</button></article>
+        <article class="life-card glass"><h3>SOA / STI</h3><p>Geen foto nodig. Klachten zoals branderig plassen, jeuk, afscheiding, wondjes of zorgen na seksueel contact leiden naar testadvies en hulp.</p><button class="chip" data-life="sti">Veilige uitleg</button></article>
+        <article class="life-card glass"><h3>Perimenopauze</h3><p>Vage klachten zoals brain fog, slaapklachten, opvliegers, stemmingswisselingen, hartkloppingen en gewrichtspijn worden als context meegenomen.</p><button class="chip" data-life="peri">Context bekijken</button></article>
+        <article class="life-card glass"><h3>Erfelijkheid</h3><p>Familiegeschiedenis, erfelijke kanker, hartziekten, cholesterol, stolling, auto-immuunziekten en zeldzame aandoeningen als preventieve context.</p><button class="chip" data-life="genetic">Erfelijkheidslaag</button></article>
+        <article class="life-card glass"><h3>Preventie per orgaan</h3><p>Hart, lever, huid, darmen, hersenen, longen, nieren, spieren en botten krijgen voeding-, beweging-, slaap- en checkadviezen.</p><button class="chip" data-life="prevention">Preventie openen</button></article>
+        <article class="life-card glass"><h3>Inclusieve geneeskunde</h3><p>Huidklachten kunnen anders zichtbaar zijn per huidtype; vrouwen, kinderen en ouderen presenteren klachten soms anders dan de klassieke standaard.</p><button class="chip" data-life="inclusive">Biaslaag</button></article>
+      </div>
+      <div id="lifeOutput" class="result hidden"></div>
+    </section>
+
+    <section id="privacy" class="screen">
+      <div class="section-head"><div><div class="eyebrow">Privacy by design</div><h2>SafeScan Privacy Shield</h2><p>Privacy en security zijn geen bijlage, maar een kernfeature van HealthLens.</p></div></div>
+      <div class="privacy-layout">
+        <div class="glass privacy-panel">
+          <h3>Foto/scan beleid simuleren</h3>
+          <div class="form-grid two">
+            <label>Persoon<select id="photoAge"><option value="under16">Onder 16</option><option value="teen16">16–17</option><option value="adult">18+</option></select></label>
+            <label>Beeldtype<select id="photoType"><option value="covered">gekleed / niet-intiem</option><option value="sensitive">intiem / edele delen</option><option value="face">gezicht herkenbaar</option><option value="background">herkenbare achtergrond</option></select></label>
+          </div>
+          <button id="simulatePhotoBtn" class="primary">Check privacyregel</button>
+          <div id="photoPolicyResult" class="result hidden"></div>
+        </div>
+        <div class="glass privacy-panel checklist">
+          <h3>Stage 1B regels</h3>
+          <p><strong>Onder 16:</strong> intieme beelden worden geblokkeerd, niet opgeslagen, niet geüpload en niet geanalyseerd.</p>
+          <p><strong>Volwassenen:</strong> gevoelige beoordeling alleen met expliciete toestemming, local-first verwerking, preview, blur/masking en geen automatische cloud.</p>
+          <p><strong>Iedereen:</strong> gezichten, achtergrond, EXIF/locatie en onnodige lichaamsdelen worden standaard verwijderd of gemaskeerd.</p>
+          <p><strong>Social:</strong> medische foto’s worden nooit gebruikt voor ranking, quiz, social sharing of advertenties.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="firstaid" class="screen">
+      <div class="section-head"><div><div class="eyebrow">Offline-first lifesaving cards</div><h2>EHBO / Noodmodus</h2><p>Snelle, duidelijke kaarten. In echte nood: bel lokale spoedhulp.</p></div></div>
+      <div class="emergency-grid">
+        <button class="emergency-card glass" data-aid="cpr"><strong>Reanimatie</strong><span>Niet reageren + niet normaal ademen</span></button>
+        <button class="emergency-card glass" data-aid="stroke"><strong>Beroerte</strong><span>FAST: gezicht, arm, spraak, tijd</span></button>
+        <button class="emergency-card glass" data-aid="bleeding"><strong>Ernstige bloeding</strong><span>Druk geven, hulp bellen</span></button>
+        <button class="emergency-card glass" data-aid="burn"><strong>Brandwond</strong><span>Koelen, afdekken, hulp bij ernstig</span></button>
+        <button class="emergency-card glass" data-aid="fall"><strong>Val / hoofdletsel</strong><span>Niet verplaatsen bij nek/rugrisico</span></button>
+        <button class="emergency-card glass" data-aid="allergy"><strong>Allergie</strong><span>Benauwd/zwelling = spoed</span></button>
+      </div>
+      <div id="aidOutput" class="result hidden"></div>
+    </section>
+
+    <section id="quiz" class="screen">
+      <div class="section-head"><div><div class="eyebrow">Daily challenge</div><h2>Quiz & internationale leagues</h2><p>Maak gezondheid terugkerend leuk: anatomie, preventie, puberteit, privacy en EHBO.</p></div><div class="score glass"><strong id="xpScore">0</strong><span>XP</span></div></div>
+      <div class="quiz-card glass">
+        <h3 id="quizQ">Vraag wordt geladen...</h3>
+        <div id="quizOptions" class="quiz-options"></div>
+        <div id="quizFeedback" class="result hidden"></div>
+        <button id="nextQuizBtn" class="secondary">Volgende vraag</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card glass"><h3 id="modalTitle"></h3><p id="modalText"></p><button id="closeModal" class="primary">Sluiten</button></div>
+  </div>
+
+  <footer><span>HealthLens Stage 1B prototype</span><span>Educatief/indicatief · geen medische diagnose</span></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

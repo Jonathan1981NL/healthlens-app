@@ -1,0 +1,12 @@
+{
+  "name": "HealthLens",
+  "short_name": "HealthLens",
+  "description": "Privacy-first interactive health atlas prototype",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080c18",
+  "theme_color": "#101827",
+  "icons": [
+    {"src": "favicon.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}
