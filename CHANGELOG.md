@@ -1,3 +1,6 @@
-# Stage 1R
-- Integrated Claude strengths: larger medical DB, privacy dashboard, local export, expanded profile, education modules, AR/Lab concept.
-- Kept HealthLens requirements: static centered images, no visible blue circles, selection highlight, profile-driven visual context.
+# Stage 1S
+- Disclaimer screen is scrollable on mobile/desktop.
+- Atlas assets are guaranteed local SVG files.
+- Selection updates Atlas, Detail, Complaints, Red Flags, Live Context and Education.
+- Database expanded with skin, hormones and sexual health modules.
+- Added fallback if an atlas asset fails to load.

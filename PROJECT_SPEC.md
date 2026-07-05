@@ -1,3 +1,3 @@
-# Stage 1R Baseline
+# Stage 1S Baseline
 
-Claude-enhanced HealthLens baseline: static atlas, invisible regions, selected highlight, richer medical DB, privacy controls and professional complaints flow.
+Stable integrated HealthLens baseline with static centered atlas, no visible blue circles, highlight selection and cross-module state propagation.
