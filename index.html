@@ -1,114 +1,361 @@
 <!doctype html>
-<html lang="nl">
+<html lang="nl" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="-1" />
-  <title>HealthLens</title>
-  <link rel="icon" href="favicon.svg?v=1Q-multilingual-static-atlas-20260706" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=1Q-multilingual-static-atlas-20260706" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#0f766e"/>
+<title>HealthLens</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<div id="disclaimerGate" class="gate">
-  <div class="gate-card">
-    <div class="eyebrow" data-i18n="disclaimerTitle">Belangrijke disclaimer</div>
-    <h1 data-i18n="title">Gezondheidsatlas, klachtenwijzer en educatief centrum.</h1>
-    <p data-i18n="disclaimer1"></p>
-    <p data-i18n="disclaimer2"></p>
-    <p data-i18n="disclaimer3"></p>
-    <div class="disclaimer-warning">Bij spoed of levensbedreigende klachten: bel direct de lokale spoeddiensten of ga meteen naar een arts / SEH.</div>
-    <button id="acceptDisclaimer" class="btn primary wide" data-i18n="agree"></button>
+
+<!-- ============ Disclaimer gate ============ -->
+<div id="disclaimer" class="modal" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="modal-card">
+    <div class="brand large">
+      <img src="favicon.svg" alt="" class="logo"/>
+      <div>
+        <h1 id="dTitle">HealthLens</h1>
+        <p class="tagline" data-i18n="app_tagline">Privacy-first interactieve gezondheidsatlas</p>
+      </div>
+    </div>
+    <p class="lead" data-i18n="disclaimer_lead">
+      HealthLens is uitsluitend bedoeld als <strong>educatief en ondersteunend hulpmiddel</strong>.
+      De informatie in deze app is <strong>geen diagnose</strong>, <strong>geen medisch oordeel</strong> en
+      <strong>geen behandeladvies</strong>. HealthLens vervangt geen arts, huisarts, specialist, verpleegkundige,
+      apotheker of spoedeisende hulp.
+    </p>
+    <ul class="disclaimer-list">
+      <li data-i18n="disclaimer_1">Zoek altijd medische hulp bij ernstige, plotselinge of verergerende klachten.</li>
+      <li data-i18n="disclaimer_2">Bel bij spoed direct het lokale alarmnummer (in Nederland 112).</li>
+      <li data-i18n="disclaimer_3">Uw gegevens worden alleen lokaal op uw apparaat opgeslagen en nooit gedeeld.</li>
+    </ul>
+    <label class="check">
+      <input type="checkbox" id="ackChk"/>
+      <span data-i18n="ack_text">Ik heb dit gelezen en begrepen.</span>
+    </label>
+    <button id="acceptDisclaimer" class="btn primary" disabled data-i18n="accept_btn">
+      Ik begrijp dit en wil doorgaan
+    </button>
+    <p class="fineprint" data-i18n="fineprint">
+      Bij levensbedreigende situaties: bel direct het lokale alarmnummer.
+    </p>
   </div>
 </div>
 
-<div class="app-shell hidden" id="appShell">
-  <header class="hero">
-    <div>
-      <div class="brand-row"><span class="brand">HealthLens</span><span class="tag">Multilingual Atlas</span></div>
-      <h1 data-i18n="title"></h1>
-      <p data-i18n="subtitle"></p>
+<!-- ============ App shell ============ -->
+<div id="app" hidden>
+  <header class="topbar">
+    <div class="brand">
+      <img src="favicon.svg" alt="" class="logo"/>
+      <span>HealthLens</span>
     </div>
-    <div class="hero-actions">
-      <button id="profileBtn" class="btn primary" data-i18n="profile"></button>
-      <button id="educationBtn" class="btn" data-i18n="education"></button>
-      <button id="refreshBtn" class="btn" data-i18n="refresh"></button>
+    <nav class="tabs" role="tablist" aria-label="Hoofdnavigatie">
+      <button class="tab active" data-tab="atlas"     data-i18n="tab_atlas">Atlas</button>
+      <button class="tab"        data-tab="klachten"  data-i18n="tab_complaints">Klachten</button>
+      <button class="tab"        data-tab="ar"        data-i18n="tab_ar">AR-scan</button>
+      <button class="tab"        data-tab="educatief" data-i18n="tab_educ">Educatief</button>
+      <button class="tab"        data-tab="profiel"   data-i18n="tab_profile">Profiel</button>
+      <button class="tab"        data-tab="privacy"   data-i18n="tab_privacy">Privacy</button>
+    </nav>
+    <div class="toolbar">
+      <button id="themeToggle" class="icon-btn" title="Thema" aria-label="Thema wisselen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+      </button>
+      <select id="language" aria-label="Taal">
+        <option value="nl">Nederlands</option><option value="en">English</option>
+        <option value="de">Deutsch</option><option value="fr">Français</option>
+        <option value="es">Español</option><option value="pt">Português</option>
+        <option value="it">Italiano</option><option value="pl">Polski</option>
+        <option value="tr">Türkçe</option><option value="ar">العربية</option>
+        <option value="hi">हिन्दी</option><option value="bn">বাংলা</option>
+        <option value="ur">اردو</option><option value="zh">中文</option>
+        <option value="ja">日本語</option><option value="ko">한국어</option>
+        <option value="ru">Русский</option><option value="id">Bahasa Indonesia</option>
+        <option value="vi">Tiếng Việt</option><option value="th">ไทย</option>
+        <option value="sw">Kiswahili</option>
+      </select>
     </div>
   </header>
 
-  <section id="profileSheet" class="sheet hidden">
-    <div class="sheet-card">
-      <div class="sheet-head"><div><div class="eyebrow">Persoonlijke context</div><h2>Stem HealthLens op de gebruiker af</h2></div><button id="closeProfile" class="icon-btn">×</button></div>
-      <form id="profileForm" class="profile-grid">
-        <label>Leeftijd<input id="age" type="number" min="0" max="120" placeholder="Bijv. 42"></label>
-        <label>Geslacht<select id="sex"><option value="prefer-not">Zeg ik liever niet</option><option value="female">Vrouw</option><option value="male">Man</option><option value="other">Anders</option></select></label>
-        <label>Achtergrond / afkomst<select id="background"><option value="prefer-not">Zeg ik liever niet</option><option value="european">Europees / wit</option><option value="african">Afrikaans / Afro-Caribisch / zwart</option><option value="mena">Midden-Oosters / Noord-Afrikaans</option><option value="south-asian">Zuid-Aziatisch</option><option value="east-asian">Oost-Aziatisch</option><option value="se-asian">Zuidoost-Aziatisch</option><option value="latin">Latijns-Amerikaans / gemengd</option><option value="other">Anders / gemengd</option></select></label>
-        <label>Taal<select id="language"></select></label>
-        <label>Atlasweergave<select id="displaySex"><option value="male">Man</option><option value="female">Vrouw</option><option value="neutral">Neutraal</option></select></label>
-        <label>Gebruikerstype<select id="ageMode"><option value="adult">Volwassene</option><option value="teen">Tiener</option><option value="child">Kind</option><option value="older">Oudere volwassene</option></select></label>
-        <label>Atlas detailniveau<select id="detailLevel"><option value="simple">Eenvoudig</option><option value="standard" selected>Standaard</option><option value="expert">Uitgebreid</option></select></label>
-        <label>Focus<select id="healthFocus"><option value="general">Algemeen</option><option value="prevention">Preventie</option><option value="firstaid">Eerste hulp</option><option value="learning">Leren</option><option value="symptoms">Klachten</option></select></label>
-        <div class="note full"><strong>Waarom deze gegevens?</strong><br>Leeftijd, geslacht en achtergrond kunnen invloed hebben op hoe klachten zich presenteren en hoe huidbeelden worden beoordeeld. HealthLens gebruikt dit uitsluitend om informatie en indicatieve duiding beter toe te spitsen. Het blijft altijd een hulpmiddel.</div>
-        <div class="profile-actions full"><button class="btn primary" type="submit" data-i18n="save"></button><button id="resetProfile" type="button" class="btn">Wissen</button></div>
-      </form>
-    </div>
-  </section>
+  <main class="main">
 
-  <main class="main-layout">
-    <section class="panel atlas-panel" id="atlas">
-      <div class="panel-head"><div><div class="eyebrow" data-i18n="atlas"></div><h2 id="activeLayerTitle">Lichaam</h2><p id="activeLayerSubtitle">Statische, gecentreerde atlasweergave afgestemd op de gebruiker.</p></div></div>
-      <div class="status-strip"><span class="status ok">Atlas Studio: geen blur</span><span class="status">SafeBlur alleen voor AR/foto’s/uploads</span><span id="profileBadge" class="status">Profiel nog niet ingesteld</span><span id="selectionStatus" class="status" data-i18n="noSel"></span></div>
-      <div id="layerTabs" class="layer-tabs"></div>
-      <div class="atlas-layout">
-        <div class="viewer-card">
-          <div class="viewer-toolbar"><div id="selectionTrail">Lichaam · geen selectie</div><div class="search-box"><input id="searchInput" data-i18n-placeholder="search" placeholder="Zoek hart, lever, longen, knie, plassen..."><div id="searchResults" class="search-results hidden"></div></div></div>
-          <div class="viewer-static" id="viewerStatic">
-            <div class="atlas-frame" id="atlasFrame">
-              <img id="atlasImage" src="assets/body.png" alt="HealthLens atlaslaag">
-              <svg id="regionOverlay" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
-              <div id="selectionLabel" class="selection-label hidden"></div>
-              <div id="profileTone" class="profile-tone"></div>
-              <div id="profileModesty" class="profile-modesty hidden"></div>
+    <!-- =========== ATLAS =========== -->
+    <section id="panel-atlas" class="panel active">
+      <aside class="layers card">
+        <h3 data-i18n="layers">Lagen</h3>
+        <ul id="layerList">
+          <li><button class="layer-btn active" data-layer="lichaam"  data-i18n="layer_body">Lichaam</button></li>
+          <li><button class="layer-btn" data-layer="organen"        data-i18n="layer_organs">Organen</button></li>
+          <li><button class="layer-btn" data-layer="bloedbaan"      data-i18n="layer_circ">Bloedbaan</button></li>
+          <li><button class="layer-btn" data-layer="zenuw"          data-i18n="layer_nerve">Zenuwstelsel</button></li>
+          <li><button class="layer-btn" data-layer="lymfe"          data-i18n="layer_lymph">Lymfestelsel</button></li>
+          <li><button class="layer-btn" data-layer="spier"          data-i18n="layer_muscle">Spierstelsel</button></li>
+          <li><button class="layer-btn" data-layer="skelet"         data-i18n="layer_skel">Skelet</button></li>
+          <li><button class="layer-btn" data-layer="adem"           data-i18n="layer_resp">Ademhaling</button></li>
+          <li><button class="layer-btn" data-layer="spijs"          data-i18n="layer_dig">Spijsvertering</button></li>
+          <li><button class="layer-btn" data-layer="urin"           data-i18n="layer_uri">Urinewegen</button></li>
+          <li><button class="layer-btn" data-layer="endo"           data-i18n="layer_endo">Endocrien</button></li>
+          <li><button class="layer-btn" data-layer="huid"           data-i18n="layer_skin">Huid</button></li>
+        </ul>
+        <div class="detail-level">
+          <label data-i18n="detail_level">Detailniveau</label>
+          <select id="detailLevel">
+            <option value="simple"   data-i18n="dl_simple">Eenvoudig</option>
+            <option value="standard" selected data-i18n="dl_std">Standaard</option>
+            <option value="extended" data-i18n="dl_ext">Uitgebreid</option>
+          </select>
+        </div>
+      </aside>
+
+      <div class="atlas-stage card">
+        <div class="view-controls">
+          <button id="rotLeft" class="icon-btn" aria-label="Draai naar links" title="Draai links">◀</button>
+          <div class="view-label"><span id="viewLabel" data-i18n="view_front">Voorkant</span></div>
+          <button id="rotRight" class="icon-btn" aria-label="Draai naar rechts" title="Draai rechts">▶</button>
+        </div>
+        <div id="atlasCanvas" class="atlas-canvas">
+          <!-- SVG gets injected here by app.js based on view/layer -->
+        </div>
+        <p class="hint muted" data-i18n="atlas_hint">Tik op een orgaan of regio voor details.</p>
+      </div>
+
+      <aside class="detail-panel card">
+        <div class="detail-head">
+          <h2 id="detail-title" data-i18n="select_structure">Selecteer een structuur</h2>
+          <p id="detail-system" class="muted"></p>
+        </div>
+        <nav class="detail-tabs" role="tablist">
+          <button class="dtab active" data-dtab="uitleg"     data-i18n="dtab_expl">Uitleg</button>
+          <button class="dtab" data-dtab="klachten"          data-i18n="dtab_comp">Klachten</button>
+          <button class="dtab" data-dtab="alarm"             data-i18n="dtab_red">Alarmsignalen</button>
+          <button class="dtab" data-dtab="preventie"         data-i18n="dtab_prev">Preventie</button>
+          <button class="dtab" data-dtab="eerstehulp"        data-i18n="dtab_first">Eerste hulp</button>
+          <button class="dtab" data-dtab="oorzaken"          data-i18n="dtab_causes">Oorzaken</button>
+          <button class="dtab" data-dtab="leren"             data-i18n="dtab_learn">Leren</button>
+        </nav>
+        <div id="detail-content" class="detail-content">
+          <p class="muted" data-i18n="no_selection">Nog geen structuur geselecteerd.</p>
+        </div>
+        <p class="disclaimer-line" data-i18n="no_diagnosis_note">
+          Informatief, geen diagnose. Neem bij twijfel contact op met een zorgverlener.
+        </p>
+      </aside>
+    </section>
+
+    <!-- =========== KLACHTEN =========== -->
+    <section id="panel-klachten" class="panel">
+      <div class="card">
+        <h2 data-i18n="complaints_title">Klachtenverkenner</h2>
+        <p class="muted" data-i18n="complaints_lead">
+          Beschrijf uw klacht. Deze verkenner geeft een <strong>indicatieve</strong> inschatting, geen diagnose.
+        </p>
+
+        <label data-i18n="lbl_desc">Omschrijving</label>
+        <textarea id="k_desc" rows="4" placeholder="Beschrijf uw klacht — locatie, duur, wat maakt het erger of beter..."></textarea>
+
+        <div class="row">
+          <div>
+            <label><span data-i18n="lbl_pain">Pijnscore</span> <strong id="k_pain_val">0</strong>/10</label>
+            <input type="range" id="k_pain" min="0" max="10" value="0" class="pain-slider"/>
+          </div>
+          <div>
+            <label data-i18n="lbl_onset">Begin</label>
+            <select id="k_onset">
+              <option value="plots"   data-i18n="onset_sudden">Plotseling</option>
+              <option value="uren"    data-i18n="onset_hours">Binnen uren</option>
+              <option value="dagen"   data-i18n="onset_days">Dagen</option>
+              <option value="weken"   data-i18n="onset_weeks">Weken</option>
+              <option value="maanden" data-i18n="onset_months">Maanden</option>
+            </select>
+          </div>
+          <div>
+            <label data-i18n="lbl_course">Verloop</label>
+            <select id="k_course">
+              <option value="stabiel"   data-i18n="course_stable">Stabiel</option>
+              <option value="erger"     data-i18n="course_worse">Wordt erger</option>
+              <option value="beter"     data-i18n="course_better">Wordt beter</option>
+              <option value="aanvallen" data-i18n="course_bouts">Komt in aanvallen</option>
+            </select>
+          </div>
+          <div>
+            <label data-i18n="lbl_impression">Algemene indruk</label>
+            <select id="k_impression">
+              <option value="ok"      data-i18n="imp_ok">Redelijk fit</option>
+              <option value="matig"   data-i18n="imp_mid">Matig</option>
+              <option value="ziek"    data-i18n="imp_ill">Voel me ziek</option>
+              <option value="ernstig" data-i18n="imp_severe">Ernstig ziek</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend data-i18n="lbl_redflags">Alarmsignalen</legend>
+          <div id="k_redflags" class="redflags"></div>
+        </fieldset>
+
+        <div class="row spread">
+          <button id="k_analyze" class="btn primary" data-i18n="analyze">Analyseer</button>
+          <button id="k_print" class="btn" data-i18n="print_save">Print / opslaan</button>
+        </div>
+        <div id="k_output" class="analysis-output" hidden></div>
+      </div>
+    </section>
+
+    <!-- =========== AR SCAN =========== -->
+    <section id="panel-ar" class="panel">
+      <div class="card">
+        <h2 data-i18n="ar_title">AR-scan (houdings-check)</h2>
+        <p class="muted" data-i18n="ar_lead">
+          Gebruik de camera om uw houding te bekijken. Alle verwerking gebeurt <strong>lokaal op uw apparaat</strong>.
+          Er wordt niets geüpload. Dit is <strong>geen diagnose</strong>.
+        </p>
+
+        <div id="arConsent" class="consent-card">
+          <h3 data-i18n="ar_consent_title">Toestemming vereist</h3>
+          <p data-i18n="ar_consent_body">
+            Om de AR-functie te gebruiken hebben we tijdelijk toegang nodig tot uw camera.
+            Beelden verlaten uw apparaat niet.
+          </p>
+          <button id="arStart" class="btn primary" data-i18n="ar_start">Camera starten</button>
+        </div>
+
+        <div id="arStage" class="ar-stage" hidden>
+          <div class="ar-view">
+            <video id="arVideo" playsinline muted></video>
+            <canvas id="arCanvas"></canvas>
+          </div>
+          <div class="ar-controls">
+            <div class="segmented">
+              <button class="seg active" data-arlayer="skeleton" data-i18n="ar_layer_skel">Skelet</button>
+              <button class="seg" data-arlayer="muscle" data-i18n="ar_layer_musc">Spieren</button>
+              <button class="seg" data-arlayer="organ"  data-i18n="ar_layer_org">Organen</button>
+            </div>
+            <div id="arBadges" class="badges"></div>
+            <div class="row spread">
+              <button id="arSnap" class="btn" data-i18n="ar_snap">Momentopname</button>
+              <button id="arStop" class="btn danger" data-i18n="ar_stop">Camera stoppen</button>
             </div>
           </div>
-          <div class="quick-pick"><div class="strip-title" data-i18n="regions"></div><div id="regionShortcuts" class="chip-row"></div></div>
-          <div class="structure-strip"><div class="strip-title" data-i18n="structures"></div><div id="structureChips" class="chip-row"></div></div>
         </div>
-        <aside class="detail-card">
-          <div class="eyebrow" data-i18n="detail"></div>
-          <h3 id="detailTitle">Geen selectie</h3>
-          <p id="detailSummary">Selecteer een regio, orgaan, spiergroep of bot in de gekozen laag.</p>
-          <div id="detailTabs" class="detail-tabs"></div>
-          <div id="detailBody" class="detail-body"></div>
-          <div class="quick-actions"><button id="useInFlow" class="btn primary" data-i18n="useFlow"></button><button id="openInfoModal" class="btn" data-i18n="more"></button></div>
-        </aside>
       </div>
     </section>
 
-    <section class="panel two-col" id="analysis">
-      <div class="panel-section">
-        <div class="eyebrow" data-i18n="complaints"></div>
-        <h2 data-i18n="analysis"></h2>
-        <div id="selectedChip" class="selected-chip">Nog geen structuur gekozen</div>
-        <div id="guidedQuestions" class="question-box">Selecteer eerst een structuur of regio voor gerichtere vragen.</div>
-        <textarea id="symptomText" placeholder="Beschrijf klacht, duur, locatie, uitstraling, koorts, misselijkheid, wat verergert/verlicht, voorgeschiedenis..."></textarea>
-        <div class="field-row"><label><span data-i18n="start"></span><select id="timeline"><option value="sudden">Plots</option><option value="hours">Uren</option><option value="days">Dagen</option><option value="weeks">Weken</option><option value="months">Maanden</option></select></label><label><span data-i18n="pain"></span><input id="painScore" type="range" min="0" max="10" value="3"><span id="painLabel">3 / 10</span></label></div>
-        <div class="field-row"><label><span data-i18n="course"></span><select id="course"><option value="stable">Stabiel</option><option value="worse">Wordt erger</option><option value="better">Wordt beter</option><option value="recurrent">Komt terug</option></select></label><label><span data-i18n="general"></span><select id="generalState"><option value="well">Verder redelijk fit</option><option value="limited">Duidelijk beperkt</option><option value="ill">Ziek / niet zichzelf</option><option value="uncertain">Weet ik niet</option></select></label></div>
-        <div class="strip-title" data-i18n="redflags"></div>
-        <div id="redFlags" class="chip-row"></div>
-        <button id="analyzeBtn" class="btn primary wide" data-i18n="analyze"></button>
-        <div id="analysisResult" class="analysis-result empty">Nog geen analyse uitgevoerd.</div>
+    <!-- =========== EDUCATIEF =========== -->
+    <section id="panel-educatief" class="panel">
+      <div class="card">
+        <h2 data-i18n="educ_title">Educatief Centrum</h2>
+        <p class="muted" data-i18n="educ_lead">Verdiepende modules over anatomie, preventie en herkenning van alarmsignalen.</p>
+        <div class="cards" id="eduCards"></div>
       </div>
-      <div class="panel-section"><div class="eyebrow">Educatie & preventie</div><h2>Contextuele verdieping</h2><div id="educationPanel" class="stack"></div></div>
     </section>
 
-    <section class="panel" id="knowledge"><div class="panel-head simple"><div><div class="eyebrow" data-i18n="education"></div><h2>Gezondheid, anatomie en preventie</h2></div></div><div id="knowledgeFilters" class="chip-row"></div><div id="knowledgeCards" class="knowledge-grid"></div></section>
+    <!-- =========== PROFIEL =========== -->
+    <section id="panel-profiel" class="panel">
+      <div class="card">
+        <h2 data-i18n="profile_title">Profiel</h2>
+        <p class="muted" data-i18n="profile_lead">
+          Uw gegevens worden alleen lokaal opgeslagen en gebruikt om de app te personaliseren.
+        </p>
+        <div class="row">
+          <div><label data-i18n="p_age">Leeftijd</label><input type="number" id="p_age" min="0" max="120"/></div>
+          <div><label data-i18n="p_sex">Geslacht</label>
+            <select id="p_sex">
+              <option value="">–</option>
+              <option value="v" data-i18n="sex_f">Vrouw</option>
+              <option value="m" data-i18n="sex_m">Man</option>
+              <option value="x" data-i18n="sex_x">Anders</option>
+              <option value="?" data-i18n="sex_np">Zeg ik liever niet</option>
+            </select>
+          </div>
+          <div><label data-i18n="p_display">Atlasweergave</label>
+            <select id="p_display">
+              <option value="neutral" data-i18n="disp_neut">Neutraal</option>
+              <option value="female"  data-i18n="disp_f">Vrouw</option>
+              <option value="male"    data-i18n="disp_m">Man</option>
+            </select>
+          </div>
+          <div><label data-i18n="p_bg">Achtergrond</label>
+            <select id="p_bg">
+              <option value="">–</option>
+              <option value="eu">Europees</option>
+              <option value="af">Afrikaans / Afro-Caribisch</option>
+              <option value="me">Midden-Oosters / Noord-Afrikaans</option>
+              <option value="sa">Zuid-Aziatisch</option>
+              <option value="ea">Oost-Aziatisch</option>
+              <option value="se">Zuidoost-Aziatisch</option>
+              <option value="la">Latijns-Amerikaans</option>
+              <option value="mx">Gemengd / anders</option>
+              <option value="?">Zeg ik liever niet</option>
+            </select>
+          </div>
+          <div><label data-i18n="p_type">Gebruikerstype</label>
+            <select id="p_type">
+              <option value="adult"  selected data-i18n="ut_adult">Volwassene</option>
+              <option value="older"  data-i18n="ut_older">Oudere volwassene</option>
+              <option value="teen"   data-i18n="ut_teen">Tiener</option>
+              <option value="child"  data-i18n="ut_child">Kind</option>
+            </select>
+          </div>
+          <div><label data-i18n="p_height">Lengte (cm)</label><input type="number" id="p_height"/></div>
+          <div><label data-i18n="p_weight">Gewicht (kg)</label><input type="number" id="p_weight"/></div>
+        </div>
+        <label data-i18n="p_conditions">Bekende aandoeningen</label>
+        <textarea id="p_conditions" rows="2"></textarea>
+        <label data-i18n="p_meds">Medicatie</label>
+        <textarea id="p_meds" rows="2"></textarea>
+        <label data-i18n="p_allergies">Allergieën</label>
+        <textarea id="p_allergies" rows="2"></textarea>
+        <label data-i18n="p_family">Familiegeschiedenis</label>
+        <textarea id="p_family" rows="2"></textarea>
+        <div class="row spread">
+          <button id="p_save"   class="btn primary" data-i18n="save">Opslaan</button>
+          <button id="p_export" class="btn"         data-i18n="export">Exporteer JSON</button>
+          <button id="p_clear"  class="btn danger"  data-i18n="clear">Wissen</button>
+        </div>
+        <p id="p_status" class="muted"></p>
+      </div>
+    </section>
+
+    <!-- =========== PRIVACY =========== -->
+    <section id="panel-privacy" class="panel">
+      <div class="card">
+        <h2 data-i18n="privacy_title">Privacy en gegevens</h2>
+        <p data-i18n="privacy_lead">
+          HealthLens werkt volledig lokaal in uw browser. Er is geen server, geen tracking en geen upload.
+          U bepaalt volledig zelf wat u opslaat en wanneer u het weer verwijdert.
+        </p>
+        <ul class="privacy-list">
+          <li data-i18n="priv_1">Alle instellingen en profielgegevens staan in <code>localStorage</code>.</li>
+          <li data-i18n="priv_2">De AR-scan verwerkt beelden alleen in uw apparaat en slaat niets automatisch op.</li>
+          <li data-i18n="priv_3">Momentopnames worden alleen gedownload als u daar zelf op klikt.</li>
+          <li data-i18n="priv_4">Cookies worden niet gebruikt voor analytics of advertenties.</li>
+        </ul>
+        <h3 data-i18n="storage_use">Opslaggebruik</h3>
+        <div id="storageUsage" class="storage-list"></div>
+        <div class="row spread">
+          <button id="privExport" class="btn primary" data-i18n="export_all">Exporteer alles</button>
+          <button id="privWipe" class="btn danger" data-i18n="wipe_all">Alles wissen</button>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <section id="infoModal" class="sheet hidden"><div class="sheet-card large"><div class="sheet-head"><div><div class="eyebrow">Detailkaart</div><h2 id="modalTitle">Structuur</h2></div><button id="closeModal" class="icon-btn">×</button></div><div id="modalBody" class="detail-body"></div></div></section>
-  <section id="educationModal" class="sheet hidden"><div class="sheet-card large"><div class="sheet-head"><div><div class="eyebrow" data-i18n="education"></div><h2>Leren, begrijpen en oefenen</h2></div><button id="closeEducationModal" class="icon-btn">×</button></div><div id="educationCenterBody" class="knowledge-grid"></div></div></section>
-  <nav class="bottom-nav"><a href="#atlas">Atlas</a><a href="#analysis">Analyse</a><a href="#knowledge" data-i18n="education"></a><a href="#" id="navProfile" data-i18n="profile"></a></nav>
+  <footer class="foot">
+    <small>HealthLens · Educatief prototype · <span data-i18n="no_medical_advice">Geen medisch advies</span></small>
+  </footer>
 </div>
-<script src="app.js?v=1Q-multilingual-static-atlas-20260706"></script>
-</body></html>
+
+<!-- Modules -->
+<script src="i18n.js"></script>
+<script src="atlas-data.js"></script>
+<script src="medical-db.js"></script>
+<script src="privacy.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

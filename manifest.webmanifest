@@ -1,0 +1,12 @@
+{
+  "name": "HealthLens",
+  "short_name": "HealthLens",
+  "description": "Privacy-first interactieve gezondheidsatlas",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f766e",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

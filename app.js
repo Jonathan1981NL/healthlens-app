@@ -1,46 +1,456 @@
 
-const STORE='healthlens.stage1q.profile';
-const DISCLAIMER='healthlens.stage1q.disclaimerAccepted';
-const $=(s,e=document)=>e.querySelector(s); const $$=(s,e=document)=>Array.from(e.querySelectorAll(s));
-const translations={"nl": {"lang": "Nederlands", "title": "Gezondheidsatlas, klachtenwijzer en educatief centrum.", "subtitle": "Verken anatomische lagen, tik direct op het lichaam en krijg contextuele uitleg, rode vlaggen, preventie en een professionele indicatieve analyse.", "profile": "Profiel", "education": "Educatief centrum", "refresh": "Ververs", "atlas": "Atlas Studio", "complaints": "Klachtenflow", "analysis": "Professionele indicatieve analyse", "detail": "Overlay informatie", "noSel": "Geen selectie", "save": "Opslaan en doorgaan", "disclaimerTitle": "Belangrijke disclaimer", "disclaimer1": "HealthLens is uitsluitend een educatief en ondersteunend hulpmiddel. De app vervangt geen arts, verpleegkundige, apotheker, spoedeisende hulp of andere professionele medische beoordeling. Informatie, suggesties en indicatieve analyses in deze app zijn nooit een definitieve diagnose of behandeladvies.", "disclaimer2": "Gebruik de app alleen als aanvulling op gezond verstand, professionele zorg en andere betrouwbare informatiebronnen. Zoek altijd medische hulp bij ernstige, plotselinge, verergerende of verontrustende klachten. Bij spoedklachten zoals ernstige benauwdheid, drukkende borstpijn, bewustzijnsverlies, verlamming, hevig bloedverlies of een mogelijk beroertebeeld moet direct spoedhulp worden ingeschakeld.", "disclaimer3": "Door verder te gaan bevestig je dat je begrijpt dat HealthLens een hulpmiddel is en nooit ter vervanging van een arts of andere zorgverlener mag worden gebruikt.", "agree": "Ik begrijp dit en wil doorgaan", "pain": "Pijnscore", "redflags": "Rode vlaggen voor deze selectie", "general": "Algemene indruk", "course": "Verloop", "start": "Start", "analyze": "Maak professionele indicatieve analyse", "regions": "Snelle regio’s", "structures": "Structuren in deze laag", "search": "Zoek hart, lever, longen, knie, plassen...", "useFlow": "Gebruik in klachtenflow", "more": "Vergroot kaart"}, "en": {"lang": "English", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "de": {"lang": "Deutsch", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "fr": {"lang": "Français", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "es": {"lang": "Español", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "pt": {"lang": "Português", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "it": {"lang": "Italiano", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "pl": {"lang": "Polski", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "tr": {"lang": "Türkçe", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "ar": {"lang": "العربية", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "hi": {"lang": "हिन्दी", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "bn": {"lang": "বাংলা", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "ur": {"lang": "اردو", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "zh": {"lang": "中文", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "ja": {"lang": "日本語", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "ko": {"lang": "한국어", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "ru": {"lang": "Русский", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "id": {"lang": "Bahasa Indonesia", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "vi": {"lang": "Tiếng Việt", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "th": {"lang": "ไทย", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}, "sw": {"lang": "Kiswahili", "title": "Health atlas, symptom guide and education center.", "subtitle": "Explore anatomical layers, tap the body directly and receive contextual guidance, red flags, prevention tips and a professional indicative analysis.", "profile": "Profile", "education": "Education center", "refresh": "Refresh", "atlas": "Atlas Studio", "complaints": "Symptom flow", "analysis": "Professional indicative analysis", "detail": "Overlay information", "noSel": "No selection", "save": "Save and continue", "disclaimerTitle": "Important disclaimer", "disclaimer1": "HealthLens is an educational and supportive tool only. It does not replace a doctor, nurse, pharmacist, emergency department or any other professional medical assessment. Information, suggestions and indicative analyses in this app are never a definitive diagnosis or treatment advice.", "disclaimer2": "Use the app only as a supplement to common sense, professional care and other reliable information sources. Always seek medical help for severe, sudden, worsening or worrying symptoms. For emergency symptoms such as severe shortness of breath, crushing chest pain, loss of consciousness, paralysis, heavy bleeding or possible stroke signs, seek emergency care immediately.", "disclaimer3": "By continuing, you confirm that you understand that HealthLens is a tool and must never be used as a substitute for a doctor or other healthcare professional.", "agree": "I understand and want to continue", "pain": "Pain score", "redflags": "Red flags for this selection", "general": "General condition", "course": "Course", "start": "Onset", "analyze": "Create professional indicative analysis", "regions": "Quick regions", "structures": "Structures in this layer", "search": "Search heart, liver, lungs, knee, urination...", "useFlow": "Use in symptom flow", "more": "Enlarge card"}};
-const layers=[{"key": "body", "label": "Lichaam", "image": "assets/body.png", "title": "Lichaam", "subtitle": "Neutrale lichaamsweergave voor globale lokalisatie van klachten."}, {"key": "organs", "label": "Alle organen", "image": "assets/organs.png", "title": "Alle organen", "subtitle": "Belangrijkste interne organen in één samenhangende laag."}, {"key": "circulatory", "label": "Bloedbaan", "image": "assets/circulatory.png", "title": "Bloedbaan", "subtitle": "Arteriën, venen, hart en centrale circulatie."}, {"key": "nervous", "label": "Zenuwstelsel", "image": "assets/nervous.png", "title": "Zenuwstelsel", "subtitle": "Centrale en perifere zenuwbanen."}, {"key": "lymphatic", "label": "Lymfestelsel", "image": "assets/lymphatic.png", "title": "Lymfestelsel", "subtitle": "Lymfebanen, lymfeklieren en immuunstructuren."}, {"key": "muscular", "label": "Spierstelsel", "image": "assets/muscular.png", "title": "Spierstelsel", "subtitle": "Belangrijkste spiergroepen en bewegingsketens."}, {"key": "skeletal", "label": "Skelet", "image": "assets/skeletal.png", "title": "Skelet", "subtitle": "Botten, gewrichten, ribbenkast, wervelkolom en ledematen."}, {"key": "respiratory", "label": "Ademhaling", "image": "assets/respiratory.png", "title": "Ademhalingsstelsel", "subtitle": "Neus, luchtpijp, longen en middenrif."}, {"key": "digestive", "label": "Spijsvertering", "image": "assets/digestive.png", "title": "Spijsverteringsstelsel", "subtitle": "Slokdarm, maag, lever, gal, pancreas en darmen."}, {"key": "urinary", "label": "Urinewegen", "image": "assets/urinary.png", "title": "Urinewegen", "subtitle": "Nieren, urineleiders, blaas en urineafvoer."}];
-const structures={"head": {"name": "Hoofdregio", "system": "Regio", "layer": "body", "summary": "Hoofd, aangezicht en schedelregio.", "overview": ["Gebruik deze regio voor hoofdpijn, duizeligheid, trauma of huidveranderingen van het hoofd."], "symptoms": ["Hoofdpijn", "Duizeligheid", "Aangezichtspijn", "Verwardheid", "Trauma"], "redflags": ["Scheve mond / spraakprobleem", "Krachtsverlies", "Plots zeer heftige hoofdpijn", "Bewustzijnsdaling"], "prevention": ["Voldoende slaap en hydratatie", "Bescherming bij sport en fietsen", "Bloeddrukcontrole waar relevant"], "firstAid": ["Bij neurologische uitval: spoedhulp inschakelen."], "questions": ["Plots of geleidelijk?", "Trauma?", "Visus- of spraakverandering?"], "diff": ["Spanningshoofdpijn", "Migraine", "Trauma", "Sinus- of huidprobleem"]}, "chest": {"name": "Borstkas", "system": "Regio", "layer": "body", "summary": "Borstwand, hart-, long- en ribregio.", "overview": ["Gebruik voor klachten in of op de borst."], "symptoms": ["Borstpijn", "Benauwdheid", "Hartkloppingen", "Hoesten"], "redflags": ["Drukkende borstpijn", "Ernstige benauwdheid", "Flauwvallen", "Uitstraling naar arm/kaak/rug"], "prevention": ["Rookstop", "Conditie en beweging", "Bloeddruk- en cholesterolfollow-up"], "firstAid": ["Stop inspanning en zoek hulp bij alarmsignalen."], "questions": ["Drukkend of stekend?", "Bij inspanning?", "Uitstraling?"], "diff": ["Borstwandpijn", "Hartprobleem", "Longprobleem", "Slokdarm-/maagcontext"]}, "abdomen": {"name": "Buik", "system": "Regio", "layer": "body", "summary": "Boven- en onderbuikregio.", "overview": ["Gebruik voor diffuse of lokale buikklachten."], "symptoms": ["Buikpijn", "Misselijkheid", "Diarree", "Verstopping", "Opgeblazen gevoel"], "redflags": ["Hevige buikpijn", "Harde buik", "Aanhoudend braken", "Bloed in ontlasting"], "prevention": ["Vezels, vocht en beweging", "Matig alcohol", "Hygiëne en voedselveiligheid"], "firstAid": ["Rust en hydratatie; zoek hulp bij alarmsignalen."], "questions": ["Waar precies?", "Relatie met eten?", "Koorts?"], "diff": ["Gastro-enteritis", "Obstipatie", "Maag-/darmcontext", "Gal-/levercontext"]}, "pelvis": {"name": "Bekken / onderbuik", "system": "Regio", "layer": "body", "summary": "Onderbuik, blaas, bekken en omliggende structuren.", "overview": ["Gebruik voor plasklachten, bekkenpijn of lage buikpijn."], "symptoms": ["Onderbuikpijn", "Pijn bij plassen", "Aandrang", "Bekkenpijn"], "redflags": ["Niet kunnen plassen", "Koorts met onderbuikpijn", "Hevige testikel-/bekkenpijn"], "prevention": ["Hydratatie", "Bekkenbodemzorg", "Veilige seksuele gezondheid"], "firstAid": ["Bij retentie of hevige pijn medische beoordeling zoeken."], "questions": ["Pijn bij plassen?", "Bloed in urine?", "Cyclus- of seksuele context?"], "diff": ["Blaasontsteking", "Bekkenbodemprobleem", "Urinewegprobleem", "Gynaecologische/urologische context"]}, "brain": {"name": "Hersenen", "system": "Zenuwstelsel", "layer": "organs", "summary": "Centrale controle van beweging, gevoel, cognitie en gedrag.", "overview": ["De hersenen sturen bewustzijn, motoriek, taal, geheugen en zintuigen."], "symptoms": ["Hoofdpijn", "Verwardheid", "Uitvalsverschijnselen", "Concentratieproblemen"], "redflags": ["Scheve mond / spraakprobleem", "Krachtsverlies", "Nieuwe epileptische aanval", "Bewustzijnsdaling"], "prevention": ["Bloeddrukcontrole", "Beweging en slaap", "Rookstop"], "firstAid": ["Bij FAST-signalen: direct spoedhulp."], "questions": ["Plots ontstaan?", "Een zijde zwak?", "Spraak veranderd?"], "diff": ["Migraine", "Beroerte/TIA", "Infectie", "Trauma"]}, "heart": {"name": "Hart", "system": "Hart en vaten", "layer": "organs", "summary": "Spierpomp die bloed door het lichaam rondstuurt.", "overview": ["Het hart voorziet alle organen van zuurstofrijk bloed.", "Klachten kunnen bij vrouwen, ouderen en diabetes atypisch zijn."], "symptoms": ["Druk op de borst", "Hartkloppingen", "Kortademigheid", "Moeheid"], "redflags": ["Drukkende borstpijn", "Zweten of misselijkheid met pijn", "Uitstraling naar arm/kaak/rug", "Flauwvallen"], "prevention": ["Beweging", "Rookstop", "Gezonde voeding en gewicht", "Risicofactoren controleren"], "firstAid": ["Acuut? Stop inspanning en vraag dringende hulp."], "questions": ["Pijn/druk?", "Bij inspanning?", "Bekend hartlijden?"], "diff": ["Angina/hartinfarct", "Hartritmestoornis", "Pericarditis", "Borstwandpijn"]}, "lungs": {"name": "Longen", "system": "Ademhaling", "layer": "organs", "summary": "Gaswisseling: zuurstof opnemen en koolzuur afgeven.", "overview": ["De longen zijn essentieel voor ademhaling en inspanningstolerantie."], "symptoms": ["Hoesten", "Benauwdheid", "Pijn bij ademhalen", "Piepende ademhaling"], "redflags": ["Ernstige benauwdheid", "Blauwe lippen", "Bloed ophoesten", "Niet goed kunnen spreken"], "prevention": ["Rookstop", "Conditie", "Vaccinaties waar relevant"], "firstAid": ["Rechtop laten zitten; bij ernstige benauwdheid spoedzorg."], "questions": ["Koorts?", "Sputum?", "Plots of geleidelijk?"], "diff": ["Luchtweginfectie", "Astma/COPD-context", "Longontsteking", "Longembolie-/pneumothoraxcontext"]}, "liver": {"name": "Lever", "system": "Spijsvertering / metabolisme", "layer": "organs", "summary": "Stofwisseling, galproductie, opslag en ontgifting.", "overview": ["De lever verwerkt voedingsstoffen, medicijnen en afvalstoffen."], "symptoms": ["Pijn rechtsboven", "Moeheid", "Jeuk", "Gele huid of ogen"], "redflags": ["Geelzucht met koorts", "Bloedbraken", "Zwarte ontlasting", "Sufheid met geelzucht"], "prevention": ["Alcohol matigen", "Gewicht bewaken", "Medicatiebewustzijn"], "firstAid": ["Bij geelzucht of ernstig ziek voelen arts inschakelen."], "questions": ["Geelzucht?", "Alcohol of medicatie?"], "diff": ["Leverontsteking", "Vette lever", "Galwegprobleem", "Maag-/darmcontext"]}, "stomach": {"name": "Maag", "system": "Spijsvertering", "layer": "organs", "summary": "Reservoir en verteringsstart van voedsel.", "overview": ["De maag mengt voedsel met zuur en enzymen."], "symptoms": ["Bovenbuikpijn", "Misselijkheid", "Branderig gevoel", "Vol gevoel"], "redflags": ["Bloed braken", "Zwarte ontlasting", "Aanhoudend braken", "Onverklaard afvallen"], "prevention": ["Regelmatig eten", "Alcohol matigen", "Voorzichtig met NSAID’s"], "firstAid": ["Licht dieet en hydratatie; bij alarmsignalen beoordeling."], "questions": ["Relatie met eten?", "Reflux?"], "diff": ["Gastritis", "Reflux", "Maagzweer", "Functionele dyspepsie"]}, "intestines": {"name": "Darmen", "system": "Spijsvertering", "layer": "organs", "summary": "Opname van voedingsstoffen en transport van ontlasting.", "overview": ["Darmen zijn belangrijk voor vertering, vochtbalans en ontlasting."], "symptoms": ["Buikkrampen", "Diarree", "Verstopping", "Bloed/slijm"], "redflags": ["Aanhoudend bloedverlies", "Gewichtsverlies", "Nachtelijke klachten", "Uitdroging"], "prevention": ["Vezels", "Vocht", "Beweging", "Regelmaat"], "firstAid": ["Vocht aanvullen en medische hulp bij bloedverlies of uitdroging."], "questions": ["Diarree of obstipatie?", "Koorts?", "Bloed?"], "diff": ["Buikgriep", "Obstipatie", "Prikkelbare darm", "Inflammatoire darmziekte-context"]}, "kidneys": {"name": "Nieren", "system": "Urinewegen", "layer": "organs", "summary": "Filteren afvalstoffen en regelen vocht, zouten en bloeddruk.", "overview": ["Nieren maken urine en bewaken de interne balans."], "symptoms": ["Flankpijn", "Bloed in urine", "Koorts", "Misselijkheid"], "redflags": ["Koorts met flankpijn", "Niet kunnen plassen", "Bloed in urine na trauma"], "prevention": ["Voldoende drinken", "Bloeddruk- en diabetescontrole"], "firstAid": ["Koorts + flankpijn vraagt beoordeling."], "questions": ["Flankpijn?", "Urine anders?"], "diff": ["Niersteen", "Nierbekkenontsteking", "Rugspierprobleem"]}, "bladder": {"name": "Blaas", "system": "Urinewegen", "layer": "organs", "summary": "Opslag van urine tot het plassen.", "overview": ["Blaasklachten geven vaak aandrang, branderigheid of lage buikpijn."], "symptoms": ["Branderig plassen", "Aandrang", "Bloed in urine", "Onderbuikpijn"], "redflags": ["Niet kunnen plassen", "Koorts met plasklachten", "Zichtbaar bloed"], "prevention": ["Hydratatie", "Niet te lang ophouden", "Seksuele hygiëne"], "firstAid": ["Bij retentie of koorts arts inschakelen."], "questions": ["Pijn bij plassen?", "Frequentie?"], "diff": ["Blaasontsteking", "Blaasirritatie", "Bekkenbodemprobleem"]}, "vessels": {"name": "Bloedvaten", "system": "Bloedbaan", "layer": "circulatory", "summary": "Vervoeren bloed van en naar organen en weefsels.", "overview": ["Arteriën voeren bloed van het hart weg; venen brengen het terug."], "symptoms": ["Zwelling", "Koude ledematen", "Kleurverandering", "Pijn bij lopen"], "redflags": ["Acuut koud pijnlijk been/arm", "Plots eenzijdig dik pijnlijk been", "Kortademigheid met pijn"], "prevention": ["Beweging", "Rookstop", "Lang stilzitten onderbreken"], "firstAid": ["Acuut circulatieverlies is spoed."], "questions": ["Eén been dik?", "Kleurverschil?"], "diff": ["Vaatprobleem", "Trombosecontext", "Spier-/orthopedische context"]}, "nerves": {"name": "Zenuwen", "system": "Zenuwstelsel", "layer": "nervous", "summary": "Transporteren gevoel, pijn en motorische signalen.", "overview": ["Zenuwen verbinden hersenen en ruggenmerg met het lichaam."], "symptoms": ["Tintelingen", "Doof gevoel", "Branderige pijn", "Krachtsverlies"], "redflags": ["Snel toenemende krachtsuitval", "Rijbroekgevoel", "Nieuwe incontinentie"], "prevention": ["Ergonomie", "Beweging", "Diabetescontrole waar relevant"], "firstAid": ["Bij snelle uitval of incontinentie spoedbeoordeling."], "questions": ["Tintelingen?", "Krachtverlies?"], "diff": ["Beknelling", "Neuropathie", "Zenuwwortelprobleem"]}, "lymph": {"name": "Lymfeklieren & lymfebanen", "system": "Lymfestelsel", "layer": "lymphatic", "summary": "Onderdeel van afweer en vochtbalans.", "overview": ["Het lymfestelsel filtert lymfe en helpt infecties bestrijden."], "symptoms": ["Opgezette klieren", "Pijnlijke klier", "Zwelling arm/been"], "redflags": ["Onverklaarde hardnekkige klierzwelling", "Nachtzweten", "Onbedoeld afvallen"], "prevention": ["Wondzorg", "Infectiepreventie", "Beweging"], "firstAid": ["Langdurige of toenemende zwelling laten beoordelen."], "questions": ["Pijnlijk?", "Koorts?", "Gewichtsverlies?"], "diff": ["Reactieve klier", "Infectie", "Lymfoedeem", "Systemische oorzaak"]}, "muscles": {"name": "Spiergroepen", "system": "Spierstelsel", "layer": "muscular", "summary": "Spieren zorgen voor beweging, houding en stabiliteit.", "overview": ["Spieren werken samen met pezen, botten en zenuwen."], "symptoms": ["Spierpijn", "Kramp", "Stijfheid", "Zwakte"], "redflags": ["Ernstige zwakte", "Donkere urine na extreme belasting", "Niet kunnen gebruiken na trauma"], "prevention": ["Training rustig opbouwen", "Herstel en slaap", "Mobiliteit en warming-up"], "firstAid": ["Rust, koelen en ontzien; bij ernstige zwakte beoordeling."], "questions": ["Overbelasting?", "Trauma?"], "diff": ["Spierspanning", "Spierverrekking", "Ontsteking", "Systemische oorzaak"]}, "skeleton": {"name": "Skelet", "system": "Skelet", "layer": "skeletal", "summary": "Botten dragen het lichaam, beschermen organen en vormen gewrichten.", "overview": ["Het skelet geeft vorm, stabiliteit en bewegingsmogelijkheden."], "symptoms": ["Botpijn", "Gewrichtspijn", "Stijfheid", "Zwelling"], "redflags": ["Misvorming", "Niet kunnen belasten", "Koorts met bot/gewrichtspijn"], "prevention": ["Krachttraining", "Valpreventie", "Calcium/vitamine D-context"], "firstAid": ["Bij vermoedelijke breuk immobiliseren en laten beoordelen."], "questions": ["Trauma?", "Niet kunnen belasten?"], "diff": ["Kneuzing", "Breuk", "Gewrichtsprobleem", "Overbelasting"]}, "respiratory": {"name": "Ademhalingsstelsel", "system": "Ademhaling", "layer": "respiratory", "summary": "Neus, luchtpijp, longen en middenrif.", "overview": ["Deze laag helpt luchtweg- en longklachten gericht te duiden."], "symptoms": ["Hoesten", "Kortademigheid", "Piepende ademhaling", "Keelpijn"], "redflags": ["Ernstige benauwdheid", "Niet goed kunnen spreken", "Blauwe lippen"], "prevention": ["Rookstop", "Conditie", "Allergiebeheer"], "firstAid": ["Ernstige benauwdheid vraagt urgente beoordeling."], "questions": ["Koorts?", "Hoest?"], "diff": ["Virale luchtweginfectie", "Astma", "Bronchitis", "Pneumoniecontext"]}, "digestive": {"name": "Spijsverteringsstelsel", "system": "Spijsvertering", "layer": "digestive", "summary": "Voedseltransport, vertering, opname en uitscheiding.", "overview": ["Hier komen maag, lever, pancreas en darmen samen."], "symptoms": ["Buikpijn", "Misselijkheid", "Diarree", "Verstopping"], "redflags": ["Bloedverlies", "Ernstige pijn", "Aanhoudend braken"], "prevention": ["Vezels", "Hydratatie", "Regelmaat", "Matig alcohol"], "firstAid": ["Licht dieet en vocht bij milde klachten; alarmsignalen laten beoordelen."], "questions": ["Boven- of onderbuik?", "Diarree of obstipatie?"], "diff": ["Gastro-enteritis", "IBS-context", "Gal-/maagcontext", "Obstipatie"]}, "urinary": {"name": "Urinewegen", "system": "Urinewegen", "layer": "urinary", "summary": "Nieren, urineleiders, blaas en urinelozing.", "overview": ["Deze laag maakt urinewegklachten snel herkenbaar."], "symptoms": ["Pijn bij plassen", "Flankpijn", "Aandrang", "Bloed in urine"], "redflags": ["Niet kunnen plassen", "Koorts met flankpijn", "Zichtbaar bloed in urine"], "prevention": ["Voldoende drinken", "Hygiëne", "Niet lang ophouden"], "firstAid": ["Koorts + flankpijn of retentie: laten beoordelen."], "questions": ["Branderig plassen?", "Koorts?"], "diff": ["Urineweginfectie", "Niersteen", "Blaasirritatie"]}};
-const layerMap={"body": ["head", "chest", "abdomen", "pelvis"], "organs": ["brain", "lungs", "heart", "liver", "stomach", "intestines", "kidneys", "bladder"], "circulatory": ["heart", "vessels"], "nervous": ["brain", "nerves"], "lymphatic": ["lymph"], "muscular": ["muscles"], "skeletal": ["skeleton"], "respiratory": ["respiratory", "lungs"], "digestive": ["digestive", "liver", "stomach", "intestines"], "urinary": ["urinary", "kidneys", "bladder"]};
-const shapes={"head": {"type": "ellipse", "cx": 50, "cy": 8, "rx": 8, "ry": 7}, "chest": {"type": "rect", "x": 35, "y": 18, "w": 30, "h": 22, "rx": 12}, "abdomen": {"type": "rect", "x": 34, "y": 40, "w": 32, "h": 20, "rx": 10}, "pelvis": {"type": "rect", "x": 36, "y": 61, "w": 28, "h": 19, "rx": 10}, "brain": {"type": "ellipse", "cx": 50, "cy": 8, "rx": 7, "ry": 6}, "heart": {"type": "ellipse", "cx": 53, "cy": 27, "rx": 5, "ry": 5}, "lungs": {"type": "rect", "x": 39, "y": 18, "w": 22, "h": 18, "rx": 8}, "liver": {"type": "rect", "x": 38, "y": 34, "w": 17, "h": 9, "rx": 5}, "stomach": {"type": "ellipse", "cx": 58, "cy": 39, "rx": 5, "ry": 6}, "intestines": {"type": "rect", "x": 39, "y": 44, "w": 23, "h": 16, "rx": 6}, "kidneys": {"type": "rect", "x": 41, "y": 52, "w": 18, "h": 8, "rx": 5}, "bladder": {"type": "ellipse", "cx": 50, "cy": 74, "rx": 5, "ry": 4}, "vessels": {"type": "rect", "x": 43, "y": 15, "w": 14, "h": 55, "rx": 7}, "nerves": {"type": "rect", "x": 41, "y": 12, "w": 18, "h": 64, "rx": 8}, "lymph": {"type": "rect", "x": 39, "y": 17, "w": 22, "h": 52, "rx": 10}, "muscles": {"type": "rect", "x": 28, "y": 14, "w": 44, "h": 70, "rx": 18}, "skeleton": {"type": "rect", "x": 33, "y": 10, "w": 34, "h": 75, "rx": 14}, "respiratory": {"type": "rect", "x": 38, "y": 12, "w": 24, "h": 28, "rx": 8}, "digestive": {"type": "rect", "x": 37, "y": 31, "w": 26, "h": 30, "rx": 8}, "urinary": {"type": "rect", "x": 39, "y": 49, "w": 22, "h": 28, "rx": 8}};
-const knowledge=[{"cat": "Urgentie", "title": "Rode vlaggen eerst", "text": "Rode vlaggen worden per geselecteerde structuur aangepast. Spoedsignalen blijven altijd prioriteit hebben."}, {"cat": "Preventie", "title": "Preventie per systeem", "text": "Elke structuur toont leefstijl, belasting, voeding, hydratatie, slaap, hygiëne en follow-up waar relevant."}, {"cat": "Hormonen", "title": "Perimenopauze en vage klachten", "text": "Opvliegers, slaapstoornissen, hartkloppingen, brain fog en stemmingswisselingen kunnen hormonaal gekleurd zijn, zonder andere oorzaken uit te sluiten."}, {"cat": "Kinderen", "title": "Kind- en tienermodus", "text": "Kinderen en tieners kunnen klachten veilig beschrijven. Intieme echte beelden worden niet verwerkt. Atlasweergave blijft educatief en veilig."}, {"cat": "Seksuele gezondheid", "title": "SOA/STD en geruststelling", "text": "De app moet ruimte geven voor tekstuele begeleiding bij SOA’s, puberteitsvragen en onzekerheden zonder stigmatisering."}, {"cat": "Huid", "title": "Huid, wond en moedervlekken", "text": "Een latere module kan huidbeelden, wonden en kleurveranderingen vergelijken met medisch gecontroleerde referenties, met strikte privacybescherming."}, {"cat": "Erfelijkheid", "title": "Familiegeschiedenis", "text": "Familiepatronen kunnen de context verbreden, maar nooit op zichzelf een diagnose vormen."}, {"cat": "Eerste hulp", "title": "Wat nu?", "text": "Voor elk systeem moet duidelijk worden wat je eerst zelf kunt doen en wanneer professionele zorg nodig is."}];
-const state={layer:'body',selected:null,tab:'overview'};
-const genericFlags=['Ernstige benauwdheid','Flauwvallen of collaps','Snel zieker worden','Hevige of ondraaglijke pijn','Verwardheid of sufheid','Nieuwe uitval of krachtsverlies'];
+/* HealthLens - main SPA controller */
+(function(){
+  'use strict';
 
-function show(el){el.classList.remove('hidden')} function hide(el){el.classList.add('hidden')}
-function getProfile(){try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){return {}}}
-function saveProfile(){const p={age:$('#age').value,sex:$('#sex').value,background:$('#background').value,language:$('#language').value,displaySex:$('#displaySex').value,ageMode:$('#ageMode').value,detailLevel:$('#detailLevel').value,healthFocus:$('#healthFocus').value}; localStorage.setItem(STORE, JSON.stringify(p)); return p;}
-function applyTranslations(){const p=getProfile(); const lang=p.language||'nl'; const t=translations[lang]||translations.nl; $$('[data-i18n]').forEach(el=>{const key=el.dataset.i18n; if(t[key]) el.textContent=t[key];}); $$('[data-i18n-placeholder]').forEach(el=>{const key=el.dataset.i18nPlaceholder; if(t[key]) el.placeholder=t[key];}); document.documentElement.lang=lang;}
-function populateLanguages(){const select=$('#language'); select.innerHTML=''; Object.entries(translations).forEach(([code,t])=>{const o=document.createElement('option'); o.value=code; o.textContent=t.lang; select.appendChild(o);})}
-function loadProfile(){populateLanguages(); const p=getProfile(); const defaults={age:'',sex:'prefer-not',background:'prefer-not',language:'nl',displaySex:'male',ageMode:'adult',detailLevel:'standard',healthFocus:'general'}; Object.entries(defaults).forEach(([k,v])=>{if($('#'+k)) $('#'+k).value=p[k]||v;}); applyTranslations(); applyProfileVisuals(); updateProfileBadge();}
-function updateProfileBadge(){const p=getProfile(); const modeMap={adult:'Volwassene',teen:'Tiener',child:'Kind',older:'Oudere volwassene'}; const displayMap={male:'Man',female:'Vrouw',neutral:'Neutraal'}; $('#profileBadge').textContent=`${modeMap[p.ageMode||'adult']} · ${displayMap[p.displaySex||'male']} · ${translations[p.language||'nl']?.lang||'Nederlands'}`;}
-function applyProfileVisuals(){const p=getProfile(); const tone=$('#profileTone'); tone.className='profile-tone'; if(p.background && p.background!=='prefer-not') tone.classList.add(p.background); const modesty=$('#profileModesty'); modesty.className='profile-modesty'; if(p.ageMode==='child' || p.ageMode==='teen') modesty.classList.add(p.ageMode); else modesty.classList.add('hidden'); if(p.ageMode==='child' || p.ageMode==='teen') modesty.classList.remove('hidden'); else modesty.classList.add('hidden');}
+  const K_ACK   = 'healthlens_ack';
+  const K_LANG  = 'healthlens_lang';
+  const K_THEME = 'healthlens_theme';
+  const K_PROF  = 'healthlens_profile';
 
-function currentLayer(){return layers.find(l=>l.key===state.layer)}
-function currentStructures(){return layerMap[state.layer]||[]}
-function selectStructure(id){if(!structures[id]) return; state.selected=id; renderOverlay(); renderChips(); renderDetail(); renderRedFlags(); renderEducation(); updateFlow();}
-function setLayer(key){state.layer=key; state.selected=null; const layer=currentLayer(); $('#atlasImage').src=layer.image; $('#activeLayerTitle').textContent=layer.title; $('#activeLayerSubtitle').textContent=layer.subtitle; $('#selectionStatus').textContent=translations[getProfile().language||'nl'].noSel; renderTabs(); renderOverlay(); renderChips(); renderDetail(); renderRedFlags(); renderEducation(); updateFlow();}
+  const VIEWS = ['front','right','back','left'];
+  let viewIdx = 0;
+  let currentLayer = 'lichaam';
+  let currentOrgan = null;
+  let currentDtab  = 'uitleg';
 
-function renderTabs(){$('#layerTabs').innerHTML=layers.map(l=>`<button class="layer-tab ${l.key===state.layer?'active':''}" data-layer="${l.key}">${l.label}</button>`).join(''); $$('#layerTabs .layer-tab').forEach(btn=>btn.onclick=()=>setLayer(btn.dataset.layer));}
-function renderChips(){const quick=['head','chest','abdomen','pelvis','heart','lungs','intestines','kidneys','bladder']; $('#regionShortcuts').innerHTML=quick.map(id=>`<button class="chip" data-id="${id}">${structures[id].name}</button>`).join(''); $$('#regionShortcuts .chip').forEach(b=>b.onclick=()=>selectStructure(b.dataset.id)); $('#structureChips').innerHTML=currentStructures().map(id=>`<button class="chip ${state.selected===id?'active':''}" data-id="${id}">${structures[id].name}</button>`).join(''); $$('#structureChips .chip').forEach(b=>b.onclick=()=>selectStructure(b.dataset.id));}
-function shapeElement(id){const s=shapes[id]; let el; if(s.type==='ellipse'){el=document.createElementNS('http://www.w3.org/2000/svg','ellipse'); el.setAttribute('cx',s.cx); el.setAttribute('cy',s.cy); el.setAttribute('rx',s.rx); el.setAttribute('ry',s.ry);} else {el=document.createElementNS('http://www.w3.org/2000/svg','rect'); el.setAttribute('x',s.x); el.setAttribute('y',s.y); el.setAttribute('width',s.w); el.setAttribute('height',s.h); if(s.rx) el.setAttribute('rx',s.rx);} el.setAttribute('class','region-shape'+(state.selected===id?' active':'')); el.dataset.id=id; el.addEventListener('click',()=>selectStructure(id)); return el;}
-function positionLabel(id){const s=shapes[id]; const label=$('#selectionLabel'); if(!id){hide(label); return;} let x=s.cx || (s.x+s.w/2); let y=s.cy || (s.y); label.textContent=structures[id].name; label.style.left=`${Math.min(80, x+4)}%`; label.style.top=`${Math.max(4, y-5)}%`; show(label);}
-function renderOverlay(){const svg=$('#regionOverlay'); svg.innerHTML=''; currentStructures().forEach(id=>svg.appendChild(shapeElement(id))); if(state.selected){positionLabel(state.selected); $('#selectionStatus').textContent=structures[state.selected].name; $('#selectionTrail').textContent=`${currentLayer().label} · ${structures[state.selected].name}`;} else {positionLabel(null); $('#selectionTrail').textContent=`${currentLayer().label} · geen selectie`;}}
+  // ============================================================
+  // i18n
+  // ============================================================
+  function t(key){
+    const lang = document.getElementById('language').value || 'nl';
+    const dict = window.I18N || {};
+    const fb = dict.__fallback || 'en';
+    return (dict[lang] && dict[lang][key]) ||
+           (dict[fb]   && dict[fb][key])   ||
+           (dict.nl    && dict.nl[key])    || key;
+  }
+  function applyI18n(){
+    const lang = document.getElementById('language').value || 'nl';
+    const dict = window.I18N || {};
+    const rtl = (dict.__rtl || []).includes(lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      const v = t(k);
+      if(v && v !== k) el.textContent = v;
+    });
+    // view label
+    document.getElementById('viewLabel').textContent = t('view_' + VIEWS[viewIdx]);
+    localStorage.setItem(K_LANG, lang);
+  }
 
-function renderDetailTabs(){const tabs=[['overview','Uitleg'],['symptoms','Klachten'],['redflags','Alarmsignalen'],['prevention','Preventie'],['firstAid','Eerste hulp']]; $('#detailTabs').innerHTML=tabs.map(([key,label])=>`<button class="detail-tab ${(state.tab||'overview')===key?'active':''}" data-tab="${key}">${label}</button>`).join(''); $$('#detailTabs .detail-tab').forEach(btn=>btn.onclick=()=>{state.tab=btn.dataset.tab; renderDetail();});}
-function block(title,items,tag='ul'){return `<div class="info-card"><h4>${title}</h4><${tag}>${(items||[]).map(i=>`<li>${i}</li>`).join('')}</${tag}></div>`;}
-function renderDetail(){renderDetailTabs(); const d=state.selected?structures[state.selected]:null; if(!d){$('#detailTitle').textContent=translations[getProfile().language||'nl'].noSel; $('#detailSummary').textContent='Selecteer een regio, orgaan, spiergroep of bot in de gekozen laag.'; $('#detailBody').innerHTML='<div class="info-card"><h4>Startpunt</h4><p>Kies eerst een structuur in de actieve laag. Zodra je iets selecteert, licht dat onderdeel op en wordt de informatie direct aangepast.</p></div>'; return;} $('#detailTitle').textContent=d.name; $('#detailSummary').textContent=d.summary; const views={overview:[block('Systeem',[d.system]),block('Functie / context',d.overview)],symptoms:[block('Vaak beschreven klachten',d.symptoms),block('Gerichte vragen',d.questions)],redflags:[block('Alarmsignalen',d.redflags)],prevention:[block('Preventie & zelfzorg',d.prevention),block('Indicatieve differentiaal',d.diff,'ol')],firstAid:[block('Wat nu?',d.firstAid),block('Indicatieve differentiaal',d.diff,'ol')]}; $('#detailBody').innerHTML=(views[state.tab||'overview']||views.overview).join(''); $('#modalTitle').textContent=d.name; $('#modalBody').innerHTML=block('Systeem',[d.system])+block('Samenvatting',[d.summary])+block('Uitleg',d.overview)+block('Klachten',d.symptoms)+block('Alarmsignalen',d.redflags)+block('Preventie',d.prevention)+block('Eerste hulp',d.firstAid)+block('Indicatieve differentiaal',d.diff,'ol');}
-function renderRedFlags(){let flags=[...genericFlags]; if(state.selected) flags=[...new Set([...structures[state.selected].redflags,...genericFlags])]; $('#redFlags').innerHTML=flags.slice(0,12).map(flag=>`<button class="chip" data-flag="${flag}">${flag}</button>`).join(''); $$('#redFlags .chip').forEach(btn=>btn.onclick=()=>btn.classList.toggle('active'));}
-function renderEducation(){const d=state.selected?structures[state.selected]:null; let cards=''; if(d){cards += `<div class="info-card"><h4>${d.name}</h4><p>${d.summary}</p></div>`; cards += block('Gezond houden', d.prevention); cards += block('Gerichte vervolgvragen', d.questions); cards += block('Mogelijke richtingen', d.diff, 'ol');} else {cards = '<div class="info-card"><h4>Educatie</h4><p>Selecteer een structuur om anatomie, preventie, eerste hulp en contextuele uitleg te openen.</p></div>';} const p=getProfile(); if((p.sex==='female'||p.sex==='prefer-not') && Number(p.age)>=38 && Number(p.age)<=56) cards += '<div class="info-card"><h4>Hormonale context</h4><p>Bij vage klachten zoals opvliegers, slaapproblemen, hartkloppingen, brain fog en stemmingswisselingen kan perimenopauze meespelen, naast andere oorzaken.</p></div>'; if(p.ageMode==='child'||p.ageMode==='teen') cards += '<div class="info-card"><h4>Kind-/tienercontext</h4><p>Voor jonge gebruikers blijft geruststelling belangrijk. Intieme echte beelden worden niet geanalyseerd, maar klachten kunnen tekstueel veilig beschreven worden.</p></div>'; $('#educationPanel').innerHTML=cards;}
-function renderKnowledge(){const cats=['Alles',...new Set(knowledge.map(k=>k.cat))]; $('#knowledgeFilters').innerHTML=cats.map(cat=>`<button class="chip ${cat==='Alles'?'active':''}" data-cat="${cat}">${cat}</button>`).join(''); const draw=(cat='Alles')=>{$$('#knowledgeFilters .chip').forEach(btn=>btn.classList.toggle('active', btn.dataset.cat===cat)); const items=cat==='Alles'?knowledge:knowledge.filter(k=>k.cat===cat); $('#knowledgeCards').innerHTML=items.map(k=>`<article class="knowledge-card"><small>${k.cat}</small><h3>${k.title}</h3><p>${k.text}</p></article>`).join('');}; $$('#knowledgeFilters .chip').forEach(btn=>btn.onclick=()=>draw(btn.dataset.cat)); draw(); $('#educationCenterBody').innerHTML=knowledge.map(k=>`<article class="knowledge-card"><small>${k.cat}</small><h3>${k.title}</h3><p>${k.text}</p></article>`).join('');}
-function updateFlow(){const d=state.selected?structures[state.selected]:null; $('#selectedChip').textContent=d?`${d.name} · ${d.system}`:'Nog geen structuur gekozen'; $('#guidedQuestions').innerHTML=d?`<strong>Gerichte vragen:</strong><br>${d.questions.join(' · ')}`:'Selecteer eerst een structuur of regio voor gerichtere vragen.';}
-function inferFromText(txt){txt=txt.toLowerCase(); let score=0; const hits=[]; if(/borst|druk|knell|arm|kaak|zwet|benauw/.test(txt)){score+=3; hits.push('borst/hartalarmen genoemd');} if(/scheve mond|spraak|krachtsverlies|uitval|verward/.test(txt)){score+=4; hits.push('neurologische alarmsignalen genoemd');} if(/bloed|zwart|braken|niet plassen|flauw|collaps/.test(txt)){score+=3; hits.push('mogelijke rode vlaggen genoemd');} if(/koorts|suf|erger|plots/.test(txt)){score+=2; hits.push('algemene alarmsignalen genoemd');} return {score, hits};}
-function analyze(){const d=state.selected?structures[state.selected]:null; const txt=$('#symptomText').value.trim(); const flags=$$('#redFlags .chip.active').map(el=>el.dataset.flag); const pain=Number($('#painScore').value); const onset=$('#timeline').value; const course=$('#course').value; const general=$('#generalState').value; const inferred=inferFromText(txt); let score=inferred.score + flags.length*2 + (pain>=8?3:pain>=5?1:0) + (onset==='sudden'?2:0) + (course==='worse'?2:0) + (general==='ill'?3:general==='limited'?1:0); let level='ok'; let title='Indicatief: niet-spoedeisend / monitoren of reguliere beoordeling plannen'; if(score>=5){level='warn'; title='Indicatief: medische beoordeling aanbevolen';} if(score>=9 || flags.some(f=>['Drukkende borstpijn','Ernstige benauwdheid','Flauwvallen','Scheve mond / spraakprobleem','Niet kunnen plassen','Hevige buikpijn'].includes(f))){level='danger'; title='Indicatief: spoedbeoordeling kan nodig zijn';} const diff=d?d.diff:['Selecteer eerst een structuur voor betere duiding.']; const exclude=d?d.redflags.slice(0,4):genericFlags.slice(0,4); const context=[]; if(d) context.push(`${d.name}: ${d.summary}`); if(onset==='sudden') context.push('Plots begin verhoogt de urgentiecontext.'); if(course==='worse') context.push('Klachten die erger worden vragen lagere drempel voor beoordeling.'); if(general==='ill') context.push('Algemene indruk “ziek / niet zichzelf” verhoogt de urgentie.'); if(pain>=8) context.push('Hoge pijnscore is een extra alarmsignaal.'); const p=getProfile(); if((p.sex==='female'||p.sex==='prefer-not') && Number(p.age)>=38 && Number(p.age)<=56) context.push('Hormonale/perimenopauzale context kan bij vage klachten meespelen.'); if(p.ageMode==='child'||p.ageMode==='teen') context.push('Bij kinderen/tieners extra letten op gedrag, hydratatie en snel zieker worden.'); const next= level==='danger' ? 'Zoek dezelfde dag dringende of acute beoordeling, zeker als de klachten ernstig, plots of snel verergerend zijn.' : level==='warn' ? 'Plan medische beoordeling en gebruik de app-uitkomst alleen als richtinggevend hulpmiddel.' : 'Monitor het beloop. Bij toename, nieuwe rode vlaggen of aanhoudende klachten alsnog medische beoordeling zoeken.'; $('#analysisResult').className='analysis-result'; $('#analysisResult').innerHTML=`<h3 class="${level}">${title}</h3><div class="info-card"><h4>Gebaseerd op</h4><p>${txt||'Geen vrije tekst ingevuld.'}</p><p><strong>Pijnscore:</strong> ${pain}/10 · <strong>Begin:</strong> ${onset} · <strong>Verloop:</strong> ${course} · <strong>Algemene indruk:</strong> ${general}</p></div><div class="info-card"><h4>Geselecteerde rode vlaggen</h4><p>${flags.length?flags.join(', '):'Geen extra rode vlaggen geselecteerd.'}</p></div><div class="info-card"><h4>Indicatieve differentiaal</h4><ol>${diff.map(x=>`<li>${x}</li>`).join('')}</ol></div><div class="info-card"><h4>Belangrijke rode vlaggen om uit te sluiten</h4><ul>${exclude.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="info-card"><h4>Contextuele interpretatie</h4><ul>${context.map(x=>`<li>${x}</li>`).join('')}${inferred.hits.map(x=>`<li>Tekstanalyse: ${x}</li>`).join('')}</ul></div><div class="info-card"><h4>Adviesrichting</h4><p>${next}</p><p><strong>Belangrijk:</strong> dit is geen diagnose en vervangt geen arts, SEH of spoedzorg.</p></div>`;}
-function setupSearch(){$('#searchInput').addEventListener('input',()=>{const q=$('#searchInput').value.trim().toLowerCase(); if(q.length<2){hide($('#searchResults')); return;} const res=Object.entries(structures).filter(([id,d])=>[id,d.name,d.system,d.summary,...d.symptoms].join(' ').toLowerCase().includes(q)).slice(0,10); $('#searchResults').innerHTML=res.length?res.map(([id,d])=>`<button data-id="${id}"><strong>${d.name}</strong><br><small>${d.system}</small></button>`).join(''):'<button disabled>Geen resultaten</button>'; show($('#searchResults')); $$('#searchResults button[data-id]').forEach(btn=>btn.onclick=()=>{ const id=btn.dataset.id; const targetLayer = Object.keys(layerMap).find(layer => (layerMap[layer]||[]).includes(id)) || state.layer; setLayer(targetLayer); selectStructure(id); hide($('#searchResults')); $('#searchInput').value=''; }); });}
-function bind(){$('#acceptDisclaimer').onclick=()=>{localStorage.setItem(DISCLAIMER,'yes'); hide($('#disclaimerGate')); show($('#appShell')); if(!localStorage.getItem(STORE)) show($('#profileSheet'));}; $('#profileBtn').onclick=()=>show($('#profileSheet')); $('#navProfile').onclick=(e)=>{e.preventDefault(); show($('#profileSheet'));}; $('#closeProfile').onclick=()=>hide($('#profileSheet')); $('#profileForm').onsubmit=(e)=>{e.preventDefault(); saveProfile(); applyTranslations(); applyProfileVisuals(); updateProfileBadge(); hide($('#profileSheet'));}; $('#resetProfile').onclick=()=>{localStorage.removeItem(STORE); loadProfile(); applyTranslations(); applyProfileVisuals(); updateProfileBadge();}; $('#useInFlow').onclick=()=>{location.hash='analysis'; $('#symptomText').focus(); if(state.selected && !$('#symptomText').value.trim()) $('#symptomText').value=`Klacht bij ${structures[state.selected].name}: `;}; $('#openInfoModal').onclick=()=>show($('#infoModal')); $('#closeModal').onclick=()=>hide($('#infoModal')); $('#educationBtn').onclick=()=>show($('#educationModal')); $('#closeEducationModal').onclick=()=>hide($('#educationModal')); $('#analyzeBtn').onclick=analyze; $('#painScore').oninput=()=>$('#painLabel').textContent=`${$('#painScore').value} / 10`; $('#refreshBtn').onclick=()=>location.href='stage1q.html?v='+Date.now(); setupSearch();}
-function init(){loadProfile(); renderTabs(); renderChips(); renderOverlay(); renderDetail(); renderRedFlags(); renderEducation(); renderKnowledge(); updateFlow(); bind(); if(localStorage.getItem(DISCLAIMER)==='yes'){hide($('#disclaimerGate')); show($('#appShell')); if(!localStorage.getItem(STORE)) show($('#profileSheet'));}}
-window.addEventListener('DOMContentLoaded', init);
+  // ============================================================
+  // Disclaimer gate
+  // ============================================================
+  function initDisclaimer(){
+    const modal = document.getElementById('disclaimer');
+    const app   = document.getElementById('app');
+    if(localStorage.getItem(K_ACK) === '1'){
+      modal.remove(); app.hidden = false; return;
+    }
+    const chk = document.getElementById('ackChk');
+    const btn = document.getElementById('acceptDisclaimer');
+    chk.addEventListener('change', ()=> btn.disabled = !chk.checked);
+    btn.addEventListener('click', ()=>{
+      if(!chk.checked) return;
+      localStorage.setItem(K_ACK, '1');
+      modal.remove();
+      app.hidden = false;
+      onAppReady();
+    });
+  }
+
+  // ============================================================
+  // Theme
+  // ============================================================
+  function initTheme(){
+    const saved = localStorage.getItem(K_THEME) || 'light';
+    document.documentElement.setAttribute('data-theme', saved);
+    document.getElementById('themeToggle').addEventListener('click', ()=>{
+      const cur = document.documentElement.getAttribute('data-theme');
+      const nxt = cur === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', nxt);
+      localStorage.setItem(K_THEME, nxt);
+    });
+  }
+
+  // ============================================================
+  // Tabs
+  // ============================================================
+  function initTabs(){
+    document.querySelectorAll('.tab').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const key = btn.dataset.tab;
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        document.getElementById('panel-'+key).classList.add('active');
+        if(key === 'ar')      lazyAR();
+        if(key === 'privacy') renderStorage();
+      });
+    });
+    document.querySelectorAll('.dtab').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.dtab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentDtab = btn.dataset.dtab;
+        renderDetail();
+      });
+    });
+  }
+
+  // ============================================================
+  // Atlas
+  // ============================================================
+  function renderAtlas(){
+    const view = window.BODY_VIEWS[VIEWS[viewIdx]];
+    const vis  = (window.LAYER_VISIBILITY[currentLayer] || []);
+    let hitSvg = '';
+    view.hitRegions.forEach(r=>{
+      if(vis.length === 0) return;
+      if(!vis.includes(r.organ)) return;
+      hitSvg += `<path data-organ="${r.organ}" data-label="${r.label}" d="${r.path}"></path>`;
+    });
+    const canvas = document.getElementById('atlasCanvas');
+    canvas.innerHTML = `
+      <svg viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg" aria-label="${t('layer_' + layerToKey(currentLayer))}">
+        <g id="silhouette">${view.silhouette}</g>
+        <g id="highlight-layer"></g>
+        <g id="hit-regions" fill="transparent" stroke="transparent" style="cursor:pointer">
+          ${hitSvg}
+        </g>
+      </svg>
+    `;
+    // Add click handlers
+    canvas.querySelectorAll('#hit-regions path').forEach(p=>{
+      p.addEventListener('click', ()=>{
+        currentOrgan = p.dataset.organ;
+        redrawHighlight();
+        renderDetail();
+        buildRedFlags();
+      });
+    });
+    // Retain highlight if same organ still visible
+    redrawHighlight();
+  }
+  function layerToKey(l){
+    return ({
+      lichaam:'body', organen:'organs', bloedbaan:'circ', zenuw:'nerve',
+      lymfe:'lymph', spier:'muscle', skelet:'skel', adem:'resp',
+      spijs:'dig', urin:'uri', endo:'endo', huid:'skin'
+    })[l] || 'body';
+  }
+  function redrawHighlight(){
+    const hl = document.getElementById('highlight-layer');
+    if(!hl) return;
+    hl.innerHTML = '';
+    if(!currentOrgan) return;
+    document.querySelectorAll(`#hit-regions path[data-organ="${currentOrgan}"]`).forEach(p=>{
+      const clone = p.cloneNode(false);
+      clone.setAttribute('class','selected-region');
+      clone.removeAttribute('data-organ');
+      hl.appendChild(clone);
+    });
+  }
+
+  function initAtlas(){
+    document.querySelectorAll('.layer-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.layer-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLayer = btn.dataset.layer;
+        renderAtlas();
+      });
+    });
+    document.getElementById('rotLeft').addEventListener('click', ()=> rotate(-1));
+    document.getElementById('rotRight').addEventListener('click', ()=> rotate(1));
+  }
+  function rotate(d){
+    const canvas = document.getElementById('atlasCanvas');
+    canvas.classList.add('rotating');
+    setTimeout(()=>{
+      viewIdx = (viewIdx + d + VIEWS.length) % VIEWS.length;
+      document.getElementById('viewLabel').textContent = t('view_' + VIEWS[viewIdx]);
+      renderAtlas();
+      canvas.classList.remove('rotating');
+    }, 180);
+  }
+
+  // ============================================================
+  // Detail panel
+  // ============================================================
+  function renderDetail(){
+    const box   = document.getElementById('detail-content');
+    const title = document.getElementById('detail-title');
+    const sys   = document.getElementById('detail-system');
+    if(!currentOrgan || !window.MEDDB[currentOrgan]){
+      title.textContent = t('select_structure');
+      sys.textContent   = '';
+      box.innerHTML     = `<p class="muted">${t('no_selection')}</p>`;
+      return;
+    }
+    const d = window.MEDDB[currentOrgan];
+    title.textContent = d.naam;
+    sys.textContent   = d.systeem;
+    let html = '';
+    switch(currentDtab){
+      case 'uitleg':
+        html = `<p>${d.omschrijving}</p><p><strong>Functie:</strong> ${d.functie}</p>`;
+        break;
+      case 'klachten':   html = list(d.klachten); break;
+      case 'alarm':      html = list(d.rodeVlaggen, 'urg-high'); break;
+      case 'preventie':  html = list(d.preventie); break;
+      case 'eerstehulp': html = list(d.eersteHulp); break;
+      case 'oorzaken':   html = list(d.differentiaal); break;
+      case 'leren':
+        html = `<p>${d.leren || ''}</p>` +
+               (d.follow_up ? `<p class="muted"><strong>Vervolgvragen:</strong></p>${list(d.follow_up)}` : '');
+        break;
+    }
+    box.innerHTML = html;
+  }
+  function list(arr, cls){
+    if(!arr || !arr.length) return `<p class="muted">Geen informatie.</p>`;
+    return '<ul>' + arr.map(x=>`<li${cls?` class="${cls}"`:''}>${esc(x)}</li>`).join('') + '</ul>';
+  }
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, c => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    })[c]);
+  }
+
+  // ============================================================
+  // Complaint flow
+  // ============================================================
+  const GENERIC = [
+    "Bewustzijnsverlies","Ernstige benauwdheid","Verwardheid",
+    "Hoge koorts (>39.5°C)","Ernstige bloeding",
+    "Plotseling ontstaan","Onverklaard gewichtsverlies"
+  ];
+  function buildRedFlags(){
+    const wrap = document.getElementById('k_redflags');
+    if(!wrap) return;
+    let flags = GENERIC.slice();
+    if(currentOrgan && window.MEDDB[currentOrgan]){
+      flags = flags.concat(window.MEDDB[currentOrgan].rodeVlaggen);
+    }
+    wrap.innerHTML = flags.map(f =>
+      `<label><input type="checkbox" value="${esc(f)}"> ${esc(f)}</label>`
+    ).join('');
+  }
+  function initComplaint(){
+    const pain = document.getElementById('k_pain');
+    const val  = document.getElementById('k_pain_val');
+    pain.addEventListener('input', ()=> val.textContent = pain.value);
+    buildRedFlags();
+    document.getElementById('k_analyze').addEventListener('click', analyze);
+    document.getElementById('k_print').addEventListener('click', ()=> window.print());
+  }
+  function analyze(){
+    const desc   = document.getElementById('k_desc').value.trim();
+    const p      = +document.getElementById('k_pain').value;
+    const onset  = document.getElementById('k_onset').value;
+    const course = document.getElementById('k_course').value;
+    const imp    = document.getElementById('k_impression').value;
+    const checked = Array.from(document.querySelectorAll('#k_redflags input:checked'))
+                         .map(x => x.value);
+    const profile = getProfile();
+
+    let score = 0;
+    const reasons = [];
+    if(p>=8){ score+=3; reasons.push(`Pijnscore ${p}/10 (zeer hoog)`); }
+    else if(p>=5){ score+=2; reasons.push(`Pijnscore ${p}/10 (hoog)`); }
+    else if(p>=3){ score+=1; reasons.push(`Pijnscore ${p}/10 (matig)`); }
+    if(onset==='plots'){ score+=2; reasons.push('Plotseling begin'); }
+    else if(onset==='uren'){ score+=1; reasons.push('Begin binnen uren'); }
+    if(course==='erger'){ score+=2; reasons.push('Klachten worden erger'); }
+    else if(course==='aanvallen'){ score+=1; reasons.push('Aanvalsgewijs verloop'); }
+    if(imp==='ernstig'){ score+=3; reasons.push('Voelt zich ernstig ziek'); }
+    else if(imp==='ziek'){ score+=2; reasons.push('Voelt zich ziek'); }
+    else if(imp==='matig'){ score+=1; reasons.push('Matige indruk'); }
+    if(checked.length){
+      score += checked.length * 2;
+      reasons.push(`${checked.length} alarmsignaal(en) aangevinkt`);
+    }
+    if(profile && profile.p_age && +profile.p_age >= 65){
+      score += 1; reasons.push('Leeftijd ≥ 65 (extra alertheid)');
+    }
+
+    let urg='urg-low', label = t('urgency_low');
+    if(score >= 8){ urg='urg-high'; label = t('urgency_high'); }
+    else if(score >= 4){ urg='urg-mid'; label = t('urgency_mid'); }
+
+    const diff = (currentOrgan && window.MEDDB[currentOrgan]) ? window.MEDDB[currentOrgan].differentiaal : [];
+    const flagsToExclude = (currentOrgan && window.MEDDB[currentOrgan]) ? window.MEDDB[currentOrgan].rodeVlaggen : [];
+
+    const out = document.getElementById('k_output');
+    out.hidden = false;
+    out.innerHTML = `
+      <p><strong>Indicatie urgentie:</strong> <span class="${urg}">${esc(label)}</span></p>
+      <p class="reasoning"><strong>Onderbouwing:</strong> ${reasons.length ? reasons.map(esc).join(' · ') : 'weinig risicofactoren'}</p>
+      <p><strong>Uw omschrijving:</strong> ${esc(desc || '—')}</p>
+      <p><strong>Aangevinkte alarmsignalen:</strong> ${checked.length ? checked.map(esc).join(', ') : 'geen'}</p>
+      ${diff.length ? `<p><strong>Indicatieve mogelijke oorzaken:</strong> ${diff.map(esc).join(', ')}</p>` : ''}
+      ${flagsToExclude.length ? `<p><strong>Actief uitsluiten:</strong> ${flagsToExclude.slice(0,4).map(esc).join(', ')}</p>` : ''}
+      <p class="muted"><em>${esc(t('no_diagnosis_note'))}</em></p>
+    `;
+    out.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  // ============================================================
+  // Profile
+  // ============================================================
+  const PFIELDS = ['p_age','p_sex','p_display','p_bg','p_type','p_height','p_weight',
+                   'p_conditions','p_meds','p_allergies','p_family'];
+
+  function getProfile(){
+    try { return JSON.parse(localStorage.getItem(K_PROF) || '{}'); }
+    catch(e){ return {}; }
+  }
+  function initProfile(){
+    const data = getProfile();
+    PFIELDS.forEach(f=>{
+      if(data[f] !== undefined && document.getElementById(f)){
+        document.getElementById(f).value = data[f];
+      }
+    });
+    document.getElementById('p_save').addEventListener('click', ()=>{
+      const d = {};
+      PFIELDS.forEach(f => d[f] = document.getElementById(f).value);
+      localStorage.setItem(K_PROF, JSON.stringify(d));
+      document.getElementById('p_status').textContent = 'Opgeslagen (lokaal).';
+    });
+    document.getElementById('p_export').addEventListener('click', ()=> window.Privacy.exportData());
+    document.getElementById('p_clear').addEventListener('click', ()=>{
+      localStorage.removeItem(K_PROF);
+      PFIELDS.forEach(f => { if(document.getElementById(f)) document.getElementById(f).value = ''; });
+      document.getElementById('p_status').textContent = 'Gewist.';
+    });
+  }
+
+  // ============================================================
+  // Education
+  // ============================================================
+  const EDU_MODULES = [
+    {title:"Anatomie per laag",         body:"Verken lichaam op laag: skelet, spieren, organen, zenuwen en meer."},
+    {title:"Organen en functies",       body:"Wat doet elk orgaan en hoe werken ze samen in systemen."},
+    {title:"Veelvoorkomende klachten",  body:"Overzicht van alledaagse klachten en hun context."},
+    {title:"Alarmsignalen herkennen",   body:"Wanneer is direct hulp nodig? Leer de belangrijkste rode vlaggen."},
+    {title:"Preventie per systeem",     body:"Praktische leefstijl- en screeningtips per orgaan­systeem."},
+    {title:"Eerste hulp",               body:"Basisvaardigheden bij verwondingen, benauwdheid en flauwvallen."},
+    {title:"Kinderen en puberteit",     body:"Veilige uitleg over lichamelijke ontwikkeling en normale variatie."},
+    {title:"Seksuele gezondheid",       body:"SOA-symptomen, wanneer testen, en consent zonder stigma."},
+    {title:"Perimenopauze",             body:"Hormonale veranderingen en herkennen van andere oorzaken."},
+    {title:"Erfelijkheid & familie",    body:"Wanneer familiegeschiedenis reden is voor extra alertheid."},
+    {title:"Huid en wondzorg",          body:"Verzorging, wondgenezing en wanneer een dokter nodig is."},
+    {title:"Gezonde leefstijl",         body:"Beweging, voeding, slaap en stress als fundament van gezondheid."},
+    {title:"Medicatiebewustzijn",       body:"Interacties, dosering, en verstandig omgaan met pijnstillers."},
+    {title:"Wanneer huisarts of spoed", body:"Praktische beslissingsboom voor huisarts, HAP of 112."},
+    {title:"Internationale zorg",       body:"Reizen, vaccinaties en toegang tot zorg in het buitenland."},
+    {title:"Kennisquiz",                body:"Test uw kennis en herken lichaamsstructuren in korte oefeningen."}
+  ];
+  function initEducation(){
+    const wrap = document.getElementById('eduCards');
+    wrap.innerHTML = EDU_MODULES.map((m,i)=>`
+      <article class="edu-card" data-idx="${i}">
+        <h3>${esc(m.title)}</h3>
+        <p>${esc(m.body)}</p>
+      </article>
+    `).join('');
+    wrap.querySelectorAll('.edu-card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const m = EDU_MODULES[+card.dataset.idx];
+        openModal(m.title, `<p>${esc(m.body)}</p>
+          <p class="muted">Deze module wordt in een volgende versie verder uitgebreid met interactieve inhoud en vertaalde tekst.</p>`);
+      });
+    });
+  }
+
+  // Modal helper
+  function openModal(title, html){
+    const overlay = document.createElement('div');
+    overlay.className = 'modal';
+    overlay.innerHTML = `
+      <div class="modal-card">
+        <h2>${esc(title)}</h2>
+        ${html}
+        <div class="row spread"><button class="btn primary" id="__closeModal">Sluiten</button></div>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.querySelector('#__closeModal').addEventListener('click', ()=> overlay.remove());
+    overlay.addEventListener('click', e=>{ if(e.target === overlay) overlay.remove(); });
+  }
+
+  // ============================================================
+  // Privacy panel
+  // ============================================================
+  function renderStorage(){
+    const wrap = document.getElementById('storageUsage');
+    const list = window.Privacy.listStorageUsage();
+    if(!list.length){ wrap.textContent = 'Nog geen gegevens opgeslagen.'; return; }
+    wrap.innerHTML = list.map(x =>
+      `<div>${esc(x.key)} — ${x.bytes} bytes</div>`
+    ).join('');
+  }
+  function initPrivacy(){
+    document.getElementById('privExport').addEventListener('click', ()=> window.Privacy.exportData());
+    document.getElementById('privWipe').addEventListener('click', ()=>{
+      if(confirm('Weet u zeker dat u alle lokale HealthLens-gegevens wilt verwijderen?')){
+        window.Privacy.wipeAll();
+      }
+    });
+  }
+
+  // ============================================================
+  // AR lazy loader
+  // ============================================================
+  let arLoaded = false;
+  function lazyAR(){
+    if(arLoaded) return;
+    arLoaded = true;
+    const s = document.createElement('script');
+    s.src = 'ar.js';
+    s.onload = ()=> { if(window.Ar && window.Ar.init) window.Ar.init(); };
+    document.body.appendChild(s);
+  }
+
+  // ============================================================
+  // Service worker
+  // ============================================================
+  function initSW(){
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('sw.js').catch(()=>{});
+    }
+  }
+
+  // ============================================================
+  // Init
+  // ============================================================
+  function onAppReady(){
+    // language
+    const savedLang = localStorage.getItem(K_LANG) || 'nl';
+    document.getElementById('language').value = savedLang;
+    document.getElementById('language').addEventListener('change', ()=>{ applyI18n(); renderAtlas(); renderDetail(); buildRedFlags(); });
+
+    initTheme();
+    initTabs();
+    initAtlas();
+    initComplaint();
+    initProfile();
+    initEducation();
+    initPrivacy();
+    renderAtlas();
+    renderDetail();
+    applyI18n();
+    initSW();
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    initDisclaimer();
+    if(!document.getElementById('disclaimer')){
+      onAppReady();
+    }
+  });
+})();
