@@ -1,10 +1,9 @@
 # Changelog
 
-## Stage 1M
-- Removed amateur pseudo-3D.
-- Removed technical build notes from app UI.
-- Added clean professional default body atlas.
-- Added click-anywhere body mapping.
-- Improved symptom analysis with indicative differential.
-- Improved profile modal actions.
-- Retained refresh-safe deployment.
+## Stage 1N
+- Replaced previous basic atlas presentation with harmonized staged anatomy images.
+- Added full layer set: body, organs, circulatory, nervous, lymphatic, muscular, skeletal, respiratory, digestive and urinary.
+- Added larger hotspots and quick structure chips for easier interaction.
+- Added richer overlay information cards.
+- Expanded symptom flow, knowledge bank, prevention, and quiz.
+- Preserved clean white professional UI.
