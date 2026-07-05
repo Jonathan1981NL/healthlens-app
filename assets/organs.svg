@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 941 1672" width="941" height="1672">
+  <defs>
+    <linearGradient id="skin" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f1c7a8"/><stop offset="1" stop-color="#dfaa83"/></linearGradient>
+    <linearGradient id="soft" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#eef4f8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="941" height="1672" fill="url(#soft)"/>
+  <text x="470" y="54" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#64748b">Organs</text>
+  
+  <g id="body" filter="url(#shadow)" opacity=".98">
+    <ellipse cx="470" cy="145" rx="72" ry="86" fill="url(#skin)" stroke="#9b6b4a" stroke-width="3"/>
+    <path d="M405 238 C330 275 315 380 300 530 L260 820 C254 870 314 878 328 828 L370 545 L365 760 L335 1190 L310 1535 C307 1590 392 1600 405 1540 L455 1195 L472 850 L488 1195 L536 1540 C549 1600 635 1590 630 1535 L605 1190 L575 760 L570 545 L613 828 C627 878 687 870 681 820 L640 530 C625 380 610 275 535 238 C510 226 430 226 405 238 Z" fill="url(#skin)" stroke="#9b6b4a" stroke-width="4"/>
+  </g>
+
+  <g stroke="#7f1d1d" stroke-width="3" opacity=".94">
+    <ellipse cx="430" cy="410" rx="70" ry="115" fill="#93c5fd"/>
+    <ellipse cx="515" cy="410" rx="70" ry="115" fill="#93c5fd"/>
+    <ellipse cx="485" cy="470" rx="42" ry="55" fill="#ef4444"/>
+    <path d="M345 595 C420 545 520 560 586 610 C575 682 435 705 340 655 Z" fill="#b45309"/>
+    <ellipse cx="548" cy="660" rx="45" ry="65" fill="#f59e0b"/>
+    <path d="M388 720 C380 815 565 815 556 720 C520 748 428 748 388 720 Z" fill="#fb923c"/>
+    <rect x="365" y="760" width="210" height="210" rx="55" fill="#fbbf24"/>
+    <ellipse cx="395" cy="930" rx="43" ry="64" fill="#f87171"/>
+    <ellipse cx="545" cy="930" rx="43" ry="64" fill="#f87171"/>
+    <ellipse cx="470" cy="1120" rx="45" ry="35" fill="#60a5fa"/>
+  </g>
+
+</svg>

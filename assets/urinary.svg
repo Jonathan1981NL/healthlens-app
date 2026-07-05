@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 941 1672" width="941" height="1672">
+  <defs>
+    <linearGradient id="skin" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f1c7a8"/><stop offset="1" stop-color="#dfaa83"/></linearGradient>
+    <linearGradient id="soft" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#eef4f8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-opacity=".12"/></filter>
+  </defs>
+  <rect width="941" height="1672" fill="url(#soft)"/>
+  <text x="470" y="54" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#64748b">Urinary system</text>
+  
+  <g id="body" filter="url(#shadow)" opacity=".98">
+    <ellipse cx="470" cy="145" rx="72" ry="86" fill="url(#skin)" stroke="#9b6b4a" stroke-width="3"/>
+    <path d="M405 238 C330 275 315 380 300 530 L260 820 C254 870 314 878 328 828 L370 545 L365 760 L335 1190 L310 1535 C307 1590 392 1600 405 1540 L455 1195 L472 850 L488 1195 L536 1540 C549 1600 635 1590 630 1535 L605 1190 L575 760 L570 545 L613 828 C627 878 687 870 681 820 L640 530 C625 380 610 275 535 238 C510 226 430 226 405 238 Z" fill="url(#skin)" stroke="#9b6b4a" stroke-width="4"/>
+  </g>
+
+  <g stroke="#0e7490" stroke-width="4" opacity=".95">
+    <ellipse cx="395" cy="820" rx="48" ry="75" fill="#67e8f9"/>
+    <ellipse cx="545" cy="820" rx="48" ry="75" fill="#67e8f9"/>
+    <path d="M405 890 C420 970 445 1025 462 1100" fill="none"/>
+    <path d="M535 890 C520 970 495 1025 478 1100" fill="none"/>
+    <ellipse cx="470" cy="1130" rx="55" ry="45" fill="#38bdf8"/>
+    <path d="M470 1175 L470 1235" fill="none" stroke-width="8"/>
+  </g>
+
+</svg>
