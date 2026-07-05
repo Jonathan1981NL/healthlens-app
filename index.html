@@ -2,32 +2,34 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="robots" content="noindex" />
-  <title>HealthLens Stage 1F</title>
-  <link rel="icon" href="favicon.svg?v=1f" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles-1f.css?v=1f-20260705" />
+  <title>HealthLens Stage 1H</title>
+  <link rel="icon" href="favicon.svg?v=1h" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css?v=1h-20260705" />
 </head>
 <body>
-  <noscript>HealthLens heeft JavaScript nodig voor de interactieve atlas.</noscript>
   <div id="app" class="app-shell">
-    <header class="topbar">
+    <header class="topbar glass">
       <div>
-        <div class="eyebrow">HealthLens · Stage 1F</div>
-        <h1>Je lichaam, laag voor laag begrepen.</h1>
-        <p>Interactieve atlas, klachtenoriëntatie, preventie, EHBO en quiz — privacy-first en mobiel gebouwd.</p>
+        <div class="eyebrow">HealthLens · Stage 1H</div>
+        <h1>Diepere anatomie. Minder klikken. Meer inzicht.</h1>
+        <p>Realistischere atlaslagen met detail-hotspots, directe zoom, orgaan-drilldown, profielgeheugen en rijkere medische kenniskaarten.</p>
       </div>
-      <button id="openProfile" class="pill primary">Mijn profiel</button>
+      <div class="top-actions">
+        <button class="pill primary" id="profileBtn">Mijn profiel</button>
+        <button class="pill" id="latestBtn">Ververs laatste versie</button>
+      </div>
     </header>
 
     <section id="profileGate" class="profile-gate hidden">
-      <div class="panel large">
-        <div class="section-label">Eerste instelling</div>
-        <h2>Stem HealthLens op jou af</h2>
-        <p class="muted">Deze gegevens worden lokaal op dit apparaat bewaard. Je kunt alles overslaan, wijzigen of wissen.</p>
+      <div class="panel profile-panel">
+        <div class="section-label">Persoonlijk profiel</div>
+        <h2>Maak de app relevanter voor jou</h2>
+        <p class="muted">Dit profiel wordt lokaal op dit apparaat onthouden. Het helpt om informatie beter te filteren en te duiden. Je kunt alles overslaan, aanpassen of wissen.</p>
+
         <form id="profileForm" class="profile-grid">
           <label>Leeftijd
             <input id="age" type="number" min="0" max="120" placeholder="Bijv. 42" />
@@ -57,19 +59,21 @@
             <select id="language">
               <option value="nl">Nederlands</option>
               <option value="en">English</option>
-              <option value="es">Español</option>
               <option value="de">Deutsch</option>
               <option value="fr">Français</option>
+              <option value="es">Español</option>
             </select>
           </label>
-          <div class="explain span2">
-            <strong>Waarom vragen we dit?</strong><br />
-            Sommige klachten, huidbeelden en gezondheidsrisico’s kunnen per leeftijd, geslacht en achtergrond anders voorkomen of anders herkend worden. Deze informatie helpt de app om uitleg en indicatieve beoordeling beter af te stemmen. Overslaan mag altijd.
+
+          <div class="callout span2">
+            <strong>Waarom vragen we achtergrond / afkomst?</strong><br/>
+            Sommige klachten, huidbeelden en gezondheidsrisico’s kunnen per leeftijd, geslacht en achtergrond anders voorkomen of anders herkend worden. Dit helpt de app om uitleg en indicatieve duiding beter toe te spitsen. Het blijft optioneel en is nooit een harde diagnosefactor.
           </div>
-          <div class="actions span2">
-            <button class="pill primary" type="submit">Opslaan en starten</button>
-            <button class="pill" type="button" id="skipProfile">Overslaan</button>
-            <button class="pill danger" type="button" id="wipeProfile">Wis lokale gegevens</button>
+
+          <div class="span2 actions-row">
+            <button class="pill primary" type="submit">Opslaan</button>
+            <button class="pill" id="skipProfile" type="button">Overslaan</button>
+            <button class="pill danger" id="wipeProfile" type="button">Profiel wissen</button>
           </div>
         </form>
       </div>
@@ -79,100 +83,95 @@
       <section class="panel atlas-panel" id="atlas">
         <div class="panel-head">
           <div>
-            <div class="section-label">Interactive Atlas</div>
-            <h2>Zoom in op regio’s en lagen</h2>
+            <div class="section-label">Atlas Studio</div>
+            <h2>Tap, zoom, drill down</h2>
+            <p class="muted">Tik direct op kleine structuren. De atlas zoomt in, houdt je context vast en toont functie, klachten, alarmsignalen en preventie.</p>
           </div>
-          <button id="resetZoom" class="pill">Reset view</button>
+          <div class="panel-head-actions">
+            <button class="pill" id="resetBtn">Reset</button>
+            <button class="pill" id="deepBtn">Detailmodus</button>
+          </div>
         </div>
-        <div class="layer-strip" id="layerStrip"></div>
-        <div class="atlas-stage">
-          <div class="body-wrap" id="bodyWrap">
-            <svg id="bodySvg" viewBox="0 0 420 760" role="img" aria-label="Interactieve lichaamsatlas">
-              <defs>
-                <radialGradient id="skin" cx="50%" cy="28%" r="70%"><stop offset="0" stop-color="#ffe4d6"/><stop offset="0.55" stop-color="#d7a086"/><stop offset="1" stop-color="#8d5c50"/></radialGradient>
-                <linearGradient id="glass" x1="0" x2="1"><stop offset="0" stop-color="#67e8f9" stop-opacity=".35"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".32"/></linearGradient>
-                <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              </defs>
-              <g id="skinLayer" class="layer on">
-                <ellipse class="body-skin zone" data-zone="head" cx="210" cy="90" rx="58" ry="66"/>
-                <path class="body-skin zone" data-zone="chest" d="M150,160 C122,210 118,315 146,390 C170,432 250,432 274,390 C302,315 298,210 270,160 C238,145 182,145 150,160Z"/>
-                <path class="body-skin zone" data-zone="abdomen" d="M150,350 C134,410 140,475 162,522 C184,548 236,548 258,522 C280,475 286,410 270,350 C238,372 182,372 150,350Z"/>
-                <path class="body-skin zone" data-zone="pelvis" d="M162,505 C148,550 156,596 185,618 C200,628 220,628 235,618 C264,596 272,550 258,505Z"/>
-                <path class="body-skin zone" data-zone="arms" d="M146,185 C94,220 78,333 86,438 C90,488 126,488 128,438 C132,332 144,270 164,212Z M274,185 C326,220 342,333 334,438 C330,488 294,488 292,438 C288,332 276,270 256,212Z"/>
-                <path class="body-skin zone" data-zone="legs" d="M178,606 C158,658 154,722 176,744 C200,740 202,650 205,616Z M242,606 C262,658 266,722 244,744 C220,740 218,650 215,616Z"/>
-              </g>
-              <g id="organLayer" class="layer">
-                <ellipse class="organ zone" data-zone="lungs" cx="182" cy="260" rx="42" ry="78"/><ellipse class="organ zone" data-zone="lungs" cx="238" cy="260" rx="42" ry="78"/>
-                <path class="organ heart zone" data-zone="heart" d="M210,270 C185,240 145,262 160,300 C172,330 210,350 210,350 C210,350 248,330 260,300 C275,262 235,240 210,270Z"/>
-                <path class="organ liver zone" data-zone="liver" d="M145,382 C177,348 244,348 278,382 C265,418 195,424 146,405Z"/>
-                <ellipse class="organ zone" data-zone="gut" cx="210" cy="474" rx="70" ry="55"/>
-                <ellipse class="organ kidney zone" data-zone="kidney" cx="165" cy="438" rx="18" ry="32"/><ellipse class="organ kidney zone" data-zone="kidney" cx="255" cy="438" rx="18" ry="32"/>
-              </g>
-              <g id="boneLayer" class="layer">
-                <path class="bone" d="M210,146 L210,610 M164,190 L256,190 M152,250 L268,250 M172,330 L248,330"/>
-                <circle class="bone" cx="210" cy="88" r="50"/><path class="bone" d="M180,618 L176,735 M240,618 L244,735 M128,220 L96,462 M292,220 L324,462"/>
-              </g>
-              <g id="muscleLayer" class="layer">
-                <path class="muscle" d="M155,170 C120,240 130,380 176,420 C190,335 188,230 155,170Z"/><path class="muscle" d="M265,170 C300,240 290,380 244,420 C230,335 232,230 265,170Z"/>
-                <path class="muscle" d="M170,520 C190,575 192,665 176,738 M250,520 C230,575 228,665 244,738"/>
-              </g>
-              <g id="vesselLayer" class="layer">
-                <path class="vessel" d="M210,150 C206,220 214,270 210,350 C206,440 210,530 210,612"/>
-                <path class="vessel" d="M210,250 C160,270 120,340 100,450 M210,250 C260,270 300,340 320,450 M210,575 C178,625 170,690 178,742 M210,575 C242,625 250,690 242,742"/>
-              </g>
-              <g id="nerveLayer" class="layer">
-                <path class="nerve" d="M210,125 L210,610 M210,230 C155,270 135,350 125,455 M210,230 C265,270 285,350 295,455 M210,600 C192,655 190,705 176,745 M210,600 C228,655 230,705 244,745"/>
-              </g>
-              <g id="hormoneLayer" class="layer">
-                <circle class="hormone zone" data-zone="thyroid" cx="210" cy="166" r="18"/><circle class="hormone zone" data-zone="pancreas" cx="220" cy="395" r="18"/><circle class="hormone zone" data-zone="adrenal" cx="165" cy="405" r="11"/><circle class="hormone zone" data-zone="adrenal" cx="255" cy="405" r="11"/>
-              </g>
-              <g id="labels"></g>
-            </svg>
+
+        <div class="layer-tabs" id="layerTabs"></div>
+
+        <div class="atlas-layout">
+          <div class="atlas-card glass">
+            <div class="atlas-toolbar">
+              <div>
+                <div id="layerTitle" class="atlas-layer-title">Organen</div>
+                <div id="selectedBreadcrumb" class="atlas-breadcrumb">Volledig lichaam</div>
+              </div>
+              <div class="search-box">
+                <input id="atlasSearch" placeholder="Zoek orgaan, bot, zenuw..." />
+                <div id="searchResults" class="search-results hidden"></div>
+              </div>
+            </div>
+
+            <div class="atlas-viewport" id="atlasViewport">
+              <div class="atlas-canvas" id="atlasCanvas"></div>
+            </div>
+
+            <div class="atlas-footer">
+              <button class="pill primary" id="symptomFromAtlas">Gebruik voor klachten</button>
+              <button class="pill" id="preventionFromAtlas">Preventie</button>
+              <button class="pill" id="compareLayersBtn">Vergelijk lagen</button>
+            </div>
           </div>
-          <aside class="info-card" id="infoCard">
-            <div class="section-label">Geselecteerd</div>
-            <h3 id="infoTitle">Tik op een regio of orgaan</h3>
-            <p id="infoSummary">Je kunt inzoomen op het lichaam, lagen wisselen en direct klachten, alarmsignalen en preventie bekijken.</p>
-            <div id="infoDetails" class="detail-list"></div>
-            <div class="quick-actions">
-              <button class="pill primary" id="useForSymptoms">Gebruik voor klachten</button>
-              <button class="pill" id="openPrevention">Preventie</button>
+
+          <aside class="info-panel glass">
+            <div class="section-label">Detailkaart</div>
+            <h3 id="detailTitle">Kies een structuur</h3>
+            <p id="detailSubtitle" class="muted">Je hoeft niet naar een nieuw scherm: alles blijft in dezelfde flow.</p>
+
+            <div id="detailTabs" class="detail-tabs"></div>
+            <div id="detailBody" class="detail-body"></div>
+
+            <div class="substructure-box">
+              <div class="section-label">Dieper kijken</div>
+              <div id="substructures" class="substructure-list"></div>
             </div>
           </aside>
         </div>
       </section>
 
-      <section class="panel compact" id="symptoms">
-        <div class="section-label">Symptom Guide</div>
-        <h2>Beschrijf klachten in één flow</h2>
-        <textarea id="symptomText" placeholder="Bijv. stekende pijn rechtsboven in de buik sinds gisteren, misselijk, geen koorts..."></textarea>
-        <div class="chips" id="redFlags"></div>
+      <section class="panel" id="symptoms">
+        <div class="section-label">Klachtenflow</div>
+        <h2>Analyseer met locatiecontext</h2>
+        <div id="activeSelectionChip" class="selected-chip">Nog geen atlasselectie gekozen</div>
+        <textarea id="symptomText" placeholder="Omschrijf je klacht. Bijvoorbeeld: stekende pijn rechtsboven in de buik sinds gisteren, misselijk, geen koorts..."></textarea>
+        <div id="redFlags" class="chips"></div>
         <button class="pill primary wide" id="analyzeBtn">Indicatief analyseren</button>
-        <div id="result" class="result-box"></div>
+        <div id="analysisResult" class="result-box"></div>
       </section>
 
-      <section class="panel compact" id="knowledge">
-        <div class="section-label">Knowledge Base</div>
-        <h2>Snelle medische kaarten</h2>
+      <section class="panel" id="knowledge">
+        <div class="section-label">Database preview</div>
+        <h2>Kenniskaarten</h2>
+        <div id="knowledgeFilters" class="chips"></div>
         <div id="knowledgeCards" class="card-list"></div>
       </section>
 
-      <section class="panel compact" id="privacy">
-        <div class="section-label">Privacy Shield</div>
-        <h2>Veilig vanaf ontwerp</h2>
+      <section class="panel">
+        <div class="section-label">Roadmap naar echte 3D</div>
+        <h2>Wat deze build oplost</h2>
         <div class="rule-grid">
-          <div><strong>Onder 16</strong><span>Geen intieme foto’s/scans; tekstuele klachtenflow blijft beschikbaar.</span></div>
-          <div><strong>Volwassenen</strong><span>Gevoelige beelden alleen met expliciete toestemming en lokale verwerking.</span></div>
-          <div><strong>Data</strong><span>Profiel lokaal opgeslagen; wissen kan altijd.</span></div>
+          <div><strong>Realistischer beeld</strong><span>De atlas gebruikt nu realistische anatomiebeelden met preciezere hotspots.</span></div>
+          <div><strong>Meer granulariteit</strong><span>Organen, botten, vaten en zenuwstructuren zijn kleiner en specifieker selecteerbaar.</span></div>
+          <div><strong>Drill-down</strong><span>Elke structuur kan naar substructuren, klachten en preventie worden verdiept.</span></div>
+          <div><strong>Volgende technische sprong</strong><span>Voor echte 3D-rotatie is een gelicentieerde 3D-anatomie assetset nodig.</span></div>
         </div>
-        <button class="pill danger" id="clearEverything">Wis alle lokale HealthLens-data</button>
       </section>
     </main>
 
-    <nav class="bottom-nav">
-      <a href="#atlas">Atlas</a><a href="#symptoms">Klachten</a><a href="#knowledge">Kennis</a><a href="#privacy">Privacy</a>
+    <nav class="bottom-nav glass">
+      <a href="#atlas">Atlas</a>
+      <a href="#symptoms">Klachten</a>
+      <a href="#knowledge">Database</a>
+      <a href="#" id="bottomProfileBtn">Profiel</a>
     </nav>
   </div>
-  <script src="app-1f.js?v=1f-20260705" defer></script>
+
+  <script src="app.js?v=1h-20260705"></script>
 </body>
 </html>

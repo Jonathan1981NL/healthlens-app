@@ -1,7 +1,26 @@
-# HealthLens Stage 1F
+# HealthLens Stage 1H
 
-Development build with no-cache/PWA reset, persistent local profile, interactive zoom atlas, richer knowledge cards and mobile-first layout.
+Stage 1H is a larger atlas and database upgrade.
 
-Public description: HealthLens is a privacy-first interactive health app that helps people explore the human body, understand symptoms, learn prevention, practise first aid and test health knowledge through an intuitive visual experience.
+## Major improvements
+- More realistic image-based anatomy layers.
+- Smaller and more detailed clickable hotspots.
+- Direct zoom-in on selected organs/structures.
+- Search across organs, bones, vessels, nerves, muscles and hormone structures.
+- Richer medical information per selected item:
+  - function/context
+  - symptoms
+  - red flags
+  - prevention
+- Persistent local profile settings:
+  - age
+  - sex
+  - background/ancestry
+  - language
+- No persistent PWA/service-worker caching during development.
 
-Upload workflow: extract flat ZIP into the active GitHub Desktop repository folder, replace files, commit, push.
+## Upload
+Extract directly into the GitHub Desktop repository folder and replace files.
+
+Commit message:
+`Stage 1H detailed atlas database upgrade`

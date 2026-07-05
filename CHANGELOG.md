@@ -1,10 +1,24 @@
 # Changelog
 
-## Stage 1F
-- Removed hard PWA caching for development.
-- Added automatic service-worker unregister and cache clearing.
-- Added `stage1f.html` emergency bypass page.
-- Added persistent local profile onboarding.
-- Added zoom-in body atlas interaction.
-- Added richer region and organ information.
-- Added symptom flow with red flags and contextual profile notes.
+## Stage 1H — Detailed atlas database upgrade
+
+### Added
+- Searchable atlas across all layers.
+- Detail mode for larger or smaller hotspots.
+- More granular organ, skeleton, vessel, nerve, muscle and hormone selections.
+- Drill-down substructure lists per selected anatomical item.
+- Medical tabs per item:
+  - function/context
+  - common symptoms
+  - red flags
+  - prevention
+- Richer knowledge card database.
+- Development-safe cache clearing on load.
+
+### Improved
+- Less navigation between screens.
+- Selected atlas item flows directly into the symptom guide.
+- Profile context is preserved locally.
+
+### Known limitation
+This is still an image-based interactive atlas. True rotatable 3D anatomy requires licensed 3D model assets and a WebGL/Three.js or native engine implementation.
