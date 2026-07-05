@@ -1,26 +1,19 @@
-# HealthLens Stage 1H
+# HealthLens Stage 1I — Refresh-safe build
 
-Stage 1H is a larger atlas and database upgrade.
+This build is designed to fix stale mobile browser / PWA cache issues.
 
-## Major improvements
-- More realistic image-based anatomy layers.
-- Smaller and more detailed clickable hotspots.
-- Direct zoom-in on selected organs/structures.
-- Search across organs, bones, vessels, nerves, muscles and hormone structures.
-- Richer medical information per selected item:
-  - function/context
-  - symptoms
-  - red flags
-  - prevention
-- Persistent local profile settings:
-  - age
-  - sex
-  - background/ancestry
-  - language
-- No persistent PWA/service-worker caching during development.
+## Use this URL after deployment
 
-## Upload
-Extract directly into the GitHub Desktop repository folder and replace files.
+`https://jonathan1981nl.github.io/healthlens-app/stage1i.html?v=force-1i`
 
-Commit message:
-`Stage 1H detailed atlas database upgrade`
+## Why this should refresh correctly
+
+- unique CSS filename: `styles-1i-20260705.css`
+- unique JS filename: `app-1i-20260705.js`
+- separate entry page: `stage1i.html`
+- `service-worker.js` unregisters itself and clears old caches
+- visible version badge: `1I-refresh-safe-20260705`
+
+## Commit message
+
+`Stage 1I refresh-safe atlas upgrade`
