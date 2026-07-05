@@ -1,4 +1,4 @@
-// HealthLens development cache-kill service worker
+// Development build: unregister and avoid stale cache
 self.addEventListener('install', event => {
   self.skipWaiting();
   event.waitUntil(caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k)))));

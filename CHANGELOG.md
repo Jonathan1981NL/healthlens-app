@@ -1,22 +1,18 @@
 # Changelog
 
-## Stage 1J — Harmonized 3D Atlas & Privacy Correction
+## Stage 1K — Professional Atlas Build
 
 ### Fixed
-- Removed atlas blur concept: Atlas Studio is educational material and should not blur anatomical bodies.
-- Clarified that blur applies only to AR/camera/user-uploaded photos/screenshots.
+- Removed the earlier pseudo-3D body that looked amateurish.
+- Removed meaningless rotation/depth/layer-transparency sliders.
 
 ### Added
-- Harmonized one-body atlas with shared coordinates across all layers.
-- Default biological atlas body.
-- Under-16 underwear overlay.
-- Profile-based skin tone/representation.
-- Drag/slider 3D-like rotation.
-- Layer opacity control.
-- Layer toggles for skin, muscle, skeleton, organs, vessels, nerves and hormones.
-- Refresh-safe `stage1j.html` entry.
+- Realistic image-based anatomy atlas.
+- Pan and zoom with mouse/finger.
+- Smaller structure hotspots.
+- Richer detail cards per anatomical item.
+- Refresh-safe `stage1k.html`.
+- Visible version indicator.
 
-### Still future scope
-- Replace pseudo-3D SVG with licensed rotatable anatomical 3D meshes.
-- Add true mesh object picking.
-- Add medical-grade 3D asset pipeline.
+### Scope note
+This is now a usable professional web prototype. True hyperrealistic rotatable 3D still requires licensed anatomical 3D assets and a real 3D engine.

@@ -1,44 +1,31 @@
-# HealthLens Project Spec — Stage 1J Baseline
+# HealthLens Project Spec — Stage 1K Baseline
 
-## User correction implemented
-The user clarified:
+## Stage 1K objective
+Create a usable, professional-feeling atlas build after user feedback that the pseudo-3D body was not acceptable.
 
-1. Atlas Studio should not blur anatomical images.
-2. Blur is only required for real user content:
-   - AR camera;
-   - uploaded photos;
-   - screenshots;
-   - identifiable body images.
-3. Atlas Studio educational images should be biological/anatomical.
-4. For children, atlas images should show underwear.
-5. Atlas representation should adapt to profile choices such as age, sex and background/ancestry.
-6. All layers should look like one coherent system rather than unrelated images.
+## Locked decisions
+1. Do not use fake 3D controls unless the interaction actually adds value.
+2. Use realistic medical atlas images until real 3D anatomy assets are available.
+3. Atlas Studio images are educational and are not blurred.
+4. Blur is reserved for AR/camera/user-uploaded images and screenshots involving real people.
+5. Under-16 profile uses a safe underwear overlay for atlas view.
+6. Profile data remains locally stored.
+7. Development builds must avoid persistent PWA cache.
 
-## Stage 1J implementation
-Stage 1J creates a unified harmonized SVG-based atlas body with shared coordinates and layer toggles:
-- skin/body layer;
-- muscle layer;
-- skeleton layer;
-- organ layer;
-- vessel layer;
-- nerve layer;
-- hormone layer.
+## Current state
+- Professional image-based atlas.
+- Pan and zoom.
+- Small hotspots.
+- Detail cards.
+- Symptom guide.
+- Knowledge cards.
+- Local profile.
 
-It also adds:
-- profile-based skin tone;
-- under-16 underwear overlay;
-- 3D-like rotate/tilt controls;
-- layer opacity slider;
-- AR/photo privacy distinction;
-- cache-safe entry page.
-
-## Important limitation
-This is still pseudo-3D SVG. A true hyperrealistic rotating anatomical atlas requires:
-- licensed 3D anatomy assets;
-- Three.js, Unity, Babylon.js or native 3D engine;
-- mesh-object IDs connected to the medical database;
-- texture/material pipeline for skin, organs, vessels, nerves and skeleton;
-- AR pose-registration pipeline.
-
-## Locked principle
-During development, no persistent PWA caching unless explicitly requested.
+## Next true 3D path
+A genuinely hyperrealistic, rotatable anatomy atlas requires:
+- licensed full-body 3D models;
+- separate meshes for organs, skeleton, muscles, vessels, nerves and skin;
+- WebGL renderer such as Three.js/Babylon.js, or Unity later for native apps;
+- object picking mapped to medical database IDs;
+- mobile performance optimization;
+- AR pose registration as a separate module.

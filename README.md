@@ -1,34 +1,30 @@
-# HealthLens Stage 1J — Harmonized 3D Atlas
+# HealthLens Stage 1K — Professional Atlas Build
 
-Stage 1J corrects the atlas/privacy distinction and moves the atlas toward one unified, harmonized body model.
+This version replaces the previous pseudo-3D body with a professional, realistic image-based anatomy atlas.
 
-## Key changes
+## What changed
 
-- Atlas Studio images are **not blurred**.
-- SafeBlur remains for **AR, user photos, uploads and screenshots** only.
-- Default atlas body is a biological educational body model.
-- Under-16 profile automatically shows an underwear layer in Atlas Studio.
-- Skin tone/representation adapts locally to profile background/ancestry selection.
-- All layers share one harmonized coordinate system:
-  - biological body
-  - muscles
-  - skeleton
+- Removed the amateur pseudo-3D SVG body.
+- Removed rotation/depth/transparency sliders.
+- Added realistic medical atlas images for:
   - organs
-  - blood vessels
-  - nerves
-  - hormones
-- 3D-like interaction:
-  - drag to rotate
-  - rotation slider
-  - tilt slider
-  - layer opacity slider
-  - toggle layers on/off
-- Dedicated refresh-safe entry:
-  - `stage1j.html?v=force-1j`
+  - skeleton
+  - circulatory system
+  - nervous system
+- Added direct pan and zoom:
+  - drag with mouse/finger
+  - mouse wheel or zoom buttons
+- Added smaller hotspots per layer.
+- Added deep medical detail cards.
+- Atlas Studio is not blurred.
+- AR/user photos remain the only context where SafeBlur applies.
+- Under-16 profile shows a safe underwear overlay on atlas view.
+- Profile settings remain local.
+- Refresh-safe entry: `stage1k.html?v=force-1k`
 
-## Upload
+## Deploy
 
-Extract directly into the active GitHub Desktop folder.
+Extract into the GitHub Desktop active folder and replace files.
 
 Commit message:
-`Stage 1J harmonized 3D atlas privacy correction`
+`Stage 1K professional atlas build`
