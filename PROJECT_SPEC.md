@@ -1,23 +1,44 @@
-# HealthLens Project Spec — Stage 1I
+# HealthLens Project Spec — Stage 1J Baseline
 
-Stage 1I is a refresh-safe development build.
+## User correction implemented
+The user clarified:
 
-## Locked development rule
-During rapid GitHub Pages development, do not use persistent PWA caching. Each build should use unique asset filenames or a cache-kill strategy.
+1. Atlas Studio should not blur anatomical images.
+2. Blur is only required for real user content:
+   - AR camera;
+   - uploaded photos;
+   - screenshots;
+   - identifiable body images.
+3. Atlas Studio educational images should be biological/anatomical.
+4. For children, atlas images should show underwear.
+5. Atlas representation should adapt to profile choices such as age, sex and background/ancestry.
+6. All layers should look like one coherent system rather than unrelated images.
 
-## Current app direction
-- Hyperrealistic atlas direction.
-- Fine-grained hotspots.
-- In-place zoom and drill-down.
-- Persistent local profile.
-- Rich medical database expansion.
-- Future transition to true 3D assets.
+## Stage 1J implementation
+Stage 1J creates a unified harmonized SVG-based atlas body with shared coordinates and layer toggles:
+- skin/body layer;
+- muscle layer;
+- skeleton layer;
+- organ layer;
+- vessel layer;
+- nerve layer;
+- hormone layer.
 
-## Deployment test
-After upload, open:
+It also adds:
+- profile-based skin tone;
+- under-16 underwear overlay;
+- 3D-like rotate/tilt controls;
+- layer opacity slider;
+- AR/photo privacy distinction;
+- cache-safe entry page.
 
-`/stage1i.html?v=force-1i`
+## Important limitation
+This is still pseudo-3D SVG. A true hyperrealistic rotating anatomical atlas requires:
+- licensed 3D anatomy assets;
+- Three.js, Unity, Babylon.js or native 3D engine;
+- mesh-object IDs connected to the medical database;
+- texture/material pipeline for skin, organs, vessels, nerves and skeleton;
+- AR pose-registration pipeline.
 
-The page must visibly show:
-
-`1I-refresh-safe-20260705`
+## Locked principle
+During development, no persistent PWA caching unless explicitly requested.

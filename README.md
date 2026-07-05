@@ -1,19 +1,34 @@
-# HealthLens Stage 1I — Refresh-safe build
+# HealthLens Stage 1J — Harmonized 3D Atlas
 
-This build is designed to fix stale mobile browser / PWA cache issues.
+Stage 1J corrects the atlas/privacy distinction and moves the atlas toward one unified, harmonized body model.
 
-## Use this URL after deployment
+## Key changes
 
-`https://jonathan1981nl.github.io/healthlens-app/stage1i.html?v=force-1i`
+- Atlas Studio images are **not blurred**.
+- SafeBlur remains for **AR, user photos, uploads and screenshots** only.
+- Default atlas body is a biological educational body model.
+- Under-16 profile automatically shows an underwear layer in Atlas Studio.
+- Skin tone/representation adapts locally to profile background/ancestry selection.
+- All layers share one harmonized coordinate system:
+  - biological body
+  - muscles
+  - skeleton
+  - organs
+  - blood vessels
+  - nerves
+  - hormones
+- 3D-like interaction:
+  - drag to rotate
+  - rotation slider
+  - tilt slider
+  - layer opacity slider
+  - toggle layers on/off
+- Dedicated refresh-safe entry:
+  - `stage1j.html?v=force-1j`
 
-## Why this should refresh correctly
+## Upload
 
-- unique CSS filename: `styles-1i-20260705.css`
-- unique JS filename: `app-1i-20260705.js`
-- separate entry page: `stage1i.html`
-- `service-worker.js` unregisters itself and clears old caches
-- visible version badge: `1I-refresh-safe-20260705`
+Extract directly into the active GitHub Desktop folder.
 
-## Commit message
-
-`Stage 1I refresh-safe atlas upgrade`
+Commit message:
+`Stage 1J harmonized 3D atlas privacy correction`

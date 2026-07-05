@@ -1,17 +1,22 @@
 # Changelog
 
-## Stage 1I — Refresh-safe atlas upgrade
+## Stage 1J — Harmonized 3D Atlas & Privacy Correction
 
 ### Fixed
-- Added a dedicated `stage1i.html` entry point to bypass cached root pages.
-- Added unique versioned CSS and JS filenames.
-- Added a kill-switch `service-worker.js` that clears caches and unregisters itself.
-- Added visible active-version badge: `1I-refresh-safe-20260705`.
+- Removed atlas blur concept: Atlas Studio is educational material and should not blur anatomical bodies.
+- Clarified that blur applies only to AR/camera/user-uploaded photos/screenshots.
 
-### Retained
-- Realistic atlas layers.
-- Detail hotspots.
-- Search.
-- Profile persistence.
-- Symptom guide.
-- Knowledge cards.
+### Added
+- Harmonized one-body atlas with shared coordinates across all layers.
+- Default biological atlas body.
+- Under-16 underwear overlay.
+- Profile-based skin tone/representation.
+- Drag/slider 3D-like rotation.
+- Layer opacity control.
+- Layer toggles for skin, muscle, skeleton, organs, vessels, nerves and hormones.
+- Refresh-safe `stage1j.html` entry.
+
+### Still future scope
+- Replace pseudo-3D SVG with licensed rotatable anatomical 3D meshes.
+- Add true mesh object picking.
+- Add medical-grade 3D asset pipeline.
