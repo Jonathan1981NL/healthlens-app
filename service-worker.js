@@ -1,1 +1,1 @@
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))))});self.addEventListener('activate',e=>{e.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.map(k=>caches.delete(k)));await self.registration.unregister();const cs=await clients.matchAll({type:'window'});for(const c of cs)c.navigate(c.url)})())});self.addEventListener('fetch',e=>e.respondWith(fetch(e.request,{cache:'no-store'})));
+self.addEventListener('fetch',e=>e.respondWith(fetch(e.request,{cache:'no-store'})));

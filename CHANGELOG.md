@@ -1,2 +1,7 @@
-# Stage 1P
-- Final working baseline: centered atlas, no visible circles, click-anywhere mapping, profile-based overlays, pain score, dynamic red flags, professional analysis.
+# Stage 1Q
+- 21-language UI selector
+- disclaimer gate
+- static centered atlas
+- invisible clickable regions with highlight
+- profile-based visual adaptation
+- expanded analysis and education

@@ -1,3 +1,3 @@
-# Stage 1P Baseline
+# Stage 1Q Baseline
 
-Professional working atlas baseline with centered harmonized images, invisible click mapping, dynamic complaints engine, profile-driven visual overlays and expanded education.
+A more mature multilingual static-atlas baseline with disclaimer gate, profile-tuned presentation and improved region selection.
