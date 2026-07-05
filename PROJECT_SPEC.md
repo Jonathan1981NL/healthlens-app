@@ -1,3 +1,3 @@
-# Stage 1O Baseline
+# Stage 1P Baseline
 
-Clean professional atlas baseline with centered images, no visible hotspot circles, click-anywhere mapping, dynamic red flags and professional analysis.
+Professional working atlas baseline with centered harmonized images, invisible click mapping, dynamic complaints engine, profile-driven visual overlays and expanded education.

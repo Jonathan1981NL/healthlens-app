@@ -1,6 +1,2 @@
-# Stage 1O
-- Fixed atlas centering.
-- Removed visible circles.
-- Added click-anywhere body mapping.
-- Replaced Quiz with Educatief centrum.
-- Added dynamic red flags and professional analysis output.
+# Stage 1P
+- Final working baseline: centered atlas, no visible circles, click-anywhere mapping, profile-based overlays, pain score, dynamic red flags, professional analysis.
